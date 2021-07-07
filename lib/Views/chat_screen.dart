@@ -1,7 +1,9 @@
+import 'package:bloved/Controllers/darklightTheme.dart';
 import 'package:bloved/Models/message_model.dart';
 import 'package:bloved/Models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class ChatScreen extends StatefulWidget {
   final User user;
@@ -16,6 +18,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final w = ScreenUtil().setWidth;
   final h = ScreenUtil().setHeight;
   final sp = ScreenUtil().setSp;
+  var themeController = Get.put(ThemeValue());
   _chatBubble(Message message, bool isMe, bool isSameUser) {
     if (isMe) {
       return Column(
@@ -389,33 +392,65 @@ class _ChatScreenState extends State<ChatScreen> {
                             children: [
                               Positioned(
                                 left: w(190),
-                                child: Container(
-                                  height: h(70),
-                                  width: w(70),
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/images/img1.png"),
-                                          fit: BoxFit.cover),
-                                      borderRadius:
-                                          BorderRadius.circular(w(50)),
-                                      color: Colors.red),
-                                ),
+                                child: themeController.themeValue.toString() ==
+                                        "dark"
+                                    ? Container(
+                                        height: h(70),
+                                        width: w(70),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.white, width: 5),
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/img1.png"),
+                                                fit: BoxFit.cover),
+                                            borderRadius:
+                                                BorderRadius.circular(w(50)),
+                                            color: Colors.red),
+                                      )
+                                    : Container(
+                                        height: h(70),
+                                        width: w(70),
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/img1.png"),
+                                                fit: BoxFit.cover),
+                                            borderRadius:
+                                                BorderRadius.circular(w(50)),
+                                            color: Colors.red),
+                                      ),
                               ),
                               Positioned(
                                 left: w(100),
-                                child: Container(
-                                  height: h(70),
-                                  width: w(70),
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/images/image2.png"),
-                                          fit: BoxFit.cover),
-                                      borderRadius:
-                                          BorderRadius.circular(w(50)),
-                                      color: Colors.blue),
-                                ),
+                                child: themeController.themeValue.toString() ==
+                                        "dark"
+                                    ? Container(
+                                        height: h(70),
+                                        width: w(70),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.white, width: 5),
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/image2.png"),
+                                                fit: BoxFit.cover),
+                                            borderRadius:
+                                                BorderRadius.circular(w(50)),
+                                            color: Colors.red),
+                                      )
+                                    : Container(
+                                        height: h(70),
+                                        width: w(70),
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/image2.png"),
+                                                fit: BoxFit.cover),
+                                            borderRadius:
+                                                BorderRadius.circular(w(50)),
+                                            color: Colors.red),
+                                      ),
                               ),
                               Positioned(
                                   left: w(160),

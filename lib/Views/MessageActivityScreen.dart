@@ -1,4 +1,5 @@
 import 'package:bloved/Controllers/MessageController.dart';
+import 'package:bloved/Controllers/darklightTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,45 +24,189 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
     "assets/images/image4.png"
   ];
   String selected = "Messages";
+  var themeController = Get.put(ThemeValue());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: Colors.grey[100],
       appBar: AppBar(
         leading: Row(children: [
-          Container(
-            margin: EdgeInsets.only(left: w(30), top: h(30)),
-            height: h(25),
-            width: w(25),
-            decoration: BoxDecoration(
-                color: Colors.grey[500],
-                borderRadius: BorderRadius.circular(20)),
-            child: Icon(
-              Icons.person,
-              color: Colors.white,
-              size: 20,
-            ),
-          ),
+          themeController.themeValue.toString() == "dark"
+              ? Container(
+                  margin: EdgeInsets.only(left: w(20), top: h(10)),
+                  height: h(25),
+                  width: w(25),
+                  decoration: BoxDecoration(
+                      color: Colors.pink[400],
+                      borderRadius: BorderRadius.circular(w(20))),
+                  child: GestureDetector(
+                      onTap: () {
+                        // Navigator.of(context)
+                        //     .push(MaterialPageRoute(builder: (conetx) {
+                        //   return Profile();
+                        // }));
+                      },
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.black,
+                        size: w(20),
+                      )),
+                )
+              : Container(
+                  margin: EdgeInsets.only(left: w(20), top: h(10)),
+                  height: h(25),
+                  width: w(25),
+                  decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(w(20))),
+                  child: GestureDetector(
+                      onTap: () {
+                        // Navigator.of(context)
+                        //     .push(MaterialPageRoute(builder: (conetx) {
+                        //   return Profile();
+                        // }));
+                      },
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: w(20),
+                      )),
+                ),
         ]),
         centerTitle: true,
         title: Container(
-          padding: EdgeInsets.only(top: h(30)),
-          child: Text(
-            "bloved",
-            style: GoogleFonts.ubuntu(
-                fontSize: sp(22),
-                color: Colors.grey[400],
-                fontWeight: FontWeight.bold),
+          padding: EdgeInsets.only(top: h(10)),
+          child: Stack(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  themeController.themeValue.toString() == "dark"
+                      ? Container(
+                          child: Text(
+                            "b",
+                            style: GoogleFonts.ubuntu(
+                                fontSize: sp(26),
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      : Container(
+                          child: Text(
+                          "b",
+                          style: GoogleFonts.ubuntu(
+                              fontSize: sp(26),
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold),
+                        )),
+                  themeController.themeValue.toString() == "dark"
+                      ? Container(
+                          child: Text(
+                            "love",
+                            style: GoogleFonts.ubuntu(
+                                fontSize: sp(26),
+                                color: Colors.pink[300],
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      : Container(
+                          child: Text(
+                            "love",
+                            style: GoogleFonts.ubuntu(
+                                fontSize: sp(26),
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                  themeController.themeValue.toString() == "dark"
+                      ? Container(
+                          child: Text(
+                            "d",
+                            style: GoogleFonts.ubuntu(
+                                color: Colors.white,
+                                fontSize: sp(26),
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      : Container(
+                          child: Text(
+                            "d",
+                            style: GoogleFonts.ubuntu(
+                                color: Colors.grey,
+                                fontSize: sp(26),
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                ],
+              ),
+              Positioned(
+                left: w(143),
+                top: h(2),
+                child: RotationTransition(
+                    turns: new AlwaysStoppedAnimation(15 / 360),
+                    child: Icon(
+                      Icons.favorite,
+                      color: themeController.themeValue.toString() == "dark"
+                          ? Colors.pink[300]
+                          : Colors.grey,
+                      size: 4,
+                    )),
+              ),
+              Positioned(
+                left: w(140),
+                // top: h(),
+                child: RotationTransition(
+                    turns: new AlwaysStoppedAnimation(15 / 360),
+                    child: Icon(Icons.favorite,
+                        color: themeController.themeValue.toString() == "dark"
+                            ? Colors.pink[300]
+                            : Colors.grey,
+                        size: 2)),
+              ),
+              Positioned(
+                left: w(142),
+                top: h(7),
+                child: RotationTransition(
+                    turns: new AlwaysStoppedAnimation(15 / 360),
+                    child: Icon(
+                      Icons.favorite,
+                      color: themeController.themeValue.toString() == "dark"
+                          ? Colors.pink[300]
+                          : Colors.grey,
+                      size: 6,
+                    )),
+              ),
+              Positioned(
+                left: w(147),
+                top: h(4),
+                child: RotationTransition(
+                    turns: new AlwaysStoppedAnimation(330 / 360),
+                    child: Icon(
+                      Icons.favorite,
+                      color: themeController.themeValue.toString() == "dark"
+                          ? Colors.pink[300]
+                          : Colors.grey,
+                      size: 5,
+                    )),
+              )
+            ],
           ),
         ),
         elevation: 0,
-        backgroundColor: Theme.of(context).cardColor,
+        backgroundColor: Theme.of(context).backgroundColor,
         actions: [
           Container(
-            padding: EdgeInsets.only(right: w(30), top: h(30)),
-            child: Icon(
-              Icons.forum,
-              color: Colors.pink[300],
+            padding: EdgeInsets.only(right: w(40), top: h(10)),
+            child: GestureDetector(
+              // onTap: () {
+              //   showDialog(
+              //       context: context,
+              //       builder: (BuildContext context) => errorDialog);
+              // },
+              child: Icon(
+                Icons.forum,
+                color: Colors.pink[400],
+              ),
             ),
           )
         ],

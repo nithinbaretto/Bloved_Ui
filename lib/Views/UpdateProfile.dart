@@ -1,4 +1,6 @@
+import 'package:bloved/Controllers/darklightTheme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -19,6 +21,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final h = ScreenUtil().setHeight;
   final sp = ScreenUtil().setSp;
   late GoogleMapController mapController;
+  bool statusForGender = false;
+  var themeController = Get.put(ThemeValue());
 
   @override
   void didUpdateWidget(covariant oldWidget) {
@@ -39,6 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(h(90)),
           child: AppBar(
+            automaticallyImplyLeading: false,
             centerTitle: true,
             title: Container(
               padding: EdgeInsets.only(top: h(30)),
@@ -246,124 +251,164 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             fontSize: sp(16),
                             color: Theme.of(context).accentColor)),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(),
-                        height: h(10),
-                        width: w(10),
-                        decoration: BoxDecoration(
-                            color: Colors.pink[300],
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                      SizedBox(
-                        width: w(5),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(),
-                        height: h(10),
-                        width: w(10),
-                        decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                      SizedBox(
-                        width: w(5),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(right: w(20)),
-                        height: h(10),
-                        width: w(10),
-                        decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10)),
-                      )
-                    ],
-                  ),
+                  Obx(
+                    () => Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(),
+                          height: h(10),
+                          width: w(10),
+                          decoration: BoxDecoration(
+                              color: Colors.pink[300],
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        SizedBox(
+                          width: w(5),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(),
+                          height: h(10),
+                          width: w(10),
+                          decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        SizedBox(
+                          width: w(5),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(right: w(20)),
+                          height: h(10),
+                          width: w(10),
+                          decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.circular(10)),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
               SizedBox(
                 height: h(5),
               ),
-              Container(
-                color: Theme.of(context).backgroundColor,
-                padding: EdgeInsets.only(top: h(20), bottom: h(20)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                        margin: EdgeInsets.only(left: w(40)),
-                        height: h(60),
-                        width: w(60),
-                        decoration: BoxDecoration(
-                            color: Colors.blueGrey[100],
-                            borderRadius: BorderRadius.circular(w(30))),
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: w(15),
-                              right: w(15),
-                              top: h(15),
-                              bottom: h(15)),
-                          child: Image.asset(
-                            "assets/images/snapchat.png",
-                            color: Colors.grey,
-                          ),
-                        )),
-                    Container(
-                        height: h(60),
-                        width: w(60),
-                        decoration: BoxDecoration(
-                            color: Colors.blueGrey[100],
-                            borderRadius: BorderRadius.circular(w(30))),
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: w(15),
-                              right: w(15),
-                              top: h(15),
-                              bottom: h(15)),
-                          child: Image.asset(
-                            "assets/images/facebook.png",
-                            color: Colors.grey,
-                          ),
-                        )),
-                    Container(
-                        height: h(60),
-                        width: w(60),
-                        decoration: BoxDecoration(
-                            color: Colors.blueGrey[100],
-                            borderRadius: BorderRadius.circular(w(30))),
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: w(15),
-                              right: w(15),
-                              top: h(15),
-                              bottom: h(15)),
-                          child: Image.asset(
-                            "assets/images/tiktok.png",
-                            height: h(20),
-                            width: w(20),
-                            color: Colors.grey,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.only(right: w(40)),
-                        height: h(60),
-                        width: w(60),
-                        decoration: BoxDecoration(
-                            color: Colors.blueGrey[100],
-                            borderRadius: BorderRadius.circular(w(30))),
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: w(15),
-                              right: w(15),
-                              top: h(15),
-                              bottom: h(15)),
-                          child: Image.asset(
-                            "assets/images/instagram.png",
-                            color: Colors.pink,
-                          ),
-                        ))
-                  ],
+              Obx(
+                () => Container(
+                  color: Theme.of(context).backgroundColor,
+                  padding: EdgeInsets.only(top: h(20), bottom: h(20)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                          margin: EdgeInsets.only(left: w(40)),
+                          height: h(60),
+                          width: w(60),
+                          decoration: BoxDecoration(
+                              color: themeController.themeValue.toString() ==
+                                      "dark"
+                                  ? Colors.white12
+                                  : Colors.blueGrey[100],
+                              borderRadius: BorderRadius.circular(w(30))),
+                          child: Container(
+                            margin: EdgeInsets.only(
+                                left: w(15),
+                                right: w(15),
+                                top: h(15),
+                                bottom: h(15)),
+                            child:
+                                themeController.themeValue.toString() == "dark"
+                                    ? Image.asset(
+                                        "assets/images/snapchat.png",
+                                        color: Colors.white70,
+                                      )
+                                    : Image.asset(
+                                        "assets/images/snapchat.png",
+                                        color: Colors.grey,
+                                      ),
+                          )),
+                      Container(
+                          height: h(60),
+                          width: w(60),
+                          decoration: BoxDecoration(
+                              color: themeController.themeValue.toString() ==
+                                      "dark"
+                                  ? Colors.white12
+                                  : Colors.blueGrey[100],
+                              borderRadius: BorderRadius.circular(w(30))),
+                          child: Container(
+                              margin: EdgeInsets.only(
+                                  left: w(15),
+                                  right: w(15),
+                                  top: h(15),
+                                  bottom: h(15)),
+                              child: themeController.themeValue.toString() ==
+                                      "dark"
+                                  ? Image.asset(
+                                      "assets/images/facebook.png",
+                                      color: Colors.white70,
+                                    )
+                                  : Image.asset(
+                                      "assets/images/facebook.png",
+                                      color: Colors.grey,
+                                    ))),
+                      Container(
+                          height: h(60),
+                          width: w(60),
+                          decoration: BoxDecoration(
+                              color: themeController.themeValue.toString() ==
+                                      "dark"
+                                  ? Colors.white12
+                                  : Colors.blueGrey[100],
+                              borderRadius: BorderRadius.circular(w(30))),
+                          child: Container(
+                            margin: EdgeInsets.only(
+                                left: w(15),
+                                right: w(15),
+                                top: h(15),
+                                bottom: h(15)),
+                            child:
+                                themeController.themeValue.toString() == "dark"
+                                    ? Image.asset(
+                                        "assets/images/tiktok.png",
+                                        height: h(20),
+                                        width: w(20),
+                                        color: Colors.white70,
+                                      )
+                                    : Image.asset(
+                                        "assets/images/tiktok.png",
+                                        height: h(20),
+                                        width: w(20),
+                                        color: Colors.grey,
+                                      ),
+                          )),
+                      Container(
+                          margin: EdgeInsets.only(right: w(40)),
+                          height: h(60),
+                          width: w(60),
+                          decoration: BoxDecoration(
+                              color: themeController.themeValue.toString() ==
+                                      "dark"
+                                  ? Colors.pink[300]
+                                  : Colors.blueGrey[100],
+                              borderRadius: BorderRadius.circular(w(30))),
+                          child: Container(
+                              margin: EdgeInsets.only(
+                                  left: w(15),
+                                  right: w(15),
+                                  top: h(15),
+                                  bottom: h(15)),
+                              child: themeController.themeValue.toString() ==
+                                      "dark"
+                                  ? Image.asset(
+                                      "assets/images/instagram.png",
+                                      color: Colors.white,
+                                    )
+                                  : Image.asset(
+                                      "assets/images/instagram.png",
+                                      color: Colors.grey,
+                                    )))
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -591,10 +636,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          padding: EdgeInsets.only(left: w(15)),
+                          padding: EdgeInsets.only(left: w(105)),
                           child: Text(
                             "Male",
                             style: TextStyle(
@@ -603,7 +648,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: w(10)),
+                          padding: EdgeInsets.only(left: w(110)),
                           child: Text("FeMale",
                               style: TextStyle(
                                   fontSize: sp(16),
@@ -615,51 +660,75 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: h(10),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              selected = "Males";
+                              statusForGender = false;
                             });
                           },
-                          child: Container(
-                            height: h(25),
-                            width: w(25),
-                            decoration: BoxDecoration(
-                              color: Colors.pink[300],
-                              borderRadius: BorderRadius.circular(w(30)),
-                            ),
-                            child: Icon(
-                              Icons.done,
-                              color: Colors.white,
-                              size: w(20),
-                            ),
-                          ),
+                          child: statusForGender == false
+                              ? Container(
+                                  height: h(25),
+                                  width: w(25),
+                                  decoration: BoxDecoration(
+                                    color: Colors.pink[300],
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: Icon(
+                                    Icons.done,
+                                    color: Colors.white,
+                                    size: w(20),
+                                  ),
+                                )
+                              : Container(
+                                  height: h(25),
+                                  width: w(25),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Theme.of(context).accentColor),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                ),
+                        ),
+                        SizedBox(
+                          width: w(120),
                         ),
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              selected = "Females";
+                              statusForGender = true;
                             });
                           },
-                          child: Container(
-                            height: h(25),
-                            width: w(25),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(w(30)),
-                                border: Border.all(
-                                  color: Colors.grey,
-                                )),
-                            child: Icon(
-                              Icons.done,
-                              color: Colors.white,
-                              size: w(20),
-                            ),
-                          ),
+                          child: statusForGender == false
+                              ? Container(
+                                  height: h(25),
+                                  width: w(25),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Theme.of(context).accentColor),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                )
+                              : Container(
+                                  height: h(25),
+                                  width: w(25),
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.pink.shade300,
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: Icon(
+                                    Icons.done,
+                                    color: Colors.white,
+                                    size: w(20),
+                                  ),
+                                ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -837,7 +906,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             padding: EdgeInsets.only(left: w(10)),
                             child: Text(
                               "Connect Instagram",
-                              style: TextStyle(fontSize: sp(16)),
+                              style: TextStyle(
+                                  fontSize: sp(16),
+                                  color: Theme.of(context).accentColor),
                             ))
                       ],
                     ),
@@ -882,7 +953,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Container(
                             padding: EdgeInsets.only(left: w(10)),
                             child: Text(
-                              "Connect Instagram",
+                              "Connect Spotify",
                               style: TextStyle(
                                   fontSize: sp(16),
                                   color: Theme.of(context).accentColor),

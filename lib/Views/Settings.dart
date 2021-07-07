@@ -26,6 +26,7 @@ class _SettingsState extends State<Settings> {
   SfRangeValues _values = SfRangeValues(4.0, 8.0);
   bool status = false;
   bool statusForTheme = false;
+  bool statusForGender = false;
   double _value = 40.0;
 
   var themeController = Get.put(ThemeValue());
@@ -49,6 +50,7 @@ class _SettingsState extends State<Settings> {
               appBar: PreferredSize(
                 preferredSize: Size.fromHeight(h(90)),
                 child: AppBar(
+                  automaticallyImplyLeading: false,
                   centerTitle: true,
                   title: Container(
                     padding: EdgeInsets.only(top: h(30)),
@@ -111,7 +113,11 @@ class _SettingsState extends State<Settings> {
                                   padding: EdgeInsets.only(top: h(20)),
                                   child: Icon(
                                     Icons.dark_mode,
-                                    color: Colors.grey[400],
+                                    color:
+                                        themeController.themeValue.toString() ==
+                                                "dark"
+                                            ? Colors.white70
+                                            : Colors.grey[400],
                                     size: 50,
                                   ),
                                 ),
@@ -238,6 +244,11 @@ class _SettingsState extends State<Settings> {
                                 padding: EdgeInsets.only(right: w(20)),
                                 child: FlutterSwitch(
                                   activeColor: Colors.pink,
+                                  inactiveColor:
+                                      themeController.themeValue.toString() ==
+                                              "dark"
+                                          ? Colors.white12
+                                          : Colors.grey.shade600,
                                   // inactiveColor: Sca,
                                   width: 65.0,
                                   height: 35.0,
@@ -298,6 +309,8 @@ class _SettingsState extends State<Settings> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 CountryCodePicker(
+                                  textStyle: TextStyle(
+                                      color: Theme.of(context).accentColor),
                                   searchDecoration: InputDecoration(
                                       icon: Icon(
                                     Icons.search,
@@ -307,7 +320,6 @@ class _SettingsState extends State<Settings> {
                                       TextStyle(color: Colors.black),
                                   // showDropDownButton: true,
                                   padding: EdgeInsets.all(0),
-
                                   backgroundColor: Colors.white,
                                   onChanged: print,
                                   showCountryOnly: true,
@@ -475,22 +487,35 @@ class _SettingsState extends State<Settings> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    // selected = "Males";
+                                    statusForGender = false;
                                   });
                                 },
-                                child: Container(
-                                  height: h(25),
-                                  width: w(25),
-                                  decoration: BoxDecoration(
-                                    color: Colors.pink[300],
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: Icon(
-                                    Icons.done,
-                                    color: Colors.white,
-                                    size: w(20),
-                                  ),
-                                ),
+                                child: statusForGender == false
+                                    ? Container(
+                                        height: h(25),
+                                        width: w(25),
+                                        decoration: BoxDecoration(
+                                          color: Colors.pink[300],
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                        child: Icon(
+                                          Icons.done,
+                                          color: Colors.white,
+                                          size: w(20),
+                                        ),
+                                      )
+                                    : Container(
+                                        height: h(25),
+                                        width: w(25),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Theme.of(context)
+                                                  .accentColor),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                      ),
                               ),
                               SizedBox(
                                 width: w(120),
@@ -498,24 +523,36 @@ class _SettingsState extends State<Settings> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    // selected = "Females";
+                                    statusForGender = true;
                                   });
                                 },
-                                child: Container(
-                                  height: h(25),
-                                  width: w(25),
-                                  margin: EdgeInsets.only(left: 10),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      border: Border.all(
-                                        color: Colors.grey,
-                                      )),
-                                  child: Icon(
-                                    Icons.done,
-                                    color: Colors.white,
-                                    size: w(20),
-                                  ),
-                                ),
+                                child: statusForGender == false
+                                    ? Container(
+                                        height: h(25),
+                                        width: w(25),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Theme.of(context)
+                                                  .accentColor),
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                      )
+                                    : Container(
+                                        height: h(25),
+                                        width: w(25),
+                                        margin: EdgeInsets.only(left: 10),
+                                        decoration: BoxDecoration(
+                                          color: Colors.pink.shade300,
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                        child: Icon(
+                                          Icons.done,
+                                          color: Colors.white,
+                                          size: w(20),
+                                        ),
+                                      ),
                               ),
                             ],
                           ),
@@ -616,7 +653,7 @@ class _SettingsState extends State<Settings> {
                         // overlappingThumbStrokeColor: Colors.white,
                         // thumbRadius: 10,
                         thumbColor: Colors.white,
-                        tooltipBackgroundColor: Colors.pink,
+                        tooltipBackgroundColor: Colors.pink[300],
                       ),
                       child: Container(
                         padding: EdgeInsets.only(left: h(20), right: w(20)),
@@ -804,7 +841,11 @@ class _SettingsState extends State<Settings> {
                                   Text(
                                     "b",
                                     style: TextStyle(
-                                        color: Colors.grey[800],
+                                        color: themeController.themeValue
+                                                    .toString() ==
+                                                "dark"
+                                            ? Colors.white38
+                                            : Colors.grey[800],
                                         fontFamily: "Antipasto Pro Demibold",
                                         fontWeight: FontWeight.bold,
                                         fontSize: sp(45)),
@@ -821,7 +862,11 @@ class _SettingsState extends State<Settings> {
                                   ),
                                   Text("d",
                                       style: TextStyle(
-                                          color: Colors.grey[800],
+                                          color: themeController.themeValue
+                                                      .toString() ==
+                                                  "dark"
+                                              ? Colors.white38
+                                              : Colors.grey[800],
                                           fontWeight: FontWeight.bold,
                                           fontFamily: "Pridi",
                                           fontSize: sp(45)))

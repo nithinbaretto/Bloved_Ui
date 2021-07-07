@@ -1,8 +1,10 @@
+import 'package:bloved/Controllers/darklightTheme.dart';
 import 'package:bloved/Views/MessageActivityScreen.dart';
 import 'package:bloved/Views/Settings.dart';
 import 'package:bloved/Views/UpdateProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -13,6 +15,7 @@ class _ProfileState extends State<Profile> {
   final w = ScreenUtil().setWidth;
   final h = ScreenUtil().setHeight;
   final sp = ScreenUtil().setSp;
+  var themeController = Get.put(ThemeValue());
   @override
   Widget build(BuildContext context) {
     print(MediaQuery.of(context).size.width);
@@ -23,18 +26,23 @@ class _ProfileState extends State<Profile> {
           child: AppBar(
             leading: Row(children: [
               Container(
-                margin: EdgeInsets.only(left: w(20), top: h(30)),
-                height: h(25),
-                width: w(25),
-                decoration: BoxDecoration(
-                    color: Colors.pink[300],
-                    borderRadius: BorderRadius.circular(w(20))),
-                child: Icon(
-                  Icons.person,
-                  color: Theme.of(context).accentColor,
-                  size: 20,
-                ),
-              ),
+                  margin: EdgeInsets.only(left: w(20), top: h(30)),
+                  height: h(25),
+                  width: w(25),
+                  decoration: BoxDecoration(
+                      color: Colors.pink[300],
+                      borderRadius: BorderRadius.circular(w(20))),
+                  child: themeController.themeValue.toString() == "dark"
+                      ? Icon(
+                          Icons.person,
+                          color: Colors.black,
+                          size: 20,
+                        )
+                      : Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 20,
+                        )),
             ]),
             centerTitle: true,
             title: Container(
