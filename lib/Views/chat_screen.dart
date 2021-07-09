@@ -1,6 +1,7 @@
 import 'package:bloved/Controllers/darklightTheme.dart';
 import 'package:bloved/Models/message_model.dart';
 import 'package:bloved/Models/user_model.dart';
+import 'package:bloved/Views/MainHomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -28,13 +29,13 @@ class _ChatScreenState extends State<ChatScreen> {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(
-                  top: h(10),
-                  left: w(20),
-                  bottom: h(20),
-                  right: h(15),
+                  top: h(0),
+                  left: w(10),
+                  bottom: h(0),
+                  right: h(30),
                 ),
                 margin: EdgeInsets.only(
-                    left: h(20), bottom: h(5), top: h(10), right: w(30)),
+                    left: h(30), bottom: h(5), top: h(10), right: w(30)),
                 height: h(90),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(w(10)),
@@ -45,6 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   child: Text(
                     message.text,
                     style: TextStyle(
+                      fontSize: sp(15),
                       color: Theme.of(context).accentColor,
                     ),
                   ),
@@ -89,13 +91,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 SizedBox(
                   width: w(5),
                 ),
-                Container(
-                  child: Icon(
-                    Icons.done_all,
-                    color: Colors.grey,
-                    size: w(18),
-                  ),
-                ),
+                Container(child: Image.asset("assets/images/done.png")),
               ],
             ),
           )
@@ -105,16 +101,20 @@ class _ChatScreenState extends State<ChatScreen> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: h(10)),
+          SizedBox(height: h(20)),
           Center(
             child: Container(
                 padding: EdgeInsets.only(),
-                child: Text(
-                  "12:30, Monday",
-                  style: TextStyle(color: Theme.of(context).splashColor),
+                child: Obx(
+                  () => Text("12:30, Monday",
+                      style: TextStyle(
+                          fontSize: sp(10),
+                          color: themeController.themeValue.toString() == "dark"
+                              ? Color(0xff7a869a)
+                              : Color(0xff7a869a))),
                 )),
           ),
-          SizedBox(height: h(20)),
+          SizedBox(height: h(0)),
           Stack(
             children: <Widget>[
               Container(
@@ -125,17 +125,18 @@ class _ChatScreenState extends State<ChatScreen> {
                   right: h(15),
                 ),
                 margin: EdgeInsets.only(
-                    left: h(30), bottom: h(5), top: h(10), right: w(10)),
+                    left: h(30), bottom: h(5), top: h(10), right: w(30)),
                 height: h(90),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(w(10)),
-                  color: Colors.pink[300],
+                  color: Color(0XFFFA5473),
                 ),
                 width: MediaQuery.of(context).size.width,
                 child: Center(
                   child: Text(
                     message.text,
                     style: TextStyle(
+                      fontSize: sp(15),
                       color: Colors.white,
                     ),
                   ),
@@ -172,22 +173,20 @@ class _ChatScreenState extends State<ChatScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  child: Text(
+                    child: Obx(
+                  () => Text(
                     "12:30 AM",
                     style: TextStyle(
-                        fontSize: sp(12), color: Theme.of(context).splashColor),
+                        fontSize: sp(13),
+                        color: themeController.themeValue.toString() == "dark"
+                            ? Color(0xff757b83)
+                            : Color(0xff757b83)),
                   ),
-                ),
+                )),
                 SizedBox(
                   width: w(5),
                 ),
-                Container(
-                  child: Icon(
-                    Icons.done_all,
-                    color: Theme.of(context).splashColor,
-                    size: w(18),
-                  ),
-                ),
+                Container(child: Image.asset("assets/images/done.png")),
               ],
             ),
           )
@@ -225,22 +224,28 @@ class _ChatScreenState extends State<ChatScreen> {
             Container(
                 child: Icon(
               Icons.mic,
-              color: Colors.pink[300],
+              color: Color(0xfffa5473),
             )),
             SizedBox(
               width: w(7),
             ),
-            Icon(
-              Icons.image,
-              color: Colors.pink[300],
-            ),
+            Container(
+                height: h(18),
+                width: w(18),
+                child: Image.asset(
+                  "assets/images/gallery.png",
+                  color: Color(0xfffa5473),
+                )),
             SizedBox(
               width: w(10),
             ),
-            Icon(
-              Icons.send,
-              color: Colors.pink[300],
-            ),
+            Container(
+                height: h(18),
+                width: w(18),
+                child: Image.asset(
+                  "assets/images/send.png",
+                  color: Color(0xfffa5473),
+                )),
             SizedBox(
               width: w(10),
             ),
@@ -254,26 +259,36 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     int prevUserId = 0;
     return Scaffold(
+      // backgroundColor: Color(0xfffbf6f7),
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, h(70)),
         child: AppBar(
+          elevation: 0,
           backgroundColor: Theme.of(context).backgroundColor,
+
+          titleTextStyle: TextStyle(),
           automaticallyImplyLeading: false,
           // backgroundColor: Colors.white,
           iconTheme: IconThemeData(color: Theme.of(context).accentColor),
           leading: Container(
-            padding: EdgeInsets.only(left: w(30)),
-            child: Icon(
-              Icons.chevron_left,
-              size: w(30),
+            padding: EdgeInsets.only(left: w(20), top: h(17)),
+            child: GestureDetector(
+              onTap: () {
+                Get.off(MainHomePage());
+              },
+              child: Icon(
+                Icons.chevron_left,
+                size: w(30),
+              ),
             ),
           ),
           title: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
-                height: h(40),
-                width: w(40),
+                margin: EdgeInsets.only(top: h(17), left: 0, right: 0),
+                height: h(37),
+                width: w(37),
                 decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(w(30)),
@@ -304,7 +319,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         height: h(10),
                         width: w(10),
                         decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: Color(0xfffa5473),
                             borderRadius: BorderRadius.circular(w(15))),
                       ),
                       SizedBox(
@@ -313,8 +328,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       Container(
                         child: Text(
                           "Online",
-                          style:
-                              TextStyle(color: Colors.pink, fontSize: sp(12)),
+                          style: TextStyle(
+                              color: Color(0xfffa5473), fontSize: sp(12)),
                         ),
                       ),
                     ],
@@ -325,30 +340,28 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           actions: [
             Container(
+              margin: EdgeInsets.only(top: h(17)),
               child: Icon(
                 Icons.call,
-                color: Colors.pink,
-                size: w(28),
+                color: Color(0xfffa5473),
+                size: w(25),
               ),
             ),
             SizedBox(
-              width: w(20),
+              width: w(10),
             ),
             Container(
-              child: Icon(
-                Icons.video_call,
-                color: Colors.pink,
-                size: w(28),
-              ),
-            ),
+                margin: EdgeInsets.only(top: h(17)),
+                child: Image.asset("assets/images/video.png")),
             SizedBox(
-              width: w(20),
+              width: w(0),
             ),
             Container(
+              margin: EdgeInsets.only(top: h(17)),
               child: Icon(
                 Icons.more_vert,
-                color: Colors.pink,
-                size: w(28),
+                color: Color(0xfffa5473),
+                size: w(25),
               ),
             ),
             SizedBox(
@@ -398,27 +411,39 @@ class _ChatScreenState extends State<ChatScreen> {
                                         height: h(70),
                                         width: w(70),
                                         decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.white, width: 5),
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/img1.png"),
-                                                fit: BoxFit.cover),
+                                            color: Colors.white,
                                             borderRadius:
-                                                BorderRadius.circular(w(50)),
-                                            color: Colors.red),
+                                                BorderRadius.circular(w(50))),
+                                        child: Container(
+                                          margin: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/img1.png"),
+                                                  fit: BoxFit.cover),
+                                              borderRadius:
+                                                  BorderRadius.circular(w(50)),
+                                              color: Colors.red),
+                                        ),
                                       )
                                     : Container(
                                         height: h(70),
                                         width: w(70),
                                         decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/img1.png"),
-                                                fit: BoxFit.cover),
+                                            color: Color(0xfff7fafd),
                                             borderRadius:
-                                                BorderRadius.circular(w(50)),
-                                            color: Colors.red),
+                                                BorderRadius.circular(w(50))),
+                                        child: Container(
+                                          margin: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/img1.png"),
+                                                  fit: BoxFit.cover),
+                                              borderRadius:
+                                                  BorderRadius.circular(w(50)),
+                                              color: Colors.red),
+                                        ),
                                       ),
                               ),
                               Positioned(
@@ -429,27 +454,39 @@ class _ChatScreenState extends State<ChatScreen> {
                                         height: h(70),
                                         width: w(70),
                                         decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.white, width: 5),
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/image2.png"),
-                                                fit: BoxFit.cover),
+                                            color: Colors.white,
                                             borderRadius:
-                                                BorderRadius.circular(w(50)),
-                                            color: Colors.red),
+                                                BorderRadius.circular(w(50))),
+                                        child: Container(
+                                          margin: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/image2.png"),
+                                                  fit: BoxFit.cover),
+                                              borderRadius:
+                                                  BorderRadius.circular(w(50)),
+                                              color: Colors.red),
+                                        ),
                                       )
                                     : Container(
                                         height: h(70),
                                         width: w(70),
                                         decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/image2.png"),
-                                                fit: BoxFit.cover),
+                                            color: Color(0xfff7fafd),
                                             borderRadius:
-                                                BorderRadius.circular(w(50)),
-                                            color: Colors.red),
+                                                BorderRadius.circular(w(50))),
+                                        child: Container(
+                                          padding: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/image2.png"),
+                                                  fit: BoxFit.cover),
+                                              borderRadius:
+                                                  BorderRadius.circular(w(50)),
+                                              color: Colors.red),
+                                        ),
                                       ),
                               ),
                               Positioned(

@@ -42,7 +42,8 @@ dependencies:
   syncfusion_flutter_core: 19.2.44+1
   provider: 5.0.0
   get_storage: 2.0.2
-
+  scroll_app_bar: ^1.0.3
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

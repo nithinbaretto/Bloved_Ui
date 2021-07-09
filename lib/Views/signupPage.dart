@@ -111,7 +111,7 @@ class _SignupPageState extends State<SignupPage> {
                       blurRadius: 10,
                     ),
                   ],
-                  color: Colors.pink[300],
+                  color: Color(0xffff61a1),
                   borderRadius: BorderRadius.circular(10)),
               child: Center(
                   child: Text(
@@ -128,7 +128,7 @@ class _SignupPageState extends State<SignupPage> {
           ),
           Text(
             "Terms & Conditions",
-            style: TextStyle(color: Colors.white, fontSize: 10),
+            style: TextStyle(color: Colors.white, fontSize: sp(11)),
           ),
           SizedBox(
             height: h(20),

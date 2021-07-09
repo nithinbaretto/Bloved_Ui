@@ -46,7 +46,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 style: GoogleFonts.ubuntu(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: sp(18)),
+                    fontSize: sp(20)),
               ),
             ),
             SizedBox(
@@ -170,6 +170,17 @@ class _VerificationScreenState extends State<VerificationScreen> {
               color: Colors.pink[300],
             ),
             SizedBox(
+              height: h(5),
+            ),
+            Text(
+              "Verify Code",
+              style: TextStyle(
+                  fontFamily: "BreezeSans",
+                  fontSize: sp(14),
+                  color: Colors.white),
+            ),
+
+            SizedBox(
               height: h(70),
             ),
             GestureDetector(
@@ -183,13 +194,20 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 height: h(60),
                 width: w(350),
                 decoration: BoxDecoration(
-                    color: Colors.pink[300],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.pink.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 10,
+                      ),
+                    ],
+                    color: Color(0xffff61a1),
                     borderRadius: BorderRadius.circular(10)),
                 child: Center(
                     child: Text(
                   "Continue",
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: sp(18),
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 )),

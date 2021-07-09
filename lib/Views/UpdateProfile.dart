@@ -40,92 +40,111 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return WillPopScope(
       onWillPop: _willPopCallback,
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(h(90)),
-          child: AppBar(
-            automaticallyImplyLeading: false,
-            centerTitle: true,
-            title: Container(
-              padding: EdgeInsets.only(top: h(30)),
-              child: Text(
-                "Profile",
-                style: GoogleFonts.ubuntu(
-                    fontSize: sp(20),
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            elevation: 0,
-            backgroundColor: Theme.of(context).backgroundColor,
-            actions: [
-              Container(
-                  padding: EdgeInsets.only(right: w(30), top: h(30)),
-                  child: Text(
-                    "Done",
-                    style: TextStyle(
-                        color: Colors.pink[300],
-                        fontSize: sp(20),
-                        fontWeight: FontWeight.bold),
-                  ))
-            ],
-          ),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Theme.of(context).backgroundColor,
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                height: h(40),
+                padding: EdgeInsets.only(bottom: h(20)),
+                width: MediaQuery.of(context).size.width,
+                color: Theme.of(context).backgroundColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "Profile",
+                      style: TextStyle(
+                          color: Theme.of(context).accentColor,
+                          fontSize: sp(17),
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      width: w(110),
+                    ),
+                    Text(
+                      "Done",
+                      style: TextStyle(
+                          color: Color(0xfffa5473),
+                          fontSize: sp(17),
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      width: w(20),
+                    )
+                  ],
+                ),
+              ),
               SizedBox(
                 height: h(20),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    padding: EdgeInsets.only(
-                      left: w(20),
+                  Obx(() => (Container(
+                        padding: EdgeInsets.only(
+                          left: w(20),
+                        ),
+                        child: Text(
+                          "PICTURES",
+                          style: TextStyle(
+                              fontSize: sp(15),
+                              color: themeController.themeValue.toString() ==
+                                      "dark"
+                                  ? Color(0xff555557)
+                                  : Colors.black),
+                        ),
+                      ))),
+                  Obx(
+                    () => Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(),
+                          height: h(8),
+                          width: w(8),
+                          decoration: BoxDecoration(
+                              color: Color(0xffff61a1),
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        SizedBox(
+                          width: w(5),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(),
+                          height: h(8),
+                          width: w(8),
+                          decoration: BoxDecoration(
+                              color: themeController.themeValue.toString() ==
+                                      "dark"
+                                  ? Colors.white12
+                                  : Colors.black12,
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        SizedBox(
+                          width: w(5),
+                        ),
+                        Obx(() => Container(
+                              margin: EdgeInsets.only(right: w(20)),
+                              height: h(8),
+                              width: w(8),
+                              decoration: BoxDecoration(
+                                  color:
+                                      themeController.themeValue.toString() ==
+                                              "dark"
+                                          ? Colors.white12
+                                          : Colors.black12,
+                                  borderRadius: BorderRadius.circular(10)),
+                            ))
+                      ],
                     ),
-                    child: Text(
-                      "PICTURES",
-                      style: TextStyle(
-                          fontSize: sp(16),
-                          color: Theme.of(context).accentColor),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(),
-                        height: h(10),
-                        width: w(10),
-                        decoration: BoxDecoration(
-                            color: Colors.pink,
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                      SizedBox(
-                        width: w(5),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(),
-                        height: h(10),
-                        width: w(10),
-                        decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                      SizedBox(
-                        width: w(5),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(right: w(20)),
-                        height: h(10),
-                        width: w(10),
-                        decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10)),
-                      )
-                    ],
-                  ),
+                  )
                 ],
               ),
               SizedBox(
@@ -202,7 +221,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Text(
                         "Smart Photos",
                         style: TextStyle(
-                            fontSize: sp(18),
+                            fontFamily: "SFProText-Regular",
+                            fontSize: sp(17),
                             color: Theme.of(context).accentColor),
                       ),
                     ),
@@ -210,12 +230,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       padding: EdgeInsets.only(right: w(20)),
                       child: FlutterSwitch(
                         activeColor: Colors.pink,
-                        width: 65.0,
-                        height: 35.0,
+                        width: 51.0,
+                        height: 30.0,
                         valueFontSize: 25.0,
-                        toggleSize: 45.0,
+                        toggleSize: 35.0,
                         value: status,
-                        borderRadius: 30.0,
+                        borderRadius: 25.0,
                         padding: 0.0,
                         showOnOff: false,
                         onToggle: (val) {
@@ -232,10 +252,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: h(10),
               ),
               Container(
-                padding: EdgeInsets.only(left: w(10)),
+                padding: EdgeInsets.only(left: w(20)),
                 child: Text(
                   "Smart Photos continuously tests all your profile photos to find the best one",
-                  style: TextStyle(color: Colors.grey, fontSize: sp(12)),
+                  style: TextStyle(color: Color(0xffa5a5a5), fontSize: sp(11)),
                 ),
               ),
               SizedBox(
@@ -248,45 +268,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     padding: EdgeInsets.only(left: w(20)),
                     child: Text("CONNECT SOCIAL MEDIA",
                         style: TextStyle(
-                            fontSize: sp(16),
-                            color: Theme.of(context).accentColor)),
+                          fontSize: sp(15),
+                          color: themeController.themeValue.toString() == "dark"
+                              ? Colors.white
+                              : Color(0xff4f5258),
+                        )),
                   ),
-                  Obx(
-                    () => Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(),
-                          height: h(10),
-                          width: w(10),
-                          decoration: BoxDecoration(
-                              color: Colors.pink[300],
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        SizedBox(
-                          width: w(5),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(),
-                          height: h(10),
-                          width: w(10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        SizedBox(
-                          width: w(5),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: w(20)),
-                          height: h(10),
-                          width: w(10),
-                          decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(10)),
-                        )
-                      ],
-                    ),
-                  )
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(),
+                        height: h(8),
+                        width: w(8),
+                        decoration: BoxDecoration(
+                            color: Color(0xffff61a1),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      SizedBox(
+                        width: w(5),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(),
+                        height: h(8),
+                        width: w(8),
+                        decoration: BoxDecoration(
+                            color:
+                                themeController.themeValue.toString() == "dark"
+                                    ? Color(0xff555557)
+                                    : Colors.black,
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      SizedBox(
+                        width: w(5),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(right: w(20)),
+                        height: h(8),
+                        width: w(8),
+                        decoration: BoxDecoration(
+                            color:
+                                themeController.themeValue.toString() == "dark"
+                                    ? Color(0xff555557)
+                                    : Colors.black,
+                            borderRadius: BorderRadius.circular(10)),
+                      )
+                    ],
+                  ),
                 ],
               ),
               SizedBox(
@@ -307,7 +334,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: themeController.themeValue.toString() ==
                                       "dark"
                                   ? Colors.white12
-                                  : Colors.blueGrey[100],
+                                  : Color(0xffcecece),
                               borderRadius: BorderRadius.circular(w(30))),
                           child: Container(
                             margin: EdgeInsets.only(
@@ -323,7 +350,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       )
                                     : Image.asset(
                                         "assets/images/snapchat.png",
-                                        color: Colors.grey,
+                                        color: Colors.grey[400],
                                       ),
                           )),
                       Container(
@@ -333,7 +360,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: themeController.themeValue.toString() ==
                                       "dark"
                                   ? Colors.white12
-                                  : Colors.blueGrey[100],
+                                  : Color(0xffcecece),
                               borderRadius: BorderRadius.circular(w(30))),
                           child: Container(
                               margin: EdgeInsets.only(
@@ -349,7 +376,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     )
                                   : Image.asset(
                                       "assets/images/facebook.png",
-                                      color: Colors.grey,
+                                      color: Colors.grey[400],
                                     ))),
                       Container(
                           height: h(60),
@@ -358,7 +385,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: themeController.themeValue.toString() ==
                                       "dark"
                                   ? Colors.white12
-                                  : Colors.blueGrey[100],
+                                  : Color(0xffcecece),
                               borderRadius: BorderRadius.circular(w(30))),
                           child: Container(
                             margin: EdgeInsets.only(
@@ -378,7 +405,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         "assets/images/tiktok.png",
                                         height: h(20),
                                         width: w(20),
-                                        color: Colors.grey,
+                                        color: Colors.grey[400],
                                       ),
                           )),
                       Container(
@@ -388,8 +415,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration(
                               color: themeController.themeValue.toString() ==
                                       "dark"
-                                  ? Colors.pink[300]
-                                  : Colors.blueGrey[100],
+                                  ? Color(0xfffa5473)
+                                  : Color(0xfffff3f3),
                               borderRadius: BorderRadius.circular(w(30))),
                           child: Container(
                               margin: EdgeInsets.only(
@@ -405,7 +432,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     )
                                   : Image.asset(
                                       "assets/images/instagram.png",
-                                      color: Colors.grey,
+                                      color: Color(0xfffa5473),
                                     )))
                     ],
                   ),
@@ -419,7 +446,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Text(
                   "BIO",
                   style: TextStyle(
-                      fontSize: sp(16), color: Theme.of(context).accentColor),
+                      fontSize: sp(15), color: Theme.of(context).accentColor),
                 ),
               ),
               SizedBox(
@@ -449,7 +476,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(left: w(20)),
                 child: Text(
                   "ABOUT VERIFICATION",
-                  style: TextStyle(color: Theme.of(context).accentColor),
+                  style: TextStyle(
+                      color: Theme.of(context).accentColor, fontSize: sp(15)),
                 ),
               ),
               SizedBox(
@@ -459,7 +487,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(left: w(20)),
                 child: Text(
                   "verified users get more attentions- take 2 minutes to stand out",
-                  style: TextStyle(color: Colors.grey, fontSize: sp(12)),
+                  style: TextStyle(color: Colors.grey, fontSize: sp(11)),
                 ),
               ),
               SizedBox(
@@ -484,7 +512,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           blurRadius: 10,
                         ),
                       ],
-                      color: Colors.pink[300],
+                      color: Color(0xfffa5473),
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                       child: Text(
@@ -505,7 +533,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 child: Text(
                   "PROFILE QS",
-                  style: TextStyle(color: Theme.of(context).accentColor),
+                  style: TextStyle(
+                      color: Theme.of(context).accentColor, fontSize: sp(15)),
                 ),
               ),
               SizedBox(
@@ -515,7 +544,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(left: w(20), right: w(20)),
                 child: Text(
                   "answer just three questions to cut the crap and get down to the real stuff",
-                  style: TextStyle(color: Colors.grey, fontSize: sp(12)),
+                  style: TextStyle(color: Color(0xffa5a5a5), fontSize: sp(11)),
                 ),
               ),
               SizedBox(
@@ -533,15 +562,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: h(60),
                   width: w(350),
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.pink.shade300),
+                      border: Border.all(color: Color(0xfffa5473)),
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                       child: Text(
                     "Add My profile Qs",
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: sp(18),
                         fontWeight: FontWeight.bold,
-                        color: Colors.pink[300]),
+                        color: Color(0xfffa5473)),
                   )),
                 ),
               ),
@@ -552,7 +581,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(left: w(20)),
                 child: Text(
                   "APPEARANCE",
-                  style: TextStyle(color: Theme.of(context).accentColor),
+                  style: TextStyle(
+                      color: Theme.of(context).accentColor, fontSize: sp(15)),
                 ),
               ),
               SizedBox(
@@ -562,7 +592,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 height: h(3),
               ),
-              appearance(Icons.favorite, "Sexuality"),
+              Container(
+                padding: EdgeInsets.only(
+                  top: h(5),
+                  left: w(10),
+                ),
+                height: h(50),
+                width: MediaQuery.of(context).size.width,
+                color: Theme.of(context).backgroundColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                            height: h(20),
+                            width: w(20),
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                left: w(5),
+                              ),
+                              child: Image.asset(
+                                "assets/images/Sexuality2.png",
+                                color: Color(0xfffa5473),
+                              ),
+                            )),
+                        Container(
+                          padding: EdgeInsets.only(
+                            left: w(10),
+                          ),
+                          child: Text(
+                            "Sexuality",
+                            style: TextStyle(
+                                fontSize: sp(17),
+                                color: Theme.of(context).accentColor),
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                        right: w(10),
+                      ),
+                      child: Icon(
+                        Icons.navigate_next,
+                        color: Color(0xfffa5473),
+                      ),
+                    )
+                  ],
+                ),
+              ),
               SizedBox(
                 height: h(3),
               ),
@@ -574,7 +653,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 height: h(3),
               ),
-              appearance(Icons.favorite, "Hair"),
+              appearance2("assets/images/hair2.png", "Hair"),
               SizedBox(
                 height: h(3),
               ),
@@ -610,11 +689,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 height: h(3),
               ),
-              appearance(Icons.work, "Work"),
+              appearance2("assets/images/work.png", "Work"),
               SizedBox(
                 height: h(3),
               ),
-              appearance(Icons.work, "Education"),
+              appearance2(
+                "assets/images/education.png",
+                "Education",
+              ),
               SizedBox(
                 height: h(10),
               ),
@@ -622,7 +704,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(left: w(20)),
                 child: Text(
                   "GENDER",
-                  style: TextStyle(color: Theme.of(context).accentColor),
+                  style: TextStyle(
+                      color: Theme.of(context).accentColor, fontSize: sp(15)),
                 ),
               ),
               SizedBox(
@@ -639,19 +722,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          padding: EdgeInsets.only(left: w(105)),
+                          padding: EdgeInsets.only(left: w(110)),
                           child: Text(
                             "Male",
                             style: TextStyle(
-                                fontSize: sp(16),
+                                fontSize: sp(17),
                                 color: Theme.of(context).accentColor),
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: w(110)),
-                          child: Text("FeMale",
+                          padding: EdgeInsets.only(
+                            left: w(100),
+                          ),
+                          child: Text("Female",
                               style: TextStyle(
-                                  fontSize: sp(16),
+                                  fontSize: sp(17),
                                   color: Theme.of(context).accentColor)),
                         )
                       ],
@@ -674,7 +759,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: h(25),
                                   width: w(25),
                                   decoration: BoxDecoration(
-                                    color: Colors.pink[300],
+                                    color: Color(0xfffa5473),
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                   child: Icon(
@@ -717,7 +802,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   width: w(25),
                                   margin: EdgeInsets.only(left: 10),
                                   decoration: BoxDecoration(
-                                    color: Colors.pink.shade300,
+                                    color: Color(0xfffa5473),
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                   child: Icon(
@@ -742,17 +827,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     padding: EdgeInsets.only(left: w(20)),
                     child: Text(
                       "INTERESTS",
-                      style: TextStyle(color: Theme.of(context).accentColor),
+                      style: TextStyle(
+                          color: Theme.of(context).accentColor,
+                          fontSize: sp(15)),
                     ),
                   ),
                   Row(
                     children: [
                       Container(
                         padding: EdgeInsets.only(),
-                        height: h(10),
-                        width: w(10),
+                        height: h(8),
+                        width: w(8),
                         decoration: BoxDecoration(
-                            color: Colors.pink[300],
+                            color: Color(0xffff61a1),
                             borderRadius: BorderRadius.circular(w(10))),
                       ),
                       SizedBox(
@@ -760,10 +847,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Container(
                         padding: EdgeInsets.only(),
-                        height: h(10),
-                        width: w(10),
+                        height: h(8),
+                        width: w(8),
                         decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color:
+                                themeController.themeValue.toString() == "dark"
+                                    ? Color(0xff555557)
+                                    : Colors.black,
                             borderRadius: BorderRadius.circular(w(10))),
                       ),
                       SizedBox(
@@ -771,10 +861,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Container(
                         margin: EdgeInsets.only(right: w(20)),
-                        height: h(10),
-                        width: w(10),
+                        height: h(8),
+                        width: w(8),
                         decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color:
+                                themeController.themeValue.toString() == "dark"
+                                    ? Color(0xff555557)
+                                    : Colors.black,
                             borderRadius: BorderRadius.circular(w(10))),
                       )
                     ],
@@ -793,12 +886,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: h(30),
                     width: w(100),
                     decoration: BoxDecoration(
-                        color: Colors.pink[300],
+                        color: Color(0xfffa5473),
                         borderRadius: BorderRadius.circular(w(30))),
                     child: Center(
-                        child: Text(
-                      "Astrology",
-                      style: TextStyle(color: Colors.white),
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset("assets/images/astrology.png"),
+                        SizedBox(
+                          width: w(5),
+                        ),
+                        Text(
+                          "Astrology",
+                          style:
+                              TextStyle(color: Colors.white, fontSize: sp(12)),
+                        ),
+                      ],
                     )),
                   ),
                   SizedBox(
@@ -808,7 +911,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: h(30),
                     width: w(100),
                     decoration: BoxDecoration(
-                        color: Colors.pink[300],
+                        color: Color(0xfffa5473),
                         borderRadius: BorderRadius.circular(w(30))),
                     child: Center(
                         child: Row(
@@ -824,7 +927,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Text(
                           "Animator",
-                          style: TextStyle(color: Colors.white),
+                          style:
+                              TextStyle(color: Colors.white, fontSize: sp(12)),
                         ),
                       ],
                     )),
@@ -836,7 +940,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: h(30),
                     width: w(100),
                     decoration: BoxDecoration(
-                        color: Colors.pink[300],
+                        color: Color(0xfffa5473),
                         borderRadius: BorderRadius.circular(w(30))),
                     child: Center(
                         child: Row(
@@ -850,7 +954,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(width: w(5)),
                         Text(
                           "Animals",
-                          style: TextStyle(color: Colors.white),
+                          style:
+                              TextStyle(color: Colors.white, fontSize: sp(12)),
                         ),
                       ],
                     )),
@@ -862,12 +967,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: h(30),
                     width: w(30),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.pink.shade300),
+                        border: Border.all(
+                          color: Color(0xfffa5473),
+                        ),
                         borderRadius: BorderRadius.circular(w(30))),
                     child: Icon(
                       Icons.add,
                       size: 24,
-                      color: Colors.pink[300],
+                      color: Color(0xfffa5473),
                     ),
                   )
                 ],
@@ -879,7 +986,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(left: w(20)),
                 child: Text(
                   "INSTAGRAM PHOTOS",
-                  style: TextStyle(color: Theme.of(context).accentColor),
+                  style: TextStyle(
+                      color: Theme.of(context).accentColor, fontSize: sp(15)),
                 ),
               ),
               SizedBox(
@@ -907,7 +1015,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Text(
                               "Connect Instagram",
                               style: TextStyle(
-                                  fontSize: sp(16),
+                                  fontSize: sp(17),
                                   color: Theme.of(context).accentColor),
                             ))
                       ],
@@ -916,7 +1024,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         padding: EdgeInsets.only(right: w(20)),
                         child: Text(
                           "CONNECT",
-                          style: TextStyle(color: Colors.pink[300]),
+                          style: TextStyle(
+                              color: Color(0xfffa5473), fontSize: sp(15)),
                         ))
                   ],
                 ),
@@ -928,7 +1037,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.only(left: w(20)),
                 child: Text(
                   "SPOTIFY TRACKS",
-                  style: TextStyle(color: Theme.of(context).accentColor),
+                  style: TextStyle(
+                      color: Theme.of(context).accentColor, fontSize: sp(15)),
                 ),
               ),
               SizedBox(
@@ -955,7 +1065,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Text(
                               "Connect Spotify",
                               style: TextStyle(
-                                  fontSize: sp(16),
+                                  fontSize: sp(17),
                                   color: Theme.of(context).accentColor),
                             ))
                       ],
@@ -964,7 +1074,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         padding: EdgeInsets.only(right: w(20)),
                         child: Text(
                           "CONNECT",
-                          style: TextStyle(color: Colors.pink[300]),
+                          style: TextStyle(
+                              color: Color(0xfffa5473), fontSize: sp(15)),
                         ))
                   ],
                 ),
@@ -1080,7 +1191,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 child: Icon(
                   ion,
-                  color: Colors.pink[300],
+                  color: Color(0xfffa5473),
+                  size: 20,
                 ),
               ),
               Container(
@@ -1090,7 +1202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Text(
                   txt,
                   style: TextStyle(
-                      fontSize: sp(16), color: Theme.of(context).accentColor),
+                      fontSize: sp(17), color: Theme.of(context).accentColor),
                 ),
               )
             ],
@@ -1099,7 +1211,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             padding: EdgeInsets.only(
               right: w(10),
             ),
-            child: Icon(Icons.navigate_next),
+            child: Icon(
+              Icons.navigate_next,
+              color: Color(0xfffa5473),
+            ),
           ),
         ],
       ),
@@ -1127,7 +1242,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 child: Image.asset(
                   img,
-                  color: Colors.pink[300],
+                  color: Color(0xfffa5473),
                 ),
               )),
               Container(
@@ -1137,7 +1252,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Text(
                   txt,
                   style: TextStyle(
-                      fontSize: sp(16), color: Theme.of(context).accentColor),
+                      fontSize: sp(17), color: Theme.of(context).accentColor),
                 ),
               )
             ],
@@ -1146,7 +1261,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             padding: EdgeInsets.only(
               right: w(10),
             ),
-            child: Icon(Icons.navigate_next),
+            child: Icon(
+              Icons.navigate_next,
+              color: Color(0xfffa5473),
+            ),
           )
         ],
       ),

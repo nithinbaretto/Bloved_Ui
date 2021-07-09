@@ -6,11 +6,9 @@ import 'package:bloved/utilities/ThemeManager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:bloved/utilities/StorageManager.dart';
+import 'package:scroll_app_bar/scroll_app_bar.dart';
 
 class MainHomePage extends StatefulWidget {
   MainHomePage({Key? key}) : super(key: key);
@@ -29,6 +27,7 @@ class _MainHomePageState extends State<MainHomePage> {
   final w = ScreenUtil().setWidth;
   final h = ScreenUtil().setHeight;
   final sp = ScreenUtil().setSp;
+  final scrollController = ScrollController();
   late GoogleMapController mapController;
   final LatLng _center = const LatLng(45.521563, -122.677433);
   var themeColor;
@@ -47,7 +46,7 @@ class _MainHomePageState extends State<MainHomePage> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
         decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
+            color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.circular(15)),
         height: h(450.0),
         width: MediaQuery.of(context).size.width,
@@ -63,7 +62,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 child: Text(
                   "It's a Match",
                   style: TextStyle(
-                      fontSize: sp(18),
+                      fontSize: sp(20),
                       color: Theme.of(context).accentColor,
                       fontWeight: FontWeight.bold),
                 ),
@@ -91,35 +90,54 @@ class _MainHomePageState extends State<MainHomePage> {
                   // alignment: Alignment.center,
                   children: [
                     Positioned(
-                      left: w(200),
-                      child: Container(
-                        height: h(100),
-                        width: w(100),
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/images/img1.png"),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(w(50)),
-                            border:
-                                Border.all(color: Colors.white, width: h(4)),
-                            color: Colors.red),
-                      ),
-                    ),
+                        left: w(195),
+                        child: Obx(
+                          () => Container(
+                            height: h(95),
+                            width: w(95),
+                            decoration: BoxDecoration(
+                                color:
+                                    controller.themeValue.toString() == "dark"
+                                        ? Colors.white
+                                        : Color(0xfff7fafd),
+                                borderRadius: BorderRadius.circular(w(50))),
+                            child: Container(
+                              margin: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage("assets/images/img1.png"),
+                                    fit: BoxFit.cover),
+                                borderRadius: BorderRadius.circular(w(50)),
+                              ),
+                            ),
+                          ),
+                        )),
                     Positioned(
-                      left: w(60),
-                      child: Container(
-                        height: h(100),
-                        width: w(100),
-                        decoration: BoxDecoration(
-                            border:
-                                Border.all(color: Colors.white, width: h(4)),
-                            image: DecorationImage(
-                                image: AssetImage("assets/images/image2.png"),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(w(50)),
-                            color: Colors.blue),
-                      ),
-                    ),
+                        left: w(70),
+                        child: Obx(
+                          () => Container(
+                            decoration: BoxDecoration(
+                                color:
+                                    controller.themeValue.toString() == "dark"
+                                        ? Colors.white
+                                        : Color(0xfff7fafd),
+                                borderRadius: BorderRadius.circular(w(50))),
+                            height: h(95),
+                            width: w(95),
+                            child: Container(
+                              margin: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  // border:
+                                  //     Border.all(color: Colors.white, width: h(4)),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          "assets/images/image2.png"),
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(w(50)),
+                                  color: Colors.blue),
+                            ),
+                          ),
+                        )),
                     Positioned(
                         left: w(150),
                         top: h(20),
@@ -133,7 +151,7 @@ class _MainHomePageState extends State<MainHomePage> {
                             height: h(60),
                             width: w(60),
                             decoration: BoxDecoration(
-                                color: Colors.pink,
+                                color: Color(0xfffa5473),
                                 border:
                                     Border.all(color: Colors.white, width: 3),
                                 borderRadius: BorderRadius.circular(w(30))),
@@ -174,21 +192,21 @@ class _MainHomePageState extends State<MainHomePage> {
                 }));
               },
               child: Container(
-                margin: EdgeInsets.only(left: w(20)),
+                margin: EdgeInsets.only(left: w(30)),
                 height: h(
-                  50,
+                  58,
                 ),
-                width: w(300),
+                width: w(295),
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.pink.withOpacity(0.5),
+                        color: Colors.pink.withOpacity(0.3),
                         spreadRadius: 2,
                         blurRadius: 10,
                       ),
                     ],
                     borderRadius: BorderRadius.circular(w(10)),
-                    color: Colors.pink),
+                    color: Color(0xfffa5473)),
                 child: Center(
                   child: Text(
                     "Send Messages",
@@ -208,11 +226,11 @@ class _MainHomePageState extends State<MainHomePage> {
                 Navigator.of(context).pop();
               },
               child: Container(
-                margin: EdgeInsets.only(left: w(20)),
+                margin: EdgeInsets.only(left: w(30)),
                 height: h(
-                  50,
+                  58,
                 ),
-                width: w(300),
+                width: w(295),
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.pink),
                   borderRadius: BorderRadius.circular(w(10)),
@@ -221,7 +239,7 @@ class _MainHomePageState extends State<MainHomePage> {
                   child: Text(
                     "keep Swiping",
                     style: TextStyle(
-                        color: Colors.pink,
+                        color: Color(0xfffa5473),
                         fontSize: sp(18),
                         fontWeight: FontWeight.bold),
                   ),
@@ -245,7 +263,7 @@ class _MainHomePageState extends State<MainHomePage> {
                         height: h(25),
                         width: w(25),
                         decoration: BoxDecoration(
-                            color: Colors.pink[400],
+                            color: Color(0xfffa5473),
                             borderRadius: BorderRadius.circular(w(20))),
                         child: GestureDetector(
                           onTap: () {
@@ -263,86 +281,7 @@ class _MainHomePageState extends State<MainHomePage> {
                       ),
                     ]),
                     centerTitle: true,
-                    title: Container(
-                      padding: EdgeInsets.only(top: h(10)),
-                      child: Stack(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: Text(
-                                  "b",
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: sp(26),
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Container(
-                                child: Text(
-                                  "love",
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: sp(26),
-                                      color: Colors.pink[300],
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Container(
-                                child: Text(
-                                  "d",
-                                  style: GoogleFonts.ubuntu(
-                                      color: Colors.white,
-                                      fontSize: sp(26),
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              )
-                            ],
-                          ),
-                          Positioned(
-                            left: w(143),
-                            top: h(2),
-                            child: RotationTransition(
-                                turns: new AlwaysStoppedAnimation(15 / 360),
-                                child: Icon(
-                                  Icons.favorite,
-                                  color: Colors.pink[300],
-                                  size: 4,
-                                )),
-                          ),
-                          Positioned(
-                            left: w(140),
-                            // top: h(),
-                            child: RotationTransition(
-                                turns: new AlwaysStoppedAnimation(15 / 360),
-                                child: Icon(Icons.favorite,
-                                    color: Colors.pink[300], size: 2)),
-                          ),
-                          Positioned(
-                            left: w(142),
-                            top: h(7),
-                            child: RotationTransition(
-                                turns: new AlwaysStoppedAnimation(15 / 360),
-                                child: Icon(
-                                  Icons.favorite,
-                                  color: Colors.pink[300],
-                                  size: 6,
-                                )),
-                          ),
-                          Positioned(
-                            left: w(147),
-                            top: h(4),
-                            child: RotationTransition(
-                                turns: new AlwaysStoppedAnimation(330 / 360),
-                                child: Icon(
-                                  Icons.favorite,
-                                  color: Colors.pink[300],
-                                  size: 5,
-                                )),
-                          )
-                        ],
-                      ),
-                    ),
+                    title: Image.asset("assets/images/logo2.png"),
                     elevation: 0,
                     backgroundColor: Colors.transparent,
                     actions: [
@@ -356,7 +295,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           },
                           child: Icon(
                             Icons.forum,
-                            color: Colors.pink[400],
+                            color: Color(0xfffa5473),
                           ),
                         ),
                       )
@@ -373,18 +312,11 @@ class _MainHomePageState extends State<MainHomePage> {
                               height: h(680),
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-
-                                  // gradient: LinearGradient(
-                                  //     colors: [Colors.white, Colors.white],
-                                  //     // begin: Alignment.center,
-                                  //     stops: [0.0, 0.9]),
                                   image: DecorationImage(
                                 image: AssetImage(
                                   "assets/images/profile.png",
                                 ),
                                 fit: BoxFit.cover,
-                                // colorFilter: ColorFilter.mode(
-                                //     Colors.black.withOpacity(0.7), BlendMode.dstATop),
                               )),
                             ),
                             Obx(
@@ -461,7 +393,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         height: h(40),
                                         width: w(40),
                                         decoration: BoxDecoration(
-                                            color: Colors.pink[300],
+                                            color: Color(0xfffa5473),
                                             borderRadius:
                                                 BorderRadius.circular(w(30))),
                                         child: Image.asset(
@@ -508,7 +440,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         child: Text(
                                           "Kathryn, ",
                                           style: TextStyle(
-                                              fontSize: sp(24),
+                                              fontSize: sp(23),
                                               color:
                                                   Theme.of(context).accentColor,
                                               fontWeight: FontWeight.w600),
@@ -519,7 +451,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         child: Text(
                                           "21",
                                           style: TextStyle(
-                                              fontSize: sp(24),
+                                              fontSize: sp(23),
                                               color:
                                                   Theme.of(context).accentColor,
                                               fontWeight: FontWeight.w600),
@@ -551,6 +483,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         child: Text(
                                           "Student",
                                           style: TextStyle(
+                                              fontSize: sp(13),
                                               color: Theme.of(context)
                                                   .accentColor),
                                         ),
@@ -567,15 +500,27 @@ class _MainHomePageState extends State<MainHomePage> {
                                         child: Text(
                                           "2 miles away",
                                           style: TextStyle(
+                                              fontSize: sp(13),
                                               color: Theme.of(context)
                                                   .accentColor),
                                         ),
                                       ),
                                     ],
+                                  ),
+                                  SizedBox(
+                                    height: h(10),
+                                  ),
+                                  Obx(
+                                    () => Divider(
+                                        color:
+                                            controller.themeValue.toString() ==
+                                                    "dark"
+                                                ? Colors.black
+                                                : Colors.white),
                                   )
                                 ],
                               ),
-                            )
+                            ),
                           ],
                         ),
                         Row(
@@ -640,10 +585,10 @@ class _MainHomePageState extends State<MainHomePage> {
                           children: [
                             Container(
                               padding: EdgeInsets.only(),
-                              height: h(10),
-                              width: w(10),
+                              height: h(8),
+                              width: w(8),
                               decoration: BoxDecoration(
-                                  color: Colors.pink,
+                                  color: Color(0xffff61a1),
                                   borderRadius: BorderRadius.circular(10)),
                             ),
                             SizedBox(
@@ -653,8 +598,8 @@ class _MainHomePageState extends State<MainHomePage> {
                               () => controller.themeValue.toString() == "dark"
                                   ? Container(
                                       padding: EdgeInsets.only(),
-                                      height: h(10),
-                                      width: w(10),
+                                      height: h(8),
+                                      width: w(8),
                                       decoration: BoxDecoration(
                                           color: Colors.white30,
                                           borderRadius:
@@ -662,10 +607,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                     )
                                   : Container(
                                       padding: EdgeInsets.only(),
-                                      height: h(10),
-                                      width: w(10),
+                                      height: h(8),
+                                      width: w(8),
                                       decoration: BoxDecoration(
-                                          color: Colors.grey,
+                                          color: Colors.black12,
                                           borderRadius:
                                               BorderRadius.circular(w(10))),
                                     ),
@@ -673,145 +618,282 @@ class _MainHomePageState extends State<MainHomePage> {
                             SizedBox(
                               width: w(20),
                             ),
-                            // Container(
-                            //   margin: EdgeInsets.only(right: w(20)),
-                            //   height: h(10),
-                            //   width: w(10),
-                            //   decoration: BoxDecoration(
-                            //       color: Colors.grey,
-                            //       borderRadius: BorderRadius.circular(10)),
-                            // )
                           ],
                         ),
                         SizedBox(
                           height: h(10),
                         ),
-                        Flexible(
-                          child: Row(
-                            // scrollDirection: Axis.horizontal,
-                            children: [
-                              SizedBox(
-                                width: w(20),
-                              ),
-                              Container(
-                                height: h(120),
-                                width: w(110),
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context).backgroundColor,
-                                    borderRadius: BorderRadius.circular(w(10))),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                        Obx(
+                          () => Container(
+                            height: h(120),
+                            width: MediaQuery.of(context).size.width,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              children: [
+                                Row(
+                                  // scrollDirection: Axis.horizontal,
                                   children: [
-                                    Container(
-                                        padding: EdgeInsets.only(top: h(10)),
-                                        child: Image.asset(
-                                          "assets/images/weight.png",
-                                          color: Theme.of(context).accentColor,
-                                        )),
-                                    Container(
-                                      child: Text(
-                                        "Weight",
-                                        style: TextStyle(
-                                          color: Theme.of(context).accentColor,
-                                        ),
-                                      ),
+                                    SizedBox(
+                                      width: w(20),
                                     ),
                                     Container(
-                                      padding: EdgeInsets.only(bottom: h(10)),
-                                      child: Text(
-                                        "30",
-                                        style:
-                                            TextStyle(color: Colors.pink[300]),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: w(10),
-                              ),
-                              Container(
-                                height: h(120),
-                                width: w(110),
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context).backgroundColor,
-                                    borderRadius: BorderRadius.circular(w(10))),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Container(
-                                        padding: EdgeInsets.only(top: h(10)),
-                                        child: Image.asset(
-                                          "assets/images/height.png",
-                                          color: Theme.of(context).accentColor,
-                                        )),
-                                    Container(
-                                      child: Text(
-                                        "Height",
-                                        style: TextStyle(
-                                          color: Theme.of(context).accentColor,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.only(bottom: h(10)),
-                                      child: Text(
-                                        "30",
-                                        style:
-                                            TextStyle(color: Colors.pink[300]),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: w(10),
-                              ),
-                              Container(
-                                height: h(120),
-                                width: w(110),
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context).backgroundColor,
-                                    borderRadius: BorderRadius.circular(w(10))),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Container(
-                                        padding: EdgeInsets.only(top: h(10)),
-                                        child: Icon(
-                                          Icons.visibility,
-                                          size: 30,
-                                          color: Theme.of(context).accentColor,
-                                        )),
-                                    Container(
-                                      child: Text(
-                                        "Color",
-                                        style: TextStyle(
-                                          color: Theme.of(context).accentColor,
-                                        ),
+                                      height: h(120),
+                                      width: w(110),
+                                      decoration: BoxDecoration(
+                                          color:
+                                              Theme.of(context).backgroundColor,
+                                          borderRadius:
+                                              BorderRadius.circular(w(10))),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Container(
+                                              padding:
+                                                  EdgeInsets.only(top: h(10)),
+                                              child: Image.asset(
+                                                "assets/images/weight.png",
+                                                color: controller.themeValue
+                                                            .toString() ==
+                                                        "dark"
+                                                    ? Color(0XFF4F5258)
+                                                    : Color(0XFF4F5258),
+                                              )),
+                                          Container(
+                                            child: Text(
+                                              "Weight",
+                                              style: TextStyle(
+                                                fontSize: sp(10),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            padding:
+                                                EdgeInsets.only(bottom: h(10)),
+                                            child: Text(
+                                              "30",
+                                              style: TextStyle(
+                                                  fontSize: sp(13),
+                                                  color: Color(0xfffa5473)),
+                                            ),
+                                          )
+                                        ],
                                       ),
                                     ),
+                                    SizedBox(
+                                      width: w(10),
+                                    ),
                                     Container(
-                                      padding: EdgeInsets.only(bottom: h(10)),
-                                      child: Text(
-                                        "30",
-                                        style:
-                                            TextStyle(color: Colors.pink[300]),
+                                      height: h(120),
+                                      width: w(110),
+                                      decoration: BoxDecoration(
+                                          color:
+                                              Theme.of(context).backgroundColor,
+                                          borderRadius:
+                                              BorderRadius.circular(w(10))),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Container(
+                                              padding:
+                                                  EdgeInsets.only(top: h(10)),
+                                              child: Image.asset(
+                                                "assets/images/height.png",
+                                                color: controller.themeValue
+                                                            .toString() ==
+                                                        "dark"
+                                                    ? Color(0XFF4F5258)
+                                                    : Color(0XFF4F5258),
+                                              )),
+                                          Container(
+                                            child: Text(
+                                              "Height",
+                                              style: TextStyle(
+                                                fontSize: sp(10),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            padding:
+                                                EdgeInsets.only(bottom: h(10)),
+                                            child: Text(
+                                              "30",
+                                              style: TextStyle(
+                                                  fontSize: sp(13),
+                                                  color: Color(0xfffa5473)),
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                    )
+                                    ),
+                                    SizedBox(
+                                      width: w(10),
+                                    ),
+                                    Container(
+                                      height: h(120),
+                                      width: w(110),
+                                      decoration: BoxDecoration(
+                                          color:
+                                              Theme.of(context).backgroundColor,
+                                          borderRadius:
+                                              BorderRadius.circular(w(10))),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Container(
+                                              padding:
+                                                  EdgeInsets.only(top: h(10)),
+                                              child: Icon(
+                                                Icons.visibility,
+                                                size: 30,
+                                                color: controller.themeValue
+                                                            .toString() ==
+                                                        "dark"
+                                                    ? Color(0XFF4F5258)
+                                                    : Color(0XFF4F5258),
+                                              )),
+                                          Container(
+                                            child: Text(
+                                              "Color",
+                                              style: TextStyle(
+                                                fontSize: sp(10),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            padding:
+                                                EdgeInsets.only(bottom: h(10)),
+                                            child: Text(
+                                              "BLACK",
+                                              style: TextStyle(
+                                                  fontSize: sp(13),
+                                                  color: Color(0xfffa5473)),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: w(10),
+                                    ),
+                                    Container(
+                                      height: h(120),
+                                      width: w(110),
+                                      decoration: BoxDecoration(
+                                          color:
+                                              Theme.of(context).backgroundColor,
+                                          borderRadius:
+                                              BorderRadius.circular(w(10))),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Container(
+                                              padding:
+                                                  EdgeInsets.only(top: h(10)),
+                                              child: Image.asset(
+                                                "assets/images/hair.png",
+                                                color: controller.themeValue
+                                                            .toString() ==
+                                                        "dark"
+                                                    ? Color(0XFF4F5258)
+                                                    : Color(0XFF4F5258),
+                                              )),
+                                          Container(
+                                            child: Text(
+                                              "Hair",
+                                              style: TextStyle(
+                                                fontSize: sp(10),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            padding:
+                                                EdgeInsets.only(bottom: h(10)),
+                                            child: Text(
+                                              "Brown",
+                                              style: TextStyle(
+                                                  fontSize: sp(13),
+                                                  color: Color(0xfffa5473)),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: w(10),
+                                    ),
+                                    Container(
+                                      height: h(120),
+                                      width: w(110),
+                                      decoration: BoxDecoration(
+                                          color:
+                                              Theme.of(context).backgroundColor,
+                                          borderRadius:
+                                              BorderRadius.circular(w(10))),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Container(
+                                              padding:
+                                                  EdgeInsets.only(top: h(10)),
+                                              child: Image.asset(
+                                                "assets/images/children.png",
+                                                color: controller.themeValue
+                                                            .toString() ==
+                                                        "dark"
+                                                    ? Color(0XFF4F5258)
+                                                    : Color(0XFF4F5258),
+                                              )),
+                                          Container(
+                                            child: Text(
+                                              "Children",
+                                              style: TextStyle(
+                                                fontSize: sp(10),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            padding:
+                                                EdgeInsets.only(bottom: h(10)),
+                                            child: Text(
+                                              "No",
+                                              style: TextStyle(
+                                                  fontSize: sp(13),
+                                                  color: Color(0xfffa5473)),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: w(20),
+                                    ),
                                   ],
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(
                           height: h(20),
                         ),
                         Card(
+                          color: Theme.of(context).backgroundColor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(w(10))),
                           margin: EdgeInsets.only(
@@ -831,9 +913,9 @@ class _MainHomePageState extends State<MainHomePage> {
                                 Container(
                                     padding: EdgeInsets.only(left: w(0)),
                                     child: Text(
-                                      "BIO",
+                                      "Bio",
                                       style: TextStyle(
-                                          fontSize: sp(16),
+                                          fontSize: sp(15),
                                           color: Theme.of(context).accentColor,
                                           fontWeight: FontWeight.bold),
                                     )),
@@ -848,7 +930,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                             ? Text(
                                                 "My name is Mary burgess and i enjoy meeting new people and finfing ways to help them have an uplifting experience. i enjoy reading, and the knowledge",
                                                 style: TextStyle(
-                                                    color: Colors.white24,
+                                                    color: Color(0xff555557),
                                                     letterSpacing: 1),
                                               )
                                             : Text(
@@ -907,8 +989,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                       Text(
                                         "Show more",
                                         style: TextStyle(
-                                            color: Colors.pink[300],
-                                            fontSize: sp(16)),
+                                            color: Color(0xfffa5473),
+                                            fontSize: sp(15)),
                                       ),
                                       Icon(
                                         Icons.expand_more,
@@ -957,13 +1039,18 @@ class _MainHomePageState extends State<MainHomePage> {
                                     height: h(35),
                                     width: w(100),
                                     decoration: BoxDecoration(
-                                        color: Colors.pink[300],
+                                        color: Color(0xfffa5473),
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
+                                        Image.asset(
+                                            "assets/images/astrology.png"),
+                                        SizedBox(
+                                          width: w(5),
+                                        ),
                                         Text(
                                           "Astrology",
                                           style: TextStyle(
@@ -1069,13 +1156,18 @@ class _MainHomePageState extends State<MainHomePage> {
                                     height: h(35),
                                     width: w(100),
                                     decoration: BoxDecoration(
-                                        color: Colors.pink[300],
+                                        color: Color(0xfffa5473),
                                         borderRadius:
                                             BorderRadius.circular(w(20))),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
+                                        Image.asset(
+                                            "assets/images/sleeping.png"),
+                                        SizedBox(
+                                          width: w(5),
+                                        ),
                                         Text(
                                           "Sleeping",
                                           style: TextStyle(
@@ -1092,13 +1184,18 @@ class _MainHomePageState extends State<MainHomePage> {
                                     height: h(35),
                                     width: w(100),
                                     decoration: BoxDecoration(
-                                        color: Colors.pink[300],
+                                        color: Color(0xfffa5473),
                                         borderRadius:
                                             BorderRadius.circular(w(20))),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
+                                        Image.asset(
+                                            "assets/images/dancing.png"),
+                                        SizedBox(
+                                          width: w(5),
+                                        ),
                                         Text(
                                           "Dancing",
                                           style: TextStyle(
@@ -1138,7 +1235,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         style: TextStyle(
                                             color:
                                                 Theme.of(context).accentColor,
-                                            fontSize: sp(16),
+                                            fontSize: sp(18),
                                             fontWeight: FontWeight.bold),
                                       )),
                                   Column(
@@ -1153,6 +1250,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                           child: Text(
                                             "Pakistan",
                                             style: TextStyle(
+                                                fontSize: sp(13),
                                                 color: Theme.of(context)
                                                     .accentColor,
                                                 fontWeight: FontWeight.bold),
@@ -1165,7 +1263,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                             style: TextStyle(
                                                 color: Theme.of(context)
                                                     .accentColor,
-                                                fontSize: sp(12)),
+                                                fontSize: sp(11)),
                                           )),
                                     ],
                                   ),
@@ -1174,29 +1272,29 @@ class _MainHomePageState extends State<MainHomePage> {
                               SizedBox(
                                 height: h(10),
                               ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(30),
-                                  topRight: Radius.circular(30),
-                                  bottomRight: Radius.circular(30),
-                                  bottomLeft: Radius.circular(30),
-                                ),
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                      left: w(30), right: w(20)),
-                                  height: h(170),
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(w(30))),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: GoogleMap(
-                                    onMapCreated: _onMapCreated,
-                                    initialCameraPosition: CameraPosition(
-                                      target: _center,
-                                      zoom: 11.0,
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: w(20),
+                                  ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Container(
+                                      height: h(190),
+                                      // decoration: BoxDecoration(
+                                      //     borderRadius:
+                                      //         BorderRadius.circular(w(30))),
+                                      width: 320,
+                                      child: GoogleMap(
+                                        onMapCreated: _onMapCreated,
+                                        initialCameraPosition: CameraPosition(
+                                          target: _center,
+                                          zoom: 11.0,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
                             ],
                           ),
@@ -1223,7 +1321,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         left: w(20), top: h(20)),
                                     child: Text("Instagram Photos",
                                         style: TextStyle(
-                                            fontSize: sp(16),
+                                            fontSize: sp(18),
                                             color:
                                                 Theme.of(context).accentColor,
                                             fontWeight: FontWeight.bold)),
@@ -1235,10 +1333,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                     children: [
                                       Container(
                                         margin: EdgeInsets.only(top: h(20)),
-                                        height: h(10),
-                                        width: w(10),
+                                        height: h(8),
+                                        width: w(8),
                                         decoration: BoxDecoration(
-                                            color: Colors.pink,
+                                            color: Color(0xffff61a1),
                                             borderRadius:
                                                 BorderRadius.circular(w(10))),
                                       ),
@@ -1252,8 +1350,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                             ? Container(
                                                 margin:
                                                     EdgeInsets.only(top: h(20)),
-                                                height: h(10),
-                                                width: w(10),
+                                                height: h(8),
+                                                width: w(8),
                                                 decoration: BoxDecoration(
                                                     color: Colors.white30,
                                                     borderRadius:
@@ -1263,10 +1361,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                             : Container(
                                                 margin:
                                                     EdgeInsets.only(top: h(20)),
-                                                height: h(10),
-                                                width: w(10),
+                                                height: h(8),
+                                                width: w(8),
                                                 decoration: BoxDecoration(
-                                                    color: Colors.grey,
+                                                    color: Colors.black12,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             w(10))),
@@ -1282,8 +1380,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                             ? Container(
                                                 margin: EdgeInsets.only(
                                                     top: h(20), right: w(20)),
-                                                height: h(10),
-                                                width: w(10),
+                                                height: h(8),
+                                                width: w(8),
                                                 decoration: BoxDecoration(
                                                     color: Colors.white30,
                                                     borderRadius:
@@ -1293,10 +1391,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                             : Container(
                                                 margin: EdgeInsets.only(
                                                     top: h(20), right: w(20)),
-                                                height: h(10),
-                                                width: w(10),
+                                                height: h(8),
+                                                width: w(8),
                                                 decoration: BoxDecoration(
-                                                    color: Colors.grey,
+                                                    color: Colors.black12,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             w(10))),
@@ -1449,7 +1547,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         left: w(20), top: h(20)),
                                     child: Text("My Top Spotify Tracks",
                                         style: TextStyle(
-                                            fontSize: sp(16),
+                                            fontSize: sp(18),
                                             color:
                                                 Theme.of(context).accentColor,
                                             fontWeight: FontWeight.bold)),
@@ -1461,10 +1559,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                     children: [
                                       Container(
                                         margin: EdgeInsets.only(top: h(20)),
-                                        height: h(10),
-                                        width: w(10),
+                                        height: h(8),
+                                        width: w(8),
                                         decoration: BoxDecoration(
-                                            color: Colors.pink,
+                                            color: Color(0xffff61a1),
                                             borderRadius:
                                                 BorderRadius.circular(w(10))),
                                       ),
@@ -1490,10 +1588,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                                 margin: EdgeInsets.only(
                                                   top: h(20),
                                                 ),
-                                                height: h(10),
-                                                width: w(10),
+                                                height: h(8),
+                                                width: w(8),
                                                 decoration: BoxDecoration(
-                                                    color: Colors.grey,
+                                                    color: Colors.black12,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             w(10))),
@@ -1509,8 +1607,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                             ? Container(
                                                 margin: EdgeInsets.only(
                                                     top: h(20), right: w(20)),
-                                                height: h(10),
-                                                width: w(10),
+                                                height: h(8),
+                                                width: w(8),
                                                 decoration: BoxDecoration(
                                                     color: Colors.white30,
                                                     borderRadius:
@@ -1520,10 +1618,10 @@ class _MainHomePageState extends State<MainHomePage> {
                                             : Container(
                                                 margin: EdgeInsets.only(
                                                     top: h(20), right: w(20)),
-                                                height: h(10),
-                                                width: w(10),
+                                                height: h(8),
+                                                width: w(8),
                                                 decoration: BoxDecoration(
-                                                    color: Colors.grey,
+                                                    color: Colors.black12,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             w(10))),
@@ -1720,7 +1818,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Theme.of(context).accentColor,
-                                      fontSize: sp(16)),
+                                      fontSize: sp(18)),
                                 ),
                               ),
                               SizedBox(
@@ -1732,69 +1830,70 @@ class _MainHomePageState extends State<MainHomePage> {
                                 children: [
                                   Container(
                                       padding: EdgeInsets.only(
-                                          right: w(13),
-                                          left: w(13),
-                                          top: h(13),
-                                          bottom: h(13)),
+                                          right: w(15),
+                                          left: w(15),
+                                          top: h(15),
+                                          bottom: h(15)),
                                       margin: EdgeInsets.only(left: w(40)),
                                       height: h(60),
                                       width: w(60),
                                       decoration: BoxDecoration(
-                                          color: Colors.pink[50],
+                                          color: Color(0xfffff3f3),
                                           borderRadius:
                                               BorderRadius.circular(w(30))),
                                       child: Image.asset(
                                         "assets/images/snapchat.png",
-                                        color: Colors.pink,
+                                        color: Color(0xfffa5473),
                                       )),
                                   Container(
                                       height: h(60),
                                       width: w(60),
                                       padding: EdgeInsets.only(
-                                          right: w(13),
-                                          left: w(13),
-                                          top: h(13),
-                                          bottom: h(13)),
+                                          right: w(15),
+                                          left: w(15),
+                                          top: h(15),
+                                          bottom: h(15)),
                                       decoration: BoxDecoration(
-                                          color: Colors.pink[50],
+                                          color: Color(0xfffff3f3),
                                           borderRadius:
                                               BorderRadius.circular(w(30))),
                                       child: Image.asset(
                                         "assets/images/facebook.png",
-                                        color: Colors.pink,
+                                        color: Color(0xfffa5473),
                                       )),
                                   Container(
                                       height: h(60),
                                       width: w(60),
                                       padding: EdgeInsets.only(
-                                          right: w(13),
-                                          left: w(13),
-                                          top: h(13),
-                                          bottom: h(13)),
+                                          right: w(15),
+                                          left: w(15),
+                                          top: h(15),
+                                          bottom: h(15)),
                                       decoration: BoxDecoration(
-                                          color: Colors.pink[50],
+                                          color: Color(0xfffff3f3),
                                           borderRadius:
                                               BorderRadius.circular(w(30))),
                                       child: Image.asset(
                                         "assets/images/tiktok.png",
-                                        color: Colors.pink,
+                                        color: Color(0xfffa5473),
                                       )),
                                   Container(
                                       margin: EdgeInsets.only(right: w(40)),
                                       padding: EdgeInsets.only(
-                                          right: w(13),
-                                          left: w(13),
-                                          top: h(13),
-                                          bottom: h(13)),
+                                          right: w(15),
+                                          left: w(15),
+                                          top: h(15),
+                                          bottom: h(15)),
                                       height: h(60),
                                       width: w(60),
                                       decoration: BoxDecoration(
-                                          color: Colors.pink[50],
+                                          color: Color(0xfffff3f3),
                                           borderRadius:
                                               BorderRadius.circular(w(30))),
                                       child: Image.asset(
-                                          "assets/images/instagram.png",
-                                          color: Colors.pink))
+                                        "assets/images/instagram.png",
+                                        color: Color(0xfffa5473),
+                                      ))
                                 ],
                               ),
                             ],
@@ -1814,13 +1913,13 @@ class _MainHomePageState extends State<MainHomePage> {
                                   blurRadius: 10,
                                 ),
                               ],
-                              color: Colors.pink[300],
+                              color: Color(0xfffa5473),
                               borderRadius: BorderRadius.circular(w(10))),
                           child: Center(
                               child: Text(
                             "Share Profile",
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: sp(18),
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           )),
@@ -1835,8 +1934,11 @@ class _MainHomePageState extends State<MainHomePage> {
                           child: Text(
                             "See What A Friend Thinks",
                             style: TextStyle(
-                                fontSize: sp(20),
-                                color: Theme.of(context).dividerColor),
+                                fontSize: sp(18),
+                                color:
+                                    controller.themeValue.toString() == "dark"
+                                        ? Color(0xff4f5258)
+                                        : Colors.black),
                           ),
                         ),
                         SizedBox(
@@ -1865,8 +1967,6 @@ class _MainHomePageState extends State<MainHomePage> {
 //   ),
 // ),
 
-
-
 // Container(
 //                 margin: EdgeInsets.only(left: w(20), right: w(20)),
 //                 height: h(200),
@@ -1891,7 +1991,7 @@ class _MainHomePageState extends State<MainHomePage> {
 //                     Container(
 //                       padding: EdgeInsets.only(left: w(20), right: w(20)),
 //                       child: Text(
-                        // "My name is Mary burgess and i enjoy meeting new people and finfing ways to help them have an uplifting experience. i enjoy reading, and the knowledge",
+// "My name is Mary burgess and i enjoy meeting new people and finfing ways to help them have an uplifting experience. i enjoy reading, and the knowledge",
 //                         style:
 //                             TextStyle(letterSpacing: 2, color: Colors.black54),
 //                       ),
@@ -1922,9 +2022,3 @@ class _MainHomePageState extends State<MainHomePage> {
 //                   ],
 //                 ),
 //               ),
-
-
-
-                                      
-
-

@@ -1,5 +1,6 @@
 import 'package:bloved/utilities/StorageManager.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ThemeNotifier with ChangeNotifier {
   late ThemeData _themeData = ThemeData(
@@ -9,53 +10,44 @@ class ThemeNotifier with ChangeNotifier {
       hoverColor: Colors.white,
       focusColor: Colors.pink[100],
       scaffoldBackgroundColor: Colors.grey[300],
-      buttonColor: Colors.pink[50],
+      buttonColor: Color(0XFFFBF6F7),
       // primaryColor: Colors.black,
       brightness: Brightness.light,
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0XFF1C1C1E),
       accentColor: Colors.black,
       accentIconTheme: IconThemeData(color: Colors.white),
+      fontFamily: GoogleFonts.ubuntu().fontFamily,
       dividerColor: Colors.black);
 
   final darkTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.black,
-    // primarySwatch: Colors.grey,
-    toggleableActiveColor: Colors.pink.withOpacity(0.1),
-    splashColor: Colors.grey.withOpacity(0.5),
-    hoverColor: Colors.white24,
-    buttonColor: Colors.white24,
-    focusColor: Colors.white24,
-    // primaryColor: Colors.white,
-    // brightness: Brightness.dark,
-    cardColor: Colors.grey[800],
-    backgroundColor: Colors.grey[800],
-    accentColor: Colors.white,
-    accentIconTheme: IconThemeData(color: Colors.black),
-    dividerColor: Colors.grey[400],
-    // textTheme: TextTheme(
-    //   bodyText1: TextStyle(color: Colors.white),
-    //   bodyText2: TextStyle(color: Colors.white),
-    // ).apply(
-    //   bodyColor: Colors.white,
-    //   displayColor: Colors.white,
-    // ),
-  );
+      scaffoldBackgroundColor: Colors.black,
+      // primarySwatch: Colors.grey,
+      toggleableActiveColor: Colors.pink.withOpacity(0.1),
+      splashColor: Color(0xffffffff),
+      hoverColor: Colors.white24,
+      buttonColor: Color(0XFF555557),
+      focusColor: Colors.white24,
+      cardColor: Colors.grey[800],
+      backgroundColor: Color(0XFF1C1C1E),
+      accentColor: Colors.white,
+      accentIconTheme: IconThemeData(color: Colors.black),
+      dividerColor: Colors.grey[400],
+      fontFamily: GoogleFonts.ubuntu().fontFamily);
 
   final lightTheme = ThemeData(
-    splashColor: Colors.black,
-    toggleableActiveColor: Colors.pink[50],
-    // primarySwatch: Colors.grey,
-    hoverColor: Colors.white,
-    focusColor: Colors.pink[100],
-    scaffoldBackgroundColor: Colors.grey[50],
-    buttonColor: Colors.pink[50],
-    // primaryColor: Colors.black,
-    brightness: Brightness.light,
-    backgroundColor: Colors.white,
-    accentColor: Colors.black,
-    accentIconTheme: IconThemeData(color: Colors.white),
-    dividerColor: Colors.black,
-  );
+      splashColor: Color(0xff7a869a),
+      toggleableActiveColor: Colors.pink[50],
+      // primarySwatch: Colors.grey,
+      hoverColor: Colors.white,
+      focusColor: Colors.pink[100],
+      scaffoldBackgroundColor: Color(0xfffbf6f7),
+      buttonColor: Color(0XFFFBF6F7),
+      brightness: Brightness.light,
+      backgroundColor: Color(0XFFFFFFFF),
+      accentColor: Colors.black,
+      accentIconTheme: IconThemeData(color: Colors.white),
+      dividerColor: Colors.black,
+      fontFamily: GoogleFonts.ubuntu().fontFamily);
 
   ThemeData getTheme() => _themeData;
 

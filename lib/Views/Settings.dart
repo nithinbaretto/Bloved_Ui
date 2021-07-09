@@ -47,40 +47,47 @@ class _SettingsState extends State<Settings> {
     return Consumer<ThemeNotifier>(
         builder: (context, theme, _) => Scaffold(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              appBar: PreferredSize(
-                preferredSize: Size.fromHeight(h(90)),
-                child: AppBar(
-                  automaticallyImplyLeading: false,
-                  centerTitle: true,
-                  title: Container(
-                    padding: EdgeInsets.only(top: h(30)),
-                    child: Text(
-                      "Settings",
-                      style: GoogleFonts.ubuntu(
-                          fontSize: sp(20),
-                          color: Theme.of(context).accentColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  elevation: 0,
-                  backgroundColor: Theme.of(context).backgroundColor,
-                  actions: [
-                    Container(
-                        padding: EdgeInsets.only(right: w(30), top: h(30)),
-                        child: Text(
-                          "Done",
-                          style: TextStyle(
-                              color: Colors.pink[300],
-                              fontSize: sp(20),
-                              fontWeight: FontWeight.bold),
-                        ))
-                  ],
-                ),
+              appBar: AppBar(
+                automaticallyImplyLeading: false,
+                centerTitle: true,
+                elevation: 0,
+                backgroundColor: Theme.of(context).backgroundColor,
               ),
               body: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Container(
+                      height: h(40),
+                      padding: EdgeInsets.only(bottom: h(20)),
+                      width: MediaQuery.of(context).size.width,
+                      color: Theme.of(context).backgroundColor,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            "Settings",
+                            style: TextStyle(
+                                color: Theme.of(context).accentColor,
+                                fontSize: sp(17),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: w(110),
+                          ),
+                          Text(
+                            "Done",
+                            style: TextStyle(
+                                color: Color(0xfffa5473),
+                                fontSize: sp(17),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: w(20),
+                          )
+                        ],
+                      ),
+                    ),
                     SizedBox(
                       height: h(30),
                     ),
@@ -99,7 +106,7 @@ class _SettingsState extends State<Settings> {
                                   padding: EdgeInsets.only(top: h(20)),
                                   child: Icon(
                                     Icons.light_mode,
-                                    color: Colors.pink[300],
+                                    color: Color(0xfffa5473),
                                     size: 50,
                                   ),
                                 ),
@@ -117,7 +124,7 @@ class _SettingsState extends State<Settings> {
                                         themeController.themeValue.toString() ==
                                                 "dark"
                                             ? Colors.white70
-                                            : Colors.grey[400],
+                                            : Color(0xffcecece),
                                     size: 50,
                                   ),
                                 ),
@@ -128,7 +135,8 @@ class _SettingsState extends State<Settings> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                  padding: EdgeInsets.only(top: h(20)),
+                                  padding:
+                                      EdgeInsets.only(top: h(20), right: w(10)),
                                   child: Text(
                                     "Light",
                                     style: TextStyle(
@@ -151,7 +159,7 @@ class _SettingsState extends State<Settings> {
                             height: h(20),
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               GestureDetector(
                                 onTap: () {
@@ -162,11 +170,12 @@ class _SettingsState extends State<Settings> {
                                   });
                                 },
                                 child: Container(
+                                    margin: EdgeInsets.only(left: w(110)),
                                     height: h(25),
                                     width: w(25),
                                     decoration: statusForTheme == true
                                         ? BoxDecoration(
-                                            color: Colors.pink[300],
+                                            color: Color(0xfffa5473),
                                             borderRadius:
                                                 BorderRadius.circular(30),
                                           )
@@ -196,11 +205,12 @@ class _SettingsState extends State<Settings> {
                                   });
                                 },
                                 child: Container(
+                                    margin: EdgeInsets.only(left: w(0)),
                                     height: h(25),
                                     width: w(25),
                                     decoration: statusForTheme == false
                                         ? BoxDecoration(
-                                            color: Colors.pink[300],
+                                            color: Color(0xfffa5473),
                                             borderRadius:
                                                 BorderRadius.circular(30),
                                           )
@@ -236,7 +246,7 @@ class _SettingsState extends State<Settings> {
                                 child: Text(
                                   "Device Default",
                                   style: TextStyle(
-                                      fontSize: sp(18),
+                                      fontSize: sp(17),
                                       color: Theme.of(context).accentColor),
                                 ),
                               ),
@@ -248,7 +258,7 @@ class _SettingsState extends State<Settings> {
                                       themeController.themeValue.toString() ==
                                               "dark"
                                           ? Colors.white12
-                                          : Colors.grey.shade600,
+                                          : Color(0xffcecece),
                                   // inactiveColor: Sca,
                                   width: 65.0,
                                   height: 35.0,
@@ -277,7 +287,9 @@ class _SettingsState extends State<Settings> {
                       padding: EdgeInsets.only(left: w(20)),
                       child: Text(
                         "ACCOUNT SETTINGS",
-                        style: TextStyle(color: Theme.of(context).accentColor),
+                        style: TextStyle(
+                            color: Theme.of(context).accentColor,
+                            fontSize: sp(15)),
                       ),
                     ),
                     SizedBox(
@@ -288,8 +300,10 @@ class _SettingsState extends State<Settings> {
                       child: Text(
                         "Verify a phone number to help secure your account",
                         style: TextStyle(
-                            fontSize: sp(12),
-                            color: Theme.of(context).accentColor),
+                            fontSize: sp(11),
+                            color: statusForTheme.toString() == "dark"
+                                ? Color(0xffd4d4d4)
+                                : Color(0xffa5a5a5)),
                       ),
                     ),
                     SizedBox(
@@ -301,7 +315,7 @@ class _SettingsState extends State<Settings> {
                         Container(
                             // margin: EdgeInsets.only(left: w(20), right: w(20)),
                             height: h(60),
-                            width: w(350),
+                            width: w(360),
                             decoration: BoxDecoration(
                                 color: Theme.of(context).backgroundColor,
                                 borderRadius: BorderRadius.circular(10)),
@@ -349,7 +363,10 @@ class _SettingsState extends State<Settings> {
                                         counterText: "",
                                         labelText: "Enter Phone Number",
                                         labelStyle: GoogleFonts.ubuntu(
-                                            color: Colors.grey[500]),
+                                            color: statusForTheme.toString() ==
+                                                    "dark"
+                                                ? Color(0xff555557)
+                                                : Color(0xffcecece)),
                                         border: InputBorder.none,
                                       ),
                                     )),
@@ -364,8 +381,9 @@ class _SettingsState extends State<Settings> {
                         padding: EdgeInsets.only(left: w(20)),
                         child: Text(
                           "DISCOVERY SETTINGS",
-                          style:
-                              TextStyle(color: Theme.of(context).accentColor),
+                          style: TextStyle(
+                              color: Theme.of(context).accentColor,
+                              fontSize: sp(15)),
                         )),
                     SizedBox(
                       height: h(10),
@@ -375,7 +393,9 @@ class _SettingsState extends State<Settings> {
                       child: Text(
                         "Change your location to see b'Loved members in other cities",
                         style: TextStyle(
-                          color: Theme.of(context).accentColor,
+                          color: statusForTheme.toString() == "dark"
+                              ? Color(0xffd4d4d4)
+                              : Color(0xffa5a5a5),
                           fontSize: sp(12),
                         ),
                       ),
@@ -389,7 +409,7 @@ class _SettingsState extends State<Settings> {
                         Container(
                             // margin: EdgeInsets.only(left: w(20), right: w(20)),
                             height: h(60),
-                            width: w(350),
+                            width: w(360),
                             decoration: BoxDecoration(
                                 color: Theme.of(context).backgroundColor,
                                 borderRadius: BorderRadius.circular(10)),
@@ -399,7 +419,7 @@ class _SettingsState extends State<Settings> {
                                   width: w(20),
                                 ),
                                 Icon(Icons.location_on,
-                                    color: Colors.pink[400]),
+                                    color: Color(0xfffa5473)),
                                 Container(
                                   width: w(20),
                                 ),
@@ -423,7 +443,10 @@ class _SettingsState extends State<Settings> {
                                         counterText: "",
                                         labelText: "Location",
                                         labelStyle: GoogleFonts.ubuntu(
-                                            color: Colors.grey[500]),
+                                            color: statusForTheme.toString() ==
+                                                    "dark"
+                                                ? Color(0xff555557)
+                                                : Color(0xffcecece)),
                                         border: InputBorder.none,
                                       ),
                                     )),
@@ -439,7 +462,7 @@ class _SettingsState extends State<Settings> {
                       child: Text(
                         "SHOW ME",
                         style: TextStyle(
-                            fontSize: sp(16),
+                            fontSize: sp(15),
                             color: Theme.of(context).accentColor),
                       ),
                     ),
@@ -461,7 +484,8 @@ class _SettingsState extends State<Settings> {
                                   child: Text(
                                     "Males",
                                     style: TextStyle(
-                                        fontSize: sp(18),
+                                        fontFamily: "SFProText-Regular",
+                                        fontSize: sp(17),
                                         color: Theme.of(context).accentColor),
                                   )),
                               SizedBox(
@@ -473,7 +497,8 @@ class _SettingsState extends State<Settings> {
                                   ),
                                   child: Text("Females",
                                       style: TextStyle(
-                                          fontSize: sp(18),
+                                          fontFamily: "SFProText-Regular",
+                                          fontSize: sp(17),
                                           color:
                                               Theme.of(context).accentColor)))
                             ],
@@ -482,8 +507,11 @@ class _SettingsState extends State<Settings> {
                             height: h(20),
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              SizedBox(
+                                width: w(115),
+                              ),
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
@@ -495,7 +523,7 @@ class _SettingsState extends State<Settings> {
                                         height: h(25),
                                         width: w(25),
                                         decoration: BoxDecoration(
-                                          color: Colors.pink[300],
+                                          color: Color(0xfffa5473),
                                           borderRadius:
                                               BorderRadius.circular(30),
                                         ),
@@ -528,6 +556,7 @@ class _SettingsState extends State<Settings> {
                                 },
                                 child: statusForGender == false
                                     ? Container(
+                                        margin: EdgeInsets.only(left: 10),
                                         height: h(25),
                                         width: w(25),
                                         decoration: BoxDecoration(
@@ -543,7 +572,7 @@ class _SettingsState extends State<Settings> {
                                         width: w(25),
                                         margin: EdgeInsets.only(left: 10),
                                         decoration: BoxDecoration(
-                                          color: Colors.pink.shade300,
+                                          color: Color(0xfffa5473),
                                           borderRadius:
                                               BorderRadius.circular(30),
                                         ),
@@ -572,32 +601,33 @@ class _SettingsState extends State<Settings> {
                         children: [
                           Text("MAXIMUM DISTANCE",
                               style: TextStyle(
-                                  fontSize: sp(16),
+                                  fontSize: sp(15),
                                   color: Theme.of(context).accentColor)),
                           Row(
                             children: [
                               Text(
                                 "Km",
-                                style: TextStyle(color: Colors.pink[300]),
+                                style: TextStyle(
+                                  color: Color(0xfffa5473),
+                                  fontSize: sp(15),
+                                ),
                               ),
                               Icon(
                                 Icons.expand_more,
-                                color: Colors.pink[300],
+                                color: Color(0xfffa5473),
                               ),
                             ],
                           )
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: h(20),
-                    ),
+                    SizedBox(),
                     SfRangeSliderTheme(
                       data: SfRangeSliderThemeData(
                           // tooltipBackgroundColor: Colors.pink,
                           ),
                       child: Container(
-                        padding: EdgeInsets.only(left: h(20), right: w(20)),
+                        padding: EdgeInsets.only(left: h(10), right: w(10)),
                         width: MediaQuery.of(context).size.width,
                         child: SfSlider(
                           dividerShape: SfDividerShape(),
@@ -615,7 +645,7 @@ class _SettingsState extends State<Settings> {
                           showTicks: false,
                           showLabels: false,
                           enableTooltip: true,
-                          activeColor: Colors.pink[300],
+                          activeColor: Color(0xfffa5473),
                           tooltipShape: SfPaddleTooltipShape(),
                           // overlayShape:
                           minorTicksPerInterval: 1,
@@ -638,15 +668,15 @@ class _SettingsState extends State<Settings> {
                           Text(
                             "MAXIMUM DISTANCE",
                             style: TextStyle(
-                                fontSize: sp(16),
+                                fontSize: sp(15),
                                 color: Theme.of(context).accentColor),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: h(20),
-                    ),
+                    // SizedBox(
+                    //   height: h(20),
+                    // ),
                     SfRangeSliderTheme(
                       data: SfRangeSliderThemeData(
                         // thumbStrokeColor: Colors.white,
@@ -656,7 +686,7 @@ class _SettingsState extends State<Settings> {
                         tooltipBackgroundColor: Colors.pink[300],
                       ),
                       child: Container(
-                        padding: EdgeInsets.only(left: h(20), right: w(20)),
+                        padding: EdgeInsets.only(left: h(10), right: w(10)),
                         width: MediaQuery.of(context).size.width,
                         child: SfRangeSlider(
                           startThumbIcon: Container(
@@ -676,7 +706,7 @@ class _SettingsState extends State<Settings> {
                           showLabels: false,
                           enableTooltip: true,
                           values: _values,
-                          activeColor: Colors.pink[300],
+                          activeColor: Color(0xfffa5473),
                           tooltipShape: SfPaddleTooltipShape(),
                           onChanged: (SfRangeValues newValues) {
                             setState(() {
@@ -700,19 +730,25 @@ class _SettingsState extends State<Settings> {
                             child: Text(
                               "Show me on b'love'd Default",
                               style: TextStyle(
-                                  fontSize: sp(16), color: Colors.white),
+                                  fontSize: sp(17),
+                                  color: Theme.of(context).accentColor),
                             ),
                           ),
                           Container(
                             padding: EdgeInsets.only(right: w(20)),
                             child: FlutterSwitch(
-                              activeColor: Colors.pink.shade300,
-                              width: 65.0,
+                              inactiveColor:
+                                  themeController.themeValue.toString() ==
+                                          "dark"
+                                      ? Colors.white12
+                                      : Color(0xffcecece),
+                              activeColor: Color(0xfffa5473),
+                              width: 60.0,
                               height: 35.0,
-                              valueFontSize: 25.0,
+                              valueFontSize: 20.0,
                               toggleSize: 45.0,
                               value: status,
-                              borderRadius: 30.0,
+                              borderRadius: 25.0,
                               padding: 0.0,
                               showOnOff: false,
                               onToggle: (val) {
@@ -733,8 +769,11 @@ class _SettingsState extends State<Settings> {
                       child: Text(
                         "You can message your existing matches without showup in the card stack",
                         style: TextStyle(
-                            fontSize: sp(11),
-                            color: Theme.of(context).accentColor),
+                          fontSize: sp(11),
+                          color: statusForTheme.toString() == "dark"
+                              ? Color(0xffd4d4d4)
+                              : Color(0xffa5a5a5),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -759,7 +798,7 @@ class _SettingsState extends State<Settings> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Active AStaus",
+                              "Active Status",
                               style: TextStyle(
                                   fontSize: sp(16),
                                   color: Theme.of(context).accentColor),
@@ -777,7 +816,11 @@ class _SettingsState extends State<Settings> {
                                   width: w(10),
                                 ),
                                 Icon(Icons.navigate_next,
-                                    color: Theme.of(context).accentColor),
+                                    color:
+                                        themeController.themeValue.toString() ==
+                                                "dark"
+                                            ? Colors.white12
+                                            : Colors.black),
                               ],
                             )
                           ],
@@ -794,7 +837,7 @@ class _SettingsState extends State<Settings> {
                       child: Text(
                         "PAYMENT SETTINGS",
                         style: TextStyle(
-                            fontSize: sp(16),
+                            fontSize: sp(17),
                             color: Theme.of(context).accentColor),
                       ),
                     ),
@@ -827,7 +870,7 @@ class _SettingsState extends State<Settings> {
                     ),
                     settings("Terms Of Services"),
                     SizedBox(
-                      height: h(10),
+                      height: h(30),
                     ),
                     Container(
                       height: h(60),
@@ -922,7 +965,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     Container(
                       child: Row(
@@ -934,12 +977,12 @@ class _SettingsState extends State<Settings> {
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.pink.withOpacity(0.5),
+                                    color: Colors.pink.withOpacity(0.3),
                                     spreadRadius: 2,
                                     blurRadius: 10,
                                   ),
                                 ],
-                                color: Colors.pink[300],
+                                color: Color(0xfffa5473),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Center(
                               child: Text(
@@ -956,7 +999,7 @@ class _SettingsState extends State<Settings> {
                             width: w(150),
                             decoration: BoxDecoration(
                                 // color: Colors.pink,
-                                border: Border.all(color: Colors.pink.shade300),
+                                border: Border.all(color: Color(0xfffa5473)),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Center(
                               child: Text(
@@ -972,7 +1015,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     Container(
                       padding: EdgeInsets.only(top: h(10), bottom: h(10)),
@@ -987,7 +1030,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                   ],
                 ),
@@ -1009,9 +1052,12 @@ class _SettingsState extends State<Settings> {
             Text(
               txt,
               style: TextStyle(
-                  fontSize: sp(16), color: Theme.of(context).accentColor),
+                  fontSize: sp(17), color: Theme.of(context).accentColor),
             ),
-            Icon(icon, color: Theme.of(context).accentColor)
+            Icon(icon,
+                color: themeController.themeValue.toString() == "dark"
+                    ? Colors.white12
+                    : Colors.black)
           ],
         ));
   }
@@ -1021,7 +1067,7 @@ class _SettingsState extends State<Settings> {
       padding: EdgeInsets.only(left: w(20)),
       child: Text(
         txt,
-        style: TextStyle(color: Colors.pink[300], fontSize: 14),
+        style: TextStyle(color: Color(0xfffa5473), fontSize: 14),
       ),
     );
   }
