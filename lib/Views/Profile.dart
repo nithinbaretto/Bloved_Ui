@@ -47,13 +47,6 @@ class _ProfileState extends State<Profile> {
             centerTitle: true,
             title: Container(
               padding: EdgeInsets.only(top: h(30)),
-              // child: Text(
-              //   "bloved",
-              //   style: GoogleFonts.ubuntu(
-              //       fontSize: sp(22),
-              //       color: Colors.grey[400],
-              //       fontWeight: FontWeight.bold),
-              // ),
               child: Image.asset("assets/images/logo.png"),
             ),
             shape: RoundedRectangleBorder(
@@ -93,6 +86,9 @@ class _ProfileState extends State<Profile> {
                       borderRadius: BorderRadius.circular(w(10))),
                   child: Column(
                     children: [
+                      SizedBox(
+                        height: h(10),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
