@@ -1,8 +1,6 @@
 import 'package:bloved/Controllers/MessageController.dart';
 import 'package:bloved/Controllers/darklightTheme.dart';
-import 'package:bloved/Models/message_model.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 

@@ -8,7 +8,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:scroll_app_bar/scroll_app_bar.dart';
 
 class MainHomePage extends StatefulWidget {
   MainHomePage({Key? key}) : super(key: key);
@@ -1950,75 +1949,3 @@ class _MainHomePageState extends State<MainHomePage> {
             ));
   }
 }
-
-// ShaderMask(
-//   shaderCallback: (rect) {
-//     return LinearGradient(
-//       begin: Alignment.topCenter,
-//       end: Alignment.bottomCenter,
-//       colors: [Colors.black, Colors.transparent],
-//     ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
-//   },
-//   blendMode: BlendMode.dstIn,
-//   child: Image.asset(
-//     'assets/chrome.png',
-//     height: 400,
-//     fit: BoxFit.contain,
-//   ),
-// ),
-
-// Container(
-//                 margin: EdgeInsets.only(left: w(20), right: w(20)),
-//                 height: h(200),
-//                 width: MediaQuery.of(context).size.width,
-//                 decoration: BoxDecoration(
-//                     color: Colors.white,
-//                     borderRadius: BorderRadius.circular(10)),
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Container(
-//                       padding: EdgeInsets.only(left: w(20), top: h(20)),
-//                       child: Text(
-//                         "Bio",
-//                         style: TextStyle(
-//                             fontWeight: FontWeight.bold, fontSize: sp(16)),
-//                       ),
-//                     ),
-//                     SizedBox(
-//                       height: h(20),
-//                     ),
-//                     Container(
-//                       padding: EdgeInsets.only(left: w(20), right: w(20)),
-//                       child: Text(
-// "My name is Mary burgess and i enjoy meeting new people and finfing ways to help them have an uplifting experience. i enjoy reading, and the knowledge",
-//                         style:
-//                             TextStyle(letterSpacing: 2, color: Colors.black54),
-//                       ),
-//                     ),
-//                     SizedBox(
-//                       height: h(20),
-//                     ),
-//                     Row(
-//                       children: [
-//                         Container(
-//                           padding: EdgeInsets.only(
-//                             left: w(20),
-//                           ),
-//                           child: Text(
-//                             "Show more",
-//                             style:
-//                                 TextStyle(color: Colors.pink, fontSize: sp(16)),
-//                           ),
-//                         ),
-//                         Container(
-//                           child: Icon(
-//                             Icons.expand_more,
-//                             color: Colors.pink,
-//                           ),
-//                         )
-//                       ],
-//                     )
-//                   ],
-//                 ),
-//               ),

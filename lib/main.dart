@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-
 import 'utilities/ThemeManager.dart';
 
 void main() {
@@ -27,7 +26,6 @@ class MyApp extends StatelessWidget {
                   theme: theme.getTheme(),
                   debugShowCheckedModeBanner: false,
                   title: 'Flutter Demo',
-                 
                   home: MyHomePage(),
                 )));
   }
@@ -132,4 +130,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-// AssetImage("assets/images/splashImage.png"),
