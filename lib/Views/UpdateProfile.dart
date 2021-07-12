@@ -281,8 +281,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         height: h(8),
                         width: w(8),
                         decoration: BoxDecoration(
-                            color: Color(0xffff61a1),
-                            borderRadius: BorderRadius.circular(10)),
+                            color: Color(0xffff61a1), shape: BoxShape.circle),
                       ),
                       SizedBox(
                         width: w(5),
@@ -296,7 +295,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 themeController.themeValue.toString() == "dark"
                                     ? Color(0xff555557)
                                     : Colors.black,
-                            borderRadius: BorderRadius.circular(10)),
+                            shape: BoxShape.circle),
                       ),
                       SizedBox(
                         width: w(5),
@@ -310,7 +309,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 themeController.themeValue.toString() == "dark"
                                     ? Color(0xff555557)
                                     : Colors.black,
-                            borderRadius: BorderRadius.circular(10)),
+                            shape: BoxShape.circle),
                       )
                     ],
                   ),
@@ -335,7 +334,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       "dark"
                                   ? Colors.white12
                                   : Color(0xffcecece),
-                              borderRadius: BorderRadius.circular(w(30))),
+                              shape: BoxShape.circle),
                           child: Container(
                             margin: EdgeInsets.only(
                                 left: w(15),
@@ -361,7 +360,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       "dark"
                                   ? Colors.white12
                                   : Color(0xffcecece),
-                              borderRadius: BorderRadius.circular(w(30))),
+                              shape: BoxShape.circle),
                           child: Container(
                               margin: EdgeInsets.only(
                                   left: w(15),
@@ -386,7 +385,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       "dark"
                                   ? Colors.white12
                                   : Color(0xffcecece),
-                              borderRadius: BorderRadius.circular(w(30))),
+                              shape: BoxShape.circle),
                           child: Container(
                             margin: EdgeInsets.only(
                                 left: w(15),
@@ -417,7 +416,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       "dark"
                                   ? Color(0xfffa5473)
                                   : Color(0xfffff3f3),
-                              borderRadius: BorderRadius.circular(w(30))),
+                              shape: BoxShape.circle),
                           child: Container(
                               margin: EdgeInsets.only(
                                   left: w(15),
@@ -760,7 +759,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   width: w(25),
                                   decoration: BoxDecoration(
                                     color: Color(0xfffa5473),
-                                    borderRadius: BorderRadius.circular(30),
+                                    shape: BoxShape.circle,
                                   ),
                                   child: Icon(
                                     Icons.done,
@@ -774,7 +773,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   decoration: BoxDecoration(
                                     border: Border.all(
                                         color: Theme.of(context).accentColor),
-                                    borderRadius: BorderRadius.circular(30),
+                                    shape: BoxShape.circle,
                                   ),
                                 ),
                         ),
@@ -794,7 +793,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   decoration: BoxDecoration(
                                     border: Border.all(
                                         color: Theme.of(context).accentColor),
-                                    borderRadius: BorderRadius.circular(30),
+                                    shape: BoxShape.circle,
                                   ),
                                 )
                               : Container(
@@ -803,7 +802,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   margin: EdgeInsets.only(left: 10),
                                   decoration: BoxDecoration(
                                     color: Color(0xfffa5473),
-                                    borderRadius: BorderRadius.circular(30),
+                                    shape: BoxShape.circle,
                                   ),
                                   child: Icon(
                                     Icons.done,

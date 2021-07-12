@@ -16,6 +16,7 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
   final w = ScreenUtil().setWidth;
   final h = ScreenUtil().setHeight;
   final sp = ScreenUtil().setSp;
+  final r = ScreenUtil().radius;
   var images = [
     "assets/images/img1.png",
     "assets/images/image2.png",
@@ -77,20 +78,15 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                     : Image.asset("assets/images/logo2.png"))
             : Container(
                 padding: EdgeInsets.only(
-                  top: h(30),
+                  top: h(20),
                 ),
                 child: Image.asset("assets/images/logo.png")),
         elevation: 0,
         backgroundColor: Theme.of(context).backgroundColor,
         actions: [
           Container(
-            padding: EdgeInsets.only(right: w(40), top: h(30)),
+            padding: EdgeInsets.only(right: w(30), top: h(30)),
             child: GestureDetector(
-              // onTap: () {
-              //   showDialog(
-              //       context: context,
-              //       builder: (BuildContext context) => errorDialog);
-              // },
               child: Icon(
                 Icons.forum,
                 color: Colors.pink[400],
@@ -106,16 +102,16 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
             margin: EdgeInsets.all((0)),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25))),
+                    bottomLeft: Radius.circular(r(25)),
+                    bottomRight: Radius.circular(r(25)))),
             child: Container(
               height: h(100),
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   color: Theme.of(context).backgroundColor,
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(25),
-                      bottomRight: Radius.circular(25))),
+                      bottomLeft: Radius.circular(r(25)),
+                      bottomRight: Radius.circular(r(25)))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +122,7 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                         shadowColor: Colors.pink,
                         elevation: 10,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                            borderRadius: BorderRadius.circular(r(30))),
                         margin: EdgeInsets.only(left: w(30), top: h(20)),
                         child: Container(
                           height: h(47),
@@ -140,7 +136,7 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                                 ),
                               ],
                               color: Color(0xfffa5473),
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(r(30))),
                           child: Center(
                             child: Icon(
                               Icons.visibility,
@@ -163,10 +159,8 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                   Obx(() => (Column(
                         children: [
                           Card(
-                            // shadowColor: Colors.pink,
-                            elevation: 10,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30)),
+                                borderRadius: BorderRadius.circular(r(30))),
                             margin: EdgeInsets.only(left: w(20), top: h(20)),
                             child: Container(
                               height: h(47),
@@ -200,10 +194,8 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                   Obx(() => (Column(
                         children: [
                           Card(
-                            // shadowColor: Colors.pink,
-                            elevation: 10,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30)),
+                                borderRadius: BorderRadius.circular(r(30))),
                             margin: EdgeInsets.only(left: w(20), top: h(20)),
                             child: Container(
                               height: h(47),
@@ -214,7 +206,7 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                                               "dark"
                                           ? Color(0xfffff3f3)
                                           : Color(0xfffff3f3),
-                                  borderRadius: BorderRadius.circular(30)),
+                                  borderRadius: BorderRadius.circular(r(30))),
                               child: Center(
                                 child: Icon(
                                   Icons.star_rounded,
@@ -237,10 +229,8 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                   Obx(() => (Column(
                         children: [
                           Card(
-                              // shadowColor: Colors.pink,
-                              elevation: 10,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
+                                  borderRadius: BorderRadius.circular(r(30))),
                               margin: EdgeInsets.only(left: w(20), top: h(20)),
                               child: Container(
                                   height: h(47),
@@ -251,7 +241,8 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                                               "dark"
                                           ? Color(0xfffff3f3)
                                           : Color(0xfffff3f3),
-                                      borderRadius: BorderRadius.circular(30)),
+                                      borderRadius:
+                                          BorderRadius.circular(r(30))),
                                   child: Icon(
                                     Icons.thumb_up,
                                     color: Colors.pink[300],
@@ -270,10 +261,8 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                   Obx(() => (Column(
                         children: [
                           Card(
-                            // shadowColor: Colors.pink,
-                            elevation: 10,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30)),
+                                borderRadius: BorderRadius.circular(r(30))),
                             margin: EdgeInsets.only(
                               left: w(20),
                               top: h(20),
@@ -287,7 +276,7 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                                                 "dark"
                                             ? Color(0xfffff3f3)
                                             : Color(0xfffff3f3),
-                                    borderRadius: BorderRadius.circular(30)),
+                                    borderRadius: BorderRadius.circular(r(30))),
                                 child: Image.asset(
                                   "assets/images/others.png",
                                   color: Colors.pink[300],
@@ -385,7 +374,8 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                                     width: w(40),
                                     decoration: BoxDecoration(
                                         color: Colors.blue,
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius:
+                                            BorderRadius.circular(r(30)),
                                         image: DecorationImage(
                                             image: AssetImage(images[index]),
                                             fit: BoxFit.cover)),
@@ -441,12 +431,12 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(top: h(10)),
-                                    height: 4,
-                                    width: 4,
+                                    height: h(4),
+                                    width: w(4),
                                     decoration: BoxDecoration(
                                         color: Theme.of(context).accentColor,
                                         borderRadius:
-                                            BorderRadius.circular(10)),
+                                            BorderRadius.circular(r(10))),
                                   ),
                                   SizedBox(
                                     width: w(10),
@@ -579,8 +569,10 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(top: h(10)),
-                                    height: 4,
-                                    width: 4,
+                                    height: h(4),
+                                    width: w(
+                                      4,
+                                    ),
                                     decoration: BoxDecoration(
                                         color: Theme.of(context).accentColor,
                                         borderRadius:

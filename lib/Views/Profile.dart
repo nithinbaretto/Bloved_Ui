@@ -15,6 +15,7 @@ class _ProfileState extends State<Profile> {
   final w = ScreenUtil().setWidth;
   final h = ScreenUtil().setHeight;
   final sp = ScreenUtil().setSp;
+  final r = ScreenUtil().radius;
   var themeController = Get.put(ThemeValue());
   @override
   Widget build(BuildContext context) {
@@ -26,12 +27,13 @@ class _ProfileState extends State<Profile> {
           child: AppBar(
             leading: Row(children: [
               Container(
-                  margin: EdgeInsets.only(left: w(20), top: h(30)),
+                  margin: EdgeInsets.only(left: w(30), top: h(30)),
                   height: h(25),
                   width: w(25),
                   decoration: BoxDecoration(
-                      color: Color(0xffff61a1),
-                      borderRadius: BorderRadius.circular(w(20))),
+                    shape: BoxShape.circle,
+                    color: Color(0xffff61a1),
+                  ),
                   child: themeController.themeValue.toString() == "dark"
                       ? Icon(
                           Icons.person,
@@ -46,15 +48,15 @@ class _ProfileState extends State<Profile> {
             ]),
             centerTitle: true,
             title: Container(
-              padding: EdgeInsets.only(top: h(30)),
+              padding: EdgeInsets.only(top: h(25)),
               child: Image.asset("assets/images/logo.png"),
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20)),
+                  bottomLeft: Radius.circular(r(20)),
+                  bottomRight: Radius.circular(r(20))),
             ),
-            elevation: 5,
+            elevation: 2,
             backgroundColor: Theme.of(context).backgroundColor,
             actions: [
               GestureDetector(
@@ -65,7 +67,7 @@ class _ProfileState extends State<Profile> {
                   }));
                 },
                 child: Container(
-                  padding: EdgeInsets.only(right: w(40), top: h(30)),
+                  padding: EdgeInsets.only(right: w(30), top: h(30)),
                   child: Icon(
                     Icons.forum,
                     color: Colors.grey[400],
@@ -77,52 +79,60 @@ class _ProfileState extends State<Profile> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.only(
+                right: w(20), left: w(20), top: h(20), bottom: h(20)),
             child: Column(
               children: [
                 Card(
                   color: Theme.of(context).backgroundColor,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(w(10))),
+                      borderRadius: BorderRadius.circular(r(10))),
                   child: Column(
                     children: [
                       SizedBox(
                         height: h(10),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
+                          SizedBox(
+                            width: w(45),
+                          ),
                           Obx(() => Container(
-                                padding: EdgeInsets.only(left: w(30)),
                                 child: Column(
                                   children: [
-                                    Card(
-                                      color: themeController.themeValue
-                                                  .toString() ==
-                                              "dark"
-                                          ? Color(0xff373638)
-                                          : Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(w(30))),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(context,
-                                              MaterialPageRoute(
-                                                  builder: (context) {
-                                            return Settings();
-                                          }));
-                                        },
-                                        child: Container(
-                                          height: h(47),
-                                          width: w(47),
-                                          decoration: BoxDecoration(),
-                                          child: Icon(
-                                            Icons.settings,
-                                            color: Colors.grey[500],
-                                          ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return Settings();
+                                        }));
+                                      },
+                                      child: Container(
+                                        height: h(47),
+                                        width: w(47),
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: themeController.themeValue
+                                                        .toString() ==
+                                                    "dark"
+                                                ? Color(0xff373638)
+                                                : Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  blurRadius: 2,
+                                                  offset: Offset(0, 1),
+                                                  color: Colors.black
+                                                      .withOpacity(0.2))
+                                            ]),
+                                        child: Icon(
+                                          Icons.settings,
+                                          color: Colors.grey[500],
                                         ),
                                       ),
+                                    ),
+                                    SizedBox(
+                                      height: h(5),
                                     ),
                                     Container(
                                       child: Text(
@@ -136,63 +146,90 @@ class _ProfileState extends State<Profile> {
                                   ],
                                 ),
                               )),
+                          SizedBox(
+                            width: w(20),
+                          ),
                           Stack(
                             children: [
                               Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(w(60)),
-                                    border: Border.all(
-                                        color: Colors.pink, width: 3.0)),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(w(60)),
-                                  child: Container(
-                                    height: h(121),
-                                    width: w(121),
-                                    decoration:
-                                        BoxDecoration(color: Colors.blue),
-                                    child: Image.network(
-                                      "https://i.pinimg.com/originals/19/cf/78/19cf789a8e216dc898043489c16cec00.jpg",
-                                      fit: BoxFit.fill,
+                                height: h(130),
+                                width: w(130),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: h(121),
+                                      width: w(121),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                              color: Colors.pink, width: 3.0)),
+                                      child: Container(
+                                        height: h(120),
+                                        width: w(120),
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                "assets/images/img1.png",
+                                              ),
+                                              fit: BoxFit.cover,
+                                            )),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
                               ),
                               Positioned(
-                                  top: h(90),
-                                  left: w(85),
-                                  child: Container(
+                                top: h(75),
+                                left: w(100),
+                                child: Container(
                                     height: h(30),
                                     width: w(30),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(w(30))),
-                                    child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(w(30)),
-                                        child: Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Image.asset(
-                                              "assets/images/verifiedMark.png",
-                                              color: Colors.blue,
-                                            ))),
-                                  ))
+                                        shape: BoxShape.circle),
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          left: w(5),
+                                          right: w(5),
+                                          top: h(5),
+                                          bottom: h(5)),
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                        image: AssetImage(
+                                          "assets/images/verifiedMark.png",
+                                        ),
+                                      )),
+                                    )),
+                              )
                             ],
                           ),
+                          SizedBox(
+                            width: w(15),
+                          ),
                           Obx(() => Container(
-                                padding: EdgeInsets.only(right: w(30)),
+                                // padding: EdgeInsets.only(right: w(0)),
                                 child: Column(
                                   children: [
-                                    Card(
-                                      color: themeController.themeValue
-                                                  .toString() ==
-                                              "dark"
-                                          ? Color(0xff373638)
-                                          : Colors.white,
-                                      elevation: 2,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(w(30))),
+                                    Container(
+                                      height: h(47),
+                                      width: w(47),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: themeController.themeValue
+                                                      .toString() ==
+                                                  "dark"
+                                              ? Color(0xff373638)
+                                              : Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                                blurRadius: 2,
+                                                offset: Offset(0, 1),
+                                                color: Colors.black
+                                                    .withOpacity(0.2))
+                                          ]),
                                       child: GestureDetector(
                                         onTap: () {
                                           Navigator.push(context,
@@ -202,18 +239,20 @@ class _ProfileState extends State<Profile> {
                                           }));
                                         },
                                         child: Container(
-                                          height: h(47),
-                                          width: w(47),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(w(30)),
-                                          ),
+                                          padding: EdgeInsets.only(
+                                              left: w(10),
+                                              right: w(10),
+                                              top: h(10),
+                                              bottom: h(10)),
                                           child: Icon(
                                             Icons.edit,
                                             color: Colors.grey[500],
                                           ),
                                         ),
                                       ),
+                                    ),
+                                    SizedBox(
+                                      height: h(5),
                                     ),
                                     Container(
                                       child: Text(
@@ -243,20 +282,21 @@ class _ProfileState extends State<Profile> {
                               height: h(100),
                               width: w(90),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(r(10)),
                                   color:
                                       themeController.themeValue.toString() ==
                                               "dark"
                                           ? Color(0xff373638)
                                           : Color(0xfffff3f3)),
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                      padding: EdgeInsets.only(top: h(10)),
+                                      // padding: EdgeInsets.only(top: h(15)),
                                       child: Image.asset(
-                                        "assets/images/watch.png",
-                                        color: Color(0xfffa5473),
-                                      )),
+                                    "assets/images/watch.png",
+                                    color: Color(0xfffa5473),
+                                  )),
                                   SizedBox(
                                     height: h(5),
                                   ),
@@ -285,20 +325,20 @@ class _ProfileState extends State<Profile> {
                               height: h(100),
                               width: w(90),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(r(10)),
                                   color:
                                       themeController.themeValue.toString() ==
                                               "dark"
                                           ? Color(0xff373638)
                                           : Color(0xfffff3f3)),
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                      padding: EdgeInsets.only(top: h(10)),
                                       child: Image.asset(
-                                        "assets/images/watch.png",
-                                        color: Color(0xfffa5473),
-                                      )),
+                                    "assets/images/watch.png",
+                                    color: Color(0xfffa5473),
+                                  )),
                                   SizedBox(
                                     height: h(
                                       5,
@@ -329,22 +369,20 @@ class _ProfileState extends State<Profile> {
                                 height: h(100),
                                 width: w(90),
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(r(10)),
                                     color:
                                         themeController.themeValue.toString() ==
                                                 "dark"
                                             ? Color(0xff373638)
                                             : Color(0xfffff3f3)),
                                 child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                        padding: EdgeInsets.only(
-                                          top: h(10),
-                                        ),
                                         child: Image.asset(
-                                          "assets/images/watch.png",
-                                          color: Color(0xfffa5473),
-                                        )),
+                                      "assets/images/watch.png",
+                                      color: Color(0xfffa5473),
+                                    )),
                                     SizedBox(
                                         height: h(
                                       5,
@@ -386,7 +424,7 @@ class _ProfileState extends State<Profile> {
                               ),
                             ],
                             color: Color(0xfffa5473),
-                            borderRadius: BorderRadius.circular(15)),
+                            borderRadius: BorderRadius.circular(r(15))),
                         child: Center(
                             child: Text(
                           "My bloved VIP",
@@ -416,7 +454,7 @@ class _ProfileState extends State<Profile> {
                         ),
                       ],
                       color: Color(0xfffa5473),
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(r(30))),
                   child: Center(
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -443,11 +481,22 @@ class _ProfileState extends State<Profile> {
                   height: h(20),
                 ),
                 Card(
-                  color: Theme.of(context).backgroundColor,
-                  elevation: 2,
+                  // elevation: 2,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          themeController.themeValue.toString() == "dark"
+                              ? BoxShadow()
+                              : BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                )
+                        ],
+                        color: Theme.of(context).backgroundColor,
+                        borderRadius: BorderRadius.circular(15)),
                     margin: EdgeInsets.only(left: 0, right: 0),
                     height: h(50),
                     width: MediaQuery.of(context).size.width,
@@ -466,11 +515,23 @@ class _ProfileState extends State<Profile> {
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
-                  elevation: 2,
+                  // elevation: 2,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
                     margin: EdgeInsets.only(left: 0, right: 0),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          themeController.themeValue.toString() == "dark"
+                              ? BoxShadow()
+                              : BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                )
+                        ],
+                        color: Theme.of(context).backgroundColor,
+                        borderRadius: BorderRadius.circular(15)),
                     height: h(50),
                     width: MediaQuery.of(context).size.width,
                     child: Center(
@@ -488,14 +549,25 @@ class _ProfileState extends State<Profile> {
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
-                  elevation: 2,
+                  // elevation: 2,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
                     margin: EdgeInsets.only(left: 0, right: 0),
                     height: h(50),
                     width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          themeController.themeValue.toString() == "dark"
+                              ? BoxShadow()
+                              : BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                )
+                        ],
+                        color: Theme.of(context).backgroundColor,
+                        borderRadius: BorderRadius.circular(15)),
                     child: Center(
                         child: Text(
                       "Refill Likes",
@@ -511,14 +583,25 @@ class _ProfileState extends State<Profile> {
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
-                  elevation: 2,
+                  // elevation: 2,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
                     margin: EdgeInsets.only(left: 0, right: 0),
                     height: h(50),
                     width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          themeController.themeValue.toString() == "dark"
+                              ? BoxShadow()
+                              : BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                )
+                        ],
+                        color: Theme.of(context).backgroundColor,
+                        borderRadius: BorderRadius.circular(r(15))),
                     child: Center(
                         child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -555,12 +638,20 @@ class _ProfileState extends State<Profile> {
                                   children: [
                                     Text("\$",
                                         style: TextStyle(
-                                            fontSize: sp(10),
+                                            fontSize: sp(12),
+                                            fontWeight: FontWeight.bold,
                                             color:
                                                 Theme.of(context).accentColor)),
-                                    Text("25/MONTH",
+                                    Text("25/",
                                         style: TextStyle(
-                                            fontSize: sp(10),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: sp(12),
+                                            color:
+                                                Theme.of(context).accentColor)),
+                                    Text("MONTH",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: sp(8),
                                             color:
                                                 Theme.of(context).accentColor)),
                                   ],
@@ -576,14 +667,25 @@ class _ProfileState extends State<Profile> {
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
-                  elevation: 2,
+                  // elevation: 2,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
                     margin: EdgeInsets.only(left: 0, right: 0),
                     height: h(50),
                     width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          themeController.themeValue.toString() == "dark"
+                              ? BoxShadow()
+                              : BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                )
+                        ],
+                        color: Theme.of(context).backgroundColor,
+                        borderRadius: BorderRadius.circular(r(15))),
                     child: Center(
                         child: Text(
                       "Refill Charms",

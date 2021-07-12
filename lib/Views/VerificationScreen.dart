@@ -125,7 +125,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   width: w(50),
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
+                      borderRadius: BorderRadius.circular(7)),
                   child: Container(
                     padding: EdgeInsets.only(left: w(19)),
                     child: TextField(
@@ -173,7 +173,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               height: h(5),
             ),
             Text(
-              "Verify Code",
+              "Verifying Code",
               style: TextStyle(
                   fontFamily: "BreezeSans",
                   fontSize: sp(14),

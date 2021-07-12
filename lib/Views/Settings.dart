@@ -89,7 +89,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(30),
+                      height: h(50),
                     ),
                     Container(
                       color: Theme.of(context).backgroundColor,
@@ -176,13 +176,11 @@ class _SettingsState extends State<Settings> {
                                     decoration: statusForTheme == true
                                         ? BoxDecoration(
                                             color: Color(0xfffa5473),
-                                            borderRadius:
-                                                BorderRadius.circular(30),
+                                            shape: BoxShape.circle,
                                           )
                                         : BoxDecoration(
                                             // color: Colors.pink[300],
-                                            borderRadius:
-                                                BorderRadius.circular(30),
+                                            shape: BoxShape.circle,
                                             border: Border.all(
                                                 color: Colors.white)),
                                     child: statusForTheme == true
@@ -211,13 +209,11 @@ class _SettingsState extends State<Settings> {
                                     decoration: statusForTheme == false
                                         ? BoxDecoration(
                                             color: Color(0xfffa5473),
-                                            borderRadius:
-                                                BorderRadius.circular(30),
+                                            shape: BoxShape.circle,
                                           )
                                         : BoxDecoration(
                                             // color: Colors.pink[300],
-                                            borderRadius:
-                                                BorderRadius.circular(30),
+                                            shape: BoxShape.circle,
                                             border: Border.all(
                                                 color: Theme.of(context)
                                                     .accentColor)),
@@ -281,7 +277,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: w(20)),
@@ -375,7 +371,7 @@ class _SettingsState extends State<Settings> {
                       ],
                     ),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     Container(
                         padding: EdgeInsets.only(left: w(20)),
@@ -455,7 +451,7 @@ class _SettingsState extends State<Settings> {
                       ],
                     ),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: w(20)),
@@ -471,16 +467,20 @@ class _SettingsState extends State<Settings> {
                     ),
                     Container(
                       color: Theme.of(context).backgroundColor,
-                      height: h(100),
+                      height: h(110),
                       width: MediaQuery.of(context).size.width,
                       child: Column(
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              SizedBox(
+                                width: w(100),
+                              ),
                               Container(
-                                  padding:
-                                      EdgeInsets.only(top: h(20), left: w(35)),
+                                  padding: EdgeInsets.only(
+                                    top: h(20),
+                                  ),
                                   child: Text(
                                     "Males",
                                     style: TextStyle(
@@ -489,7 +489,7 @@ class _SettingsState extends State<Settings> {
                                         color: Theme.of(context).accentColor),
                                   )),
                               SizedBox(
-                                width: w(100),
+                                width: w(95),
                               ),
                               Container(
                                   padding: EdgeInsets.only(
@@ -510,7 +510,7 @@ class _SettingsState extends State<Settings> {
                             // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: w(115),
+                                width: w(105),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -524,8 +524,7 @@ class _SettingsState extends State<Settings> {
                                         width: w(25),
                                         decoration: BoxDecoration(
                                           color: Color(0xfffa5473),
-                                          borderRadius:
-                                              BorderRadius.circular(30),
+                                          shape: BoxShape.circle,
                                         ),
                                         child: Icon(
                                           Icons.done,
@@ -540,8 +539,7 @@ class _SettingsState extends State<Settings> {
                                           border: Border.all(
                                               color: Theme.of(context)
                                                   .accentColor),
-                                          borderRadius:
-                                              BorderRadius.circular(30),
+                                          shape: BoxShape.circle,
                                         ),
                                       ),
                               ),
@@ -563,8 +561,7 @@ class _SettingsState extends State<Settings> {
                                           border: Border.all(
                                               color: Theme.of(context)
                                                   .accentColor),
-                                          borderRadius:
-                                              BorderRadius.circular(30),
+                                          shape: BoxShape.circle,
                                         ),
                                       )
                                     : Container(
@@ -573,8 +570,7 @@ class _SettingsState extends State<Settings> {
                                         margin: EdgeInsets.only(left: 10),
                                         decoration: BoxDecoration(
                                           color: Color(0xfffa5473),
-                                          borderRadius:
-                                              BorderRadius.circular(30),
+                                          shape: BoxShape.circle,
                                         ),
                                         child: Icon(
                                           Icons.done,
@@ -586,13 +582,13 @@ class _SettingsState extends State<Settings> {
                             ],
                           ),
                           SizedBox(
-                            height: h(10),
+                            height: h(20),
                           ),
                         ],
                       ),
                     ),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: h(20), right: h(20)),
@@ -621,44 +617,47 @@ class _SettingsState extends State<Settings> {
                         ],
                       ),
                     ),
-                    SizedBox(),
+
                     SfRangeSliderTheme(
                       data: SfRangeSliderThemeData(
                           // tooltipBackgroundColor: Colors.pink,
                           ),
-                      child: Container(
-                        padding: EdgeInsets.only(left: h(10), right: w(10)),
-                        width: MediaQuery.of(context).size.width,
-                        child: SfSlider(
-                          dividerShape: SfDividerShape(),
-                          thumbIcon: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15)),
-                          ),
-
-                          min: 0.0,
-                          max: 100.0,
-
-                          value: _value,
-                          interval: 20,
-                          showTicks: false,
-                          showLabels: false,
-                          enableTooltip: true,
-                          activeColor: Color(0xfffa5473),
-                          tooltipShape: SfPaddleTooltipShape(),
-                          // overlayShape:
-                          minorTicksPerInterval: 1,
-                          onChanged: (dynamic value) {
-                            setState(() {
-                              _value = value;
-                            });
-                          },
-                        ),
-                      ),
+                      child: Obx(() => (Container(
+                            padding: EdgeInsets.only(left: h(10), right: w(10)),
+                            width: MediaQuery.of(context).size.width,
+                            child: SfSlider(
+                              inactiveColor:
+                                  themeController.themeValue.toString() ==
+                                          "dark"
+                                      ? Colors.white30
+                                      : Colors.white,
+                              dividerShape: SfDividerShape(),
+                              thumbIcon: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
+                              min: 0.0,
+                              max: 100.0,
+                              value: _value,
+                              interval: 20,
+                              showTicks: false,
+                              showLabels: false,
+                              enableTooltip: true,
+                              activeColor: Color(0xfffa5473),
+                              tooltipShape: SfPaddleTooltipShape(),
+                              // overlayShape:
+                              minorTicksPerInterval: 1,
+                              onChanged: (dynamic value) {
+                                setState(() {
+                                  _value = value;
+                                });
+                              },
+                            ),
+                          ))),
                     ),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: h(20), right: h(20)),
@@ -678,46 +677,52 @@ class _SettingsState extends State<Settings> {
                     //   height: h(20),
                     // ),
                     SfRangeSliderTheme(
-                      data: SfRangeSliderThemeData(
-                        // thumbStrokeColor: Colors.white,
-                        // overlappingThumbStrokeColor: Colors.white,
-                        // thumbRadius: 10,
-                        thumbColor: Colors.white,
-                        tooltipBackgroundColor: Colors.pink[300],
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.only(left: h(10), right: w(10)),
-                        width: MediaQuery.of(context).size.width,
-                        child: SfRangeSlider(
-                          startThumbIcon: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15)),
-                          ),
-                          endThumbIcon: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15)),
-                          ),
-                          min: 2.0,
-                          max: 10.0,
-                          interval: 1,
-                          showTicks: false,
-                          showLabels: false,
-                          enableTooltip: true,
-                          values: _values,
-                          activeColor: Color(0xfffa5473),
-                          tooltipShape: SfPaddleTooltipShape(),
-                          onChanged: (SfRangeValues newValues) {
-                            setState(() {
-                              _values = newValues;
-                            });
-                          },
+                        data: SfRangeSliderThemeData(
+                          // thumbStrokeColor: Colors.white,
+                          // overlappingThumbStrokeColor: Colors.white,
+                          // thumbRadius: 10,
+                          thumbColor: Colors.white,
+                          tooltipBackgroundColor: Color(0xfffa5473),
                         ),
-                      ),
-                    ),
+                        child: Obx(
+                          () => Container(
+                            padding: EdgeInsets.only(left: h(10), right: w(10)),
+                            width: MediaQuery.of(context).size.width,
+                            child: SfRangeSlider(
+                              inactiveColor:
+                                  themeController.themeValue.toString() ==
+                                          "dark"
+                                      ? Colors.white30
+                                      : Colors.white,
+                              startThumbIcon: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
+                              endThumbIcon: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
+                              min: 2.0,
+                              max: 10.0,
+                              interval: 1,
+                              showTicks: false,
+                              showLabels: false,
+                              enableTooltip: true,
+                              values: _values,
+                              activeColor: Color(0xfffa5473),
+                              tooltipShape: SfPaddleTooltipShape(),
+                              onChanged: (SfRangeValues newValues) {
+                                setState(() {
+                                  _values = newValues;
+                                });
+                              },
+                            ),
+                          ),
+                        )),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     Container(
                       color: Theme.of(context).backgroundColor,
@@ -777,7 +782,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     expandeMore("Pick Settings", Icons.navigate_next),
                     SizedBox(
@@ -830,7 +835,7 @@ class _SettingsState extends State<Settings> {
                     ),
                     expandeMore("Notification", Icons.navigate_next),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: w(20)),
@@ -846,7 +851,7 @@ class _SettingsState extends State<Settings> {
                     ),
                     expandeMore("Manage your account", Icons.navigate_next),
                     SizedBox(
-                      height: h(20),
+                      height: h(30),
                     ),
                     settings("Help & Support"),
                     SizedBox(
@@ -870,7 +875,7 @@ class _SettingsState extends State<Settings> {
                     ),
                     settings("Terms Of Services"),
                     SizedBox(
-                      height: h(30),
+                      height: h(40),
                     ),
                     Container(
                       height: h(60),
@@ -965,7 +970,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(30),
+                      height: h(40),
                     ),
                     Container(
                       child: Row(
@@ -1015,7 +1020,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(30),
+                      height: h(40),
                     ),
                     Container(
                       padding: EdgeInsets.only(top: h(10), bottom: h(10)),
@@ -1030,7 +1035,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(30),
+                      height: h(40),
                     ),
                   ],
                 ),

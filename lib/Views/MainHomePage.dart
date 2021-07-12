@@ -26,6 +26,7 @@ class _MainHomePageState extends State<MainHomePage> {
   final w = ScreenUtil().setWidth;
   final h = ScreenUtil().setHeight;
   final sp = ScreenUtil().setSp;
+  final r = ScreenUtil().radius;
   final scrollController = ScrollController();
   late GoogleMapController mapController;
   final LatLng _center = const LatLng(45.521563, -122.677433);
@@ -106,7 +107,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                 image: DecorationImage(
                                     image: AssetImage("assets/images/img1.png"),
                                     fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(w(50)),
+                                borderRadius: BorderRadius.circular(r(50)),
                               ),
                             ),
                           ),
@@ -120,7 +121,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                     controller.themeValue.toString() == "dark"
                                         ? Colors.white
                                         : Color(0xfff7fafd),
-                                borderRadius: BorderRadius.circular(w(50))),
+                                borderRadius: BorderRadius.circular(r(50))),
                             height: h(95),
                             width: w(95),
                             child: Container(
@@ -132,7 +133,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       image: AssetImage(
                                           "assets/images/image2.png"),
                                       fit: BoxFit.cover),
-                                  borderRadius: BorderRadius.circular(w(50)),
+                                  borderRadius: BorderRadius.circular(r(50)),
                                   color: Colors.blue),
                             ),
                           ),
@@ -257,13 +258,15 @@ class _MainHomePageState extends State<MainHomePage> {
                   extendBodyBehindAppBar: true,
                   appBar: AppBar(
                     leading: Row(children: [
+                      SizedBox(
+                        width: w(20),
+                      ),
                       Container(
-                        margin: EdgeInsets.only(left: w(20), top: h(10)),
+                        margin: EdgeInsets.only(left: w(10), top: h(10)),
                         height: h(25),
                         width: w(25),
                         decoration: BoxDecoration(
-                            color: Color(0xfffa5473),
-                            borderRadius: BorderRadius.circular(w(20))),
+                            color: Color(0xfffa5473), shape: BoxShape.circle),
                         child: GestureDetector(
                           onTap: () {
                             Navigator.of(context)
@@ -285,7 +288,7 @@ class _MainHomePageState extends State<MainHomePage> {
                     backgroundColor: Colors.transparent,
                     actions: [
                       Container(
-                        padding: EdgeInsets.only(right: w(40), top: h(10)),
+                        padding: EdgeInsets.only(right: w(30), top: h(10)),
                         child: GestureDetector(
                           onTap: () {
                             showDialog(
@@ -372,8 +375,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         width: w(40),
                                         decoration: BoxDecoration(
                                             color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(w(30))),
+                                            shape: BoxShape.circle),
                                         child: Image.asset(
                                           "assets/images/Reverse.png",
                                           color: Colors.pink,
@@ -384,8 +386,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                           width: w(40),
                                           decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(w(30))),
+                                              shape: BoxShape.circle),
                                           child: Icon(Icons.thumb_down_outlined,
                                               size: w(20), color: Colors.pink)),
                                       Container(
@@ -393,8 +394,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         width: w(40),
                                         decoration: BoxDecoration(
                                             color: Color(0xfffa5473),
-                                            borderRadius:
-                                                BorderRadius.circular(w(30))),
+                                            shape: BoxShape.circle),
                                         child: Image.asset(
                                           "assets/images/chat.png",
                                           color: Colors.white,
@@ -405,8 +405,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         width: w(40),
                                         decoration: BoxDecoration(
                                             color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(w(30))),
+                                            shape: BoxShape.circle),
                                         child: Icon(Icons.thumb_up_outlined,
                                             size: 20, color: Colors.pink),
                                       ),
@@ -421,8 +420,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         width: w(40),
                                         decoration: BoxDecoration(
                                             color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(w(30))),
+                                            shape: BoxShape.circle),
                                         child: Image.asset(
                                             "assets/images/flag.png",
                                             color: Colors.pink),
@@ -1277,13 +1275,13 @@ class _MainHomePageState extends State<MainHomePage> {
                                     width: w(20),
                                   ),
                                   ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
+                                    borderRadius: BorderRadius.circular(r(15)),
                                     child: Container(
                                       height: h(190),
                                       // decoration: BoxDecoration(
                                       //     borderRadius:
                                       //         BorderRadius.circular(w(30))),
-                                      width: 320,
+                                      width: w(315),
                                       child: GoogleMap(
                                         onMapCreated: _onMapCreated,
                                         initialCameraPosition: CameraPosition(
@@ -1838,8 +1836,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       width: w(60),
                                       decoration: BoxDecoration(
                                           color: Color(0xfffff3f3),
-                                          borderRadius:
-                                              BorderRadius.circular(w(30))),
+                                          shape: BoxShape.circle),
                                       child: Image.asset(
                                         "assets/images/snapchat.png",
                                         color: Color(0xfffa5473),
@@ -1854,8 +1851,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                           bottom: h(15)),
                                       decoration: BoxDecoration(
                                           color: Color(0xfffff3f3),
-                                          borderRadius:
-                                              BorderRadius.circular(w(30))),
+                                          shape: BoxShape.circle),
                                       child: Image.asset(
                                         "assets/images/facebook.png",
                                         color: Color(0xfffa5473),
@@ -1870,8 +1866,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                           bottom: h(15)),
                                       decoration: BoxDecoration(
                                           color: Color(0xfffff3f3),
-                                          borderRadius:
-                                              BorderRadius.circular(w(30))),
+                                          shape: BoxShape.circle),
                                       child: Image.asset(
                                         "assets/images/tiktok.png",
                                         color: Color(0xfffa5473),
@@ -1887,8 +1882,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       width: w(60),
                                       decoration: BoxDecoration(
                                           color: Color(0xfffff3f3),
-                                          borderRadius:
-                                              BorderRadius.circular(w(30))),
+                                          shape: BoxShape.circle),
                                       child: Image.asset(
                                         "assets/images/instagram.png",
                                         color: Color(0xfffa5473),

@@ -21,7 +21,7 @@ class ThemeNotifier with ChangeNotifier {
 
   final darkTheme = ThemeData(
       scaffoldBackgroundColor: Colors.black,
-      // primarySwatch: Colors.grey,
+      primaryColor: Color(0xfffa5473),
       toggleableActiveColor: Colors.pink.withOpacity(0.1),
       splashColor: Color(0xffffffff),
       hoverColor: Colors.white24,
@@ -35,9 +35,9 @@ class ThemeNotifier with ChangeNotifier {
       fontFamily: GoogleFonts.ubuntu().fontFamily);
 
   final lightTheme = ThemeData(
+      primaryColor: Color(0xfffa5473),
       splashColor: Color(0xff7a869a),
       toggleableActiveColor: Colors.pink[50],
-      // primarySwatch: Colors.grey,
       hoverColor: Colors.white,
       focusColor: Colors.pink[100],
       scaffoldBackgroundColor: Color(0xfffbf6f7),
