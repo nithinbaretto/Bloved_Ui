@@ -432,7 +432,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                           decoration: BoxDecoration(
                                               image: DecorationImage(
                                                   image: AssetImage(
-                                                      "assets/images/img1.png"),
+                                                      "assets/images/image2.png"),
                                                   fit: BoxFit.cover),
                                               shape: BoxShape.circle,
                                               color: Colors.red),
@@ -454,7 +454,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                           decoration: BoxDecoration(
                                               image: DecorationImage(
                                                   image: AssetImage(
-                                                      "assets/images/img1.png"),
+                                                      "assets/images/image2.png"),
                                                   fit: BoxFit.cover),
                                               shape: BoxShape.circle,
                                               color: Colors.red),

@@ -294,7 +294,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color:
                                 themeController.themeValue.toString() == "dark"
                                     ? Color(0xff555557)
-                                    : Colors.black,
+                                    : Colors.black12,
                             shape: BoxShape.circle),
                       ),
                       SizedBox(
@@ -308,7 +308,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color:
                                 themeController.themeValue.toString() == "dark"
                                     ? Color(0xff555557)
-                                    : Colors.black,
+                                    : Colors.black12,
                             shape: BoxShape.circle),
                       )
                     ],
@@ -852,7 +852,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color:
                                 themeController.themeValue.toString() == "dark"
                                     ? Color(0xff555557)
-                                    : Colors.black,
+                                    : Colors.black12,
                             borderRadius: BorderRadius.circular(w(10))),
                       ),
                       SizedBox(
@@ -866,7 +866,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color:
                                 themeController.themeValue.toString() == "dark"
                                     ? Color(0xff555557)
-                                    : Colors.black,
+                                    : Colors.black12,
                             borderRadius: BorderRadius.circular(w(10))),
                       )
                     ],

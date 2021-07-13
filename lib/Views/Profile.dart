@@ -413,7 +413,7 @@ class _ProfileState extends State<Profile> {
                       ),
                       Container(
                         margin: EdgeInsets.only(left: w(20), right: w(20)),
-                        height: h(50),
+                        height: h(56),
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             boxShadow: [
@@ -443,7 +443,7 @@ class _ProfileState extends State<Profile> {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 0, right: 0),
-                  height: h(50),
+                  height: h(58),
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       boxShadow: [
@@ -498,7 +498,7 @@ class _ProfileState extends State<Profile> {
                         color: Theme.of(context).backgroundColor,
                         borderRadius: BorderRadius.circular(15)),
                     margin: EdgeInsets.only(left: 0, right: 0),
-                    height: h(50),
+                    height: h(58),
                     width: MediaQuery.of(context).size.width,
                     child: Center(
                         child: Text(
@@ -532,7 +532,7 @@ class _ProfileState extends State<Profile> {
                         ],
                         color: Theme.of(context).backgroundColor,
                         borderRadius: BorderRadius.circular(15)),
-                    height: h(50),
+                    height: h(58),
                     width: MediaQuery.of(context).size.width,
                     child: Center(
                         child: Text(
@@ -588,7 +588,7 @@ class _ProfileState extends State<Profile> {
                       borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
                     margin: EdgeInsets.only(left: 0, right: 0),
-                    height: h(50),
+                    height: h(58),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         boxShadow: [
@@ -672,7 +672,7 @@ class _ProfileState extends State<Profile> {
                       borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
                     margin: EdgeInsets.only(left: 0, right: 0),
-                    height: h(50),
+                    height: h(58),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         boxShadow: [
