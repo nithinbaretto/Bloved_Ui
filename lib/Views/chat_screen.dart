@@ -278,6 +278,7 @@ class _ChatScreenState extends State<ChatScreen> {
         preferredSize: Size(MediaQuery.of(context).size.width, h(70)),
         child: AppBar(
           elevation: 0,
+          shadowColor: Colors.black54,
           backgroundColor: Theme.of(context).backgroundColor,
 
           titleTextStyle: TextStyle(),
@@ -382,6 +383,17 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 1,
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 10,
+              ),
+            ]),
+          ),
           SizedBox(
             height: h(20),
           ),
@@ -389,6 +401,13 @@ class _ChatScreenState extends State<ChatScreen> {
             height: h(160.0),
             margin: EdgeInsets.only(left: w(20), right: w(20)),
             decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                  ),
+                ],
                 color: Theme.of(context).backgroundColor,
                 borderRadius: BorderRadius.circular(r(10))),
             width: MediaQuery.of(context).size.width,

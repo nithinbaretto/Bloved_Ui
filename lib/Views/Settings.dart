@@ -232,6 +232,10 @@ class _SettingsState extends State<Settings> {
                           ),
                           Divider(
                             thickness: 1,
+                            color:
+                                themeController.themeValue.toString() == "dark"
+                                    ? Colors.white10
+                                    : Color(0xfff7f7f7),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -510,7 +514,7 @@ class _SettingsState extends State<Settings> {
                             // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: w(105),
+                                width: w(110),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -544,7 +548,7 @@ class _SettingsState extends State<Settings> {
                                       ),
                               ),
                               SizedBox(
-                                width: w(120),
+                                width: w(118),
                               ),
                               GestureDetector(
                                 onTap: () {

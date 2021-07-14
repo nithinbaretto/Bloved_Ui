@@ -56,7 +56,7 @@ class _ProfileState extends State<Profile> {
                   bottomLeft: Radius.circular(r(20)),
                   bottomRight: Radius.circular(r(20))),
             ),
-            elevation: 2,
+            elevation: 4,
             backgroundColor: Theme.of(context).backgroundColor,
             actions: [
               GestureDetector(
@@ -481,7 +481,7 @@ class _ProfileState extends State<Profile> {
                   height: h(20),
                 ),
                 Card(
-                  // elevation: 2,
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
@@ -491,7 +491,7 @@ class _ProfileState extends State<Profile> {
                               ? BoxShadow()
                               : BoxShadow(
                                   color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 2,
+                                  spreadRadius: 3,
                                   blurRadius: 10,
                                 )
                         ],
@@ -515,7 +515,7 @@ class _ProfileState extends State<Profile> {
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
-                  // elevation: 2,
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
@@ -526,7 +526,7 @@ class _ProfileState extends State<Profile> {
                               ? BoxShadow()
                               : BoxShadow(
                                   color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 2,
+                                  spreadRadius: 3,
                                   blurRadius: 10,
                                 )
                         ],
@@ -549,12 +549,12 @@ class _ProfileState extends State<Profile> {
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
-                  // elevation: 2,
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
                     margin: EdgeInsets.only(left: 0, right: 0),
-                    height: h(50),
+                    height: h(58),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         boxShadow: [
@@ -562,7 +562,7 @@ class _ProfileState extends State<Profile> {
                               ? BoxShadow()
                               : BoxShadow(
                                   color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 2,
+                                  spreadRadius: 3,
                                   blurRadius: 10,
                                 )
                         ],
@@ -583,7 +583,7 @@ class _ProfileState extends State<Profile> {
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
-                  // elevation: 2,
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
@@ -596,7 +596,7 @@ class _ProfileState extends State<Profile> {
                               ? BoxShadow()
                               : BoxShadow(
                                   color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 2,
+                                  spreadRadius: 3,
                                   blurRadius: 10,
                                 )
                         ],
@@ -667,7 +667,7 @@ class _ProfileState extends State<Profile> {
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
-                  // elevation: 2,
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(r(15))),
                   child: Container(
@@ -680,7 +680,7 @@ class _ProfileState extends State<Profile> {
                               ? BoxShadow()
                               : BoxShadow(
                                   color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 2,
+                                  spreadRadius: 3,
                                   blurRadius: 10,
                                 )
                         ],

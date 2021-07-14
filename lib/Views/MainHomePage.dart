@@ -48,7 +48,7 @@ class _MainHomePageState extends State<MainHomePage> {
         decoration: BoxDecoration(
             color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.circular(15)),
-        height: h(450.0),
+        height: h(480.0),
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -171,12 +171,20 @@ class _MainHomePageState extends State<MainHomePage> {
             Center(
                 child: Container(
                     margin: EdgeInsets.only(left: w(50), right: w(30)),
-                    child: Text(
-                      "You can now send her a message using your phone",
-                      style: TextStyle(color: Theme.of(context).dividerColor),
+                    child: Column(
+                      children: [
+                        Text(
+                          "You can now send her a message using",
+                          style:
+                              TextStyle(color: Theme.of(context).dividerColor),
+                        ),
+                        Text("your phone",
+                            style: TextStyle(
+                                color: Theme.of(context).dividerColor))
+                      ],
                     ))),
             SizedBox(
-              height: h(20),
+              height: h(30),
             ),
             GestureDetector(
               onTap: () {
@@ -374,6 +382,14 @@ class _MainHomePageState extends State<MainHomePage> {
                                         height: h(40),
                                         width: w(40),
                                         decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.2),
+                                                spreadRadius: 2,
+                                                blurRadius: 10,
+                                              )
+                                            ],
                                             color: Colors.white,
                                             shape: BoxShape.circle),
                                         child: Image.asset(
@@ -385,13 +401,21 @@ class _MainHomePageState extends State<MainHomePage> {
                                           height: h(40),
                                           width: w(40),
                                           decoration: BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.2),
+                                                  spreadRadius: 2,
+                                                  blurRadius: 10,
+                                                )
+                                              ],
                                               color: Colors.white,
                                               shape: BoxShape.circle),
                                           child: Icon(Icons.thumb_down_outlined,
                                               size: w(20), color: Colors.pink)),
                                       Container(
-                                        height: h(40),
-                                        width: w(40),
+                                        height: h(50),
+                                        width: w(50),
                                         decoration: BoxDecoration(
                                             color: Color(0xfffa5473),
                                             shape: BoxShape.circle),
@@ -404,6 +428,14 @@ class _MainHomePageState extends State<MainHomePage> {
                                         height: h(40),
                                         width: w(40),
                                         decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.2),
+                                                spreadRadius: 2,
+                                                blurRadius: 10,
+                                              )
+                                            ],
                                             color: Colors.white,
                                             shape: BoxShape.circle),
                                         child: Icon(Icons.thumb_up_outlined,
@@ -419,6 +451,14 @@ class _MainHomePageState extends State<MainHomePage> {
                                         height: h(40),
                                         width: w(40),
                                         decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.2),
+                                                spreadRadius: 2,
+                                                blurRadius: 10,
+                                              )
+                                            ],
                                             color: Colors.white,
                                             shape: BoxShape.circle),
                                         child: Image.asset(
@@ -634,247 +674,281 @@ class _MainHomePageState extends State<MainHomePage> {
                                     SizedBox(
                                       width: w(20),
                                     ),
-                                    Container(
-                                      height: h(120),
-                                      width: w(110),
-                                      decoration: BoxDecoration(
-                                          color:
-                                              Theme.of(context).backgroundColor,
+                                    Card(
+                                      elevation: 2,
+                                      color: Theme.of(context).backgroundColor,
+                                      shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(w(10))),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                              padding:
-                                                  EdgeInsets.only(top: h(10)),
-                                              child: Image.asset(
-                                                "assets/images/weight.png",
-                                                color: controller.themeValue
-                                                            .toString() ==
-                                                        "dark"
-                                                    ? Color(0XFF4F5258)
-                                                    : Color(0XFF4F5258),
-                                              )),
-                                          Container(
-                                            child: Text(
-                                              "Weight",
-                                              style: TextStyle(
-                                                fontSize: sp(10),
-                                                color: Theme.of(context)
-                                                    .accentColor,
+                                              BorderRadius.circular(10)),
+                                      child: Container(
+                                        width: w(110),
+                                        decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .backgroundColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Container(
+                                                padding:
+                                                    EdgeInsets.only(top: h(10)),
+                                                child: Image.asset(
+                                                  "assets/images/weight.png",
+                                                  color: controller.themeValue
+                                                              .toString() ==
+                                                          "dark"
+                                                      ? Color(0XFF4F5258)
+                                                      : Color(0XFF4F5258),
+                                                )),
+                                            Container(
+                                              child: Text(
+                                                "Weight",
+                                                style: TextStyle(
+                                                  fontSize: sp(10),
+                                                  color: Theme.of(context)
+                                                      .accentColor,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                            padding:
-                                                EdgeInsets.only(bottom: h(10)),
-                                            child: Text(
-                                              "30",
-                                              style: TextStyle(
-                                                  fontSize: sp(13),
-                                                  color: Color(0xfffa5473)),
-                                            ),
-                                          )
-                                        ],
+                                            Container(
+                                              padding: EdgeInsets.only(
+                                                  bottom: h(10)),
+                                              child: Text(
+                                                "30",
+                                                style: TextStyle(
+                                                    fontSize: sp(13),
+                                                    color: Color(0xfffa5473)),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     SizedBox(
                                       width: w(10),
                                     ),
-                                    Container(
-                                      height: h(120),
-                                      width: w(110),
-                                      decoration: BoxDecoration(
-                                          color:
-                                              Theme.of(context).backgroundColor,
+                                    Card(
+                                      elevation: 2,
+                                      color: Theme.of(context).backgroundColor,
+                                      shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(w(10))),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                              padding:
-                                                  EdgeInsets.only(top: h(10)),
-                                              child: Image.asset(
-                                                "assets/images/height.png",
-                                                color: controller.themeValue
-                                                            .toString() ==
-                                                        "dark"
-                                                    ? Color(0XFF4F5258)
-                                                    : Color(0XFF4F5258),
-                                              )),
-                                          Container(
-                                            child: Text(
-                                              "Height",
-                                              style: TextStyle(
-                                                fontSize: sp(10),
-                                                color: Theme.of(context)
-                                                    .accentColor,
+                                              BorderRadius.circular(10)),
+                                      child: Container(
+                                        height: h(120),
+                                        width: w(110),
+                                        decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .backgroundColor,
+                                            borderRadius:
+                                                BorderRadius.circular(w(10))),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Container(
+                                                padding:
+                                                    EdgeInsets.only(top: h(10)),
+                                                child: Image.asset(
+                                                  "assets/images/height.png",
+                                                  color: controller.themeValue
+                                                              .toString() ==
+                                                          "dark"
+                                                      ? Color(0XFF4F5258)
+                                                      : Color(0XFF4F5258),
+                                                )),
+                                            Container(
+                                              child: Text(
+                                                "Height",
+                                                style: TextStyle(
+                                                  fontSize: sp(10),
+                                                  color: Theme.of(context)
+                                                      .accentColor,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                            padding:
-                                                EdgeInsets.only(bottom: h(10)),
-                                            child: Text(
-                                              "30",
-                                              style: TextStyle(
-                                                  fontSize: sp(13),
-                                                  color: Color(0xfffa5473)),
-                                            ),
-                                          )
-                                        ],
+                                            Container(
+                                              padding: EdgeInsets.only(
+                                                  bottom: h(10)),
+                                              child: Text(
+                                                "30",
+                                                style: TextStyle(
+                                                    fontSize: sp(13),
+                                                    color: Color(0xfffa5473)),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     SizedBox(
                                       width: w(10),
                                     ),
-                                    Container(
-                                      height: h(120),
-                                      width: w(110),
-                                      decoration: BoxDecoration(
-                                          color:
-                                              Theme.of(context).backgroundColor,
+                                    Card(
+                                      elevation: 2,
+                                      color: Theme.of(context).backgroundColor,
+                                      shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(w(10))),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                              padding:
-                                                  EdgeInsets.only(top: h(10)),
-                                              child: Icon(
-                                                Icons.visibility,
-                                                size: 30,
-                                                color: controller.themeValue
-                                                            .toString() ==
-                                                        "dark"
-                                                    ? Color(0XFF4F5258)
-                                                    : Color(0XFF4F5258),
-                                              )),
-                                          Container(
-                                            child: Text(
-                                              "Color",
-                                              style: TextStyle(
-                                                fontSize: sp(10),
-                                                color: Theme.of(context)
-                                                    .accentColor,
+                                              BorderRadius.circular(10)),
+                                      child: Container(
+                                        height: h(120),
+                                        width: w(110),
+                                        decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .backgroundColor,
+                                            borderRadius:
+                                                BorderRadius.circular(w(10))),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Container(
+                                                padding:
+                                                    EdgeInsets.only(top: h(10)),
+                                                child: Icon(
+                                                  Icons.visibility,
+                                                  size: 30,
+                                                  color: controller.themeValue
+                                                              .toString() ==
+                                                          "dark"
+                                                      ? Color(0XFF4F5258)
+                                                      : Color(0XFF4F5258),
+                                                )),
+                                            Container(
+                                              child: Text(
+                                                "Color",
+                                                style: TextStyle(
+                                                  fontSize: sp(10),
+                                                  color: Theme.of(context)
+                                                      .accentColor,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                            padding:
-                                                EdgeInsets.only(bottom: h(10)),
-                                            child: Text(
-                                              "BLACK",
-                                              style: TextStyle(
-                                                  fontSize: sp(13),
-                                                  color: Color(0xfffa5473)),
-                                            ),
-                                          )
-                                        ],
+                                            Container(
+                                              padding: EdgeInsets.only(
+                                                  bottom: h(10)),
+                                              child: Text(
+                                                "BLACK",
+                                                style: TextStyle(
+                                                    fontSize: sp(13),
+                                                    color: Color(0xfffa5473)),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     SizedBox(
                                       width: w(10),
                                     ),
-                                    Container(
-                                      height: h(120),
-                                      width: w(110),
-                                      decoration: BoxDecoration(
-                                          color:
-                                              Theme.of(context).backgroundColor,
+                                    Card(
+                                      elevation: 2,
+                                      color: Theme.of(context).backgroundColor,
+                                      shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(w(10))),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                              padding:
-                                                  EdgeInsets.only(top: h(10)),
-                                              child: Image.asset(
-                                                "assets/images/hair.png",
-                                                color: controller.themeValue
-                                                            .toString() ==
-                                                        "dark"
-                                                    ? Color(0XFF4F5258)
-                                                    : Color(0XFF4F5258),
-                                              )),
-                                          Container(
-                                            child: Text(
-                                              "Hair",
-                                              style: TextStyle(
-                                                fontSize: sp(10),
-                                                color: Theme.of(context)
-                                                    .accentColor,
+                                              BorderRadius.circular(10)),
+                                      child: Container(
+                                        height: h(120),
+                                        width: w(110),
+                                        decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .backgroundColor,
+                                            borderRadius:
+                                                BorderRadius.circular(w(10))),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Container(
+                                                padding:
+                                                    EdgeInsets.only(top: h(10)),
+                                                child: Image.asset(
+                                                  "assets/images/hair.png",
+                                                  color: controller.themeValue
+                                                              .toString() ==
+                                                          "dark"
+                                                      ? Color(0XFF4F5258)
+                                                      : Color(0XFF4F5258),
+                                                )),
+                                            Container(
+                                              child: Text(
+                                                "Hair",
+                                                style: TextStyle(
+                                                  fontSize: sp(10),
+                                                  color: Theme.of(context)
+                                                      .accentColor,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                            padding:
-                                                EdgeInsets.only(bottom: h(10)),
-                                            child: Text(
-                                              "Brown",
-                                              style: TextStyle(
-                                                  fontSize: sp(13),
-                                                  color: Color(0xfffa5473)),
-                                            ),
-                                          )
-                                        ],
+                                            Container(
+                                              padding: EdgeInsets.only(
+                                                  bottom: h(10)),
+                                              child: Text(
+                                                "Brown",
+                                                style: TextStyle(
+                                                    fontSize: sp(13),
+                                                    color: Color(0xfffa5473)),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     SizedBox(
                                       width: w(10),
                                     ),
-                                    Container(
-                                      height: h(120),
-                                      width: w(110),
-                                      decoration: BoxDecoration(
-                                          color:
-                                              Theme.of(context).backgroundColor,
+                                    Card(
+                                      elevation: 2,
+                                      color: Theme.of(context).backgroundColor,
+                                      shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(w(10))),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                              padding:
-                                                  EdgeInsets.only(top: h(10)),
-                                              child: Image.asset(
-                                                "assets/images/children.png",
-                                                color: controller.themeValue
-                                                            .toString() ==
-                                                        "dark"
-                                                    ? Color(0XFF4F5258)
-                                                    : Color(0XFF4F5258),
-                                              )),
-                                          Container(
-                                            child: Text(
-                                              "Children",
-                                              style: TextStyle(
-                                                fontSize: sp(10),
-                                                color: Theme.of(context)
-                                                    .accentColor,
+                                              BorderRadius.circular(10)),
+                                      child: Container(
+                                        height: h(120),
+                                        width: w(110),
+                                        decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .backgroundColor,
+                                            borderRadius:
+                                                BorderRadius.circular(w(10))),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Container(
+                                                padding:
+                                                    EdgeInsets.only(top: h(10)),
+                                                child: Image.asset(
+                                                  "assets/images/children.png",
+                                                  color: controller.themeValue
+                                                              .toString() ==
+                                                          "dark"
+                                                      ? Color(0XFF4F5258)
+                                                      : Color(0XFF4F5258),
+                                                )),
+                                            Container(
+                                              child: Text(
+                                                "Children",
+                                                style: TextStyle(
+                                                  fontSize: sp(10),
+                                                  color: Theme.of(context)
+                                                      .accentColor,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                            padding:
-                                                EdgeInsets.only(bottom: h(10)),
-                                            child: Text(
-                                              "No",
-                                              style: TextStyle(
-                                                  fontSize: sp(13),
-                                                  color: Color(0xfffa5473)),
-                                            ),
-                                          )
-                                        ],
+                                            Container(
+                                              padding: EdgeInsets.only(
+                                                  bottom: h(10)),
+                                              child: Text(
+                                                "No",
+                                                style: TextStyle(
+                                                    fontSize: sp(13),
+                                                    color: Color(0xfffa5473)),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     SizedBox(

@@ -451,22 +451,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 height: h(5),
               ),
-              Container(
-                height: h(100),
-                width: MediaQuery.of(context).size.width,
-                color: Theme.of(context).backgroundColor,
-                child: TextField(
-                  style: TextStyle(color: Theme.of(context).accentColor),
-                  cursorColor: Colors.pink,
-                  cursorHeight: h(22),
-                  maxLength: 500,
-                  maxLines: 8,
-                  scrollPadding: EdgeInsets.all(0),
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.only(
-                          top: h(5), left: w(5), bottom: 0, right: 0)),
-                ),
+              Stack(
+                children: [
+                  Container(
+                    height: h(100),
+                    width: MediaQuery.of(context).size.width,
+                    color: Theme.of(context).backgroundColor,
+                    child: TextField(
+                      style: TextStyle(color: Theme.of(context).accentColor),
+                      cursorColor: Colors.pink,
+                      cursorHeight: h(22),
+                      maxLength: 500,
+                      maxLines: 8,
+                      scrollPadding: EdgeInsets.all(0),
+                      decoration: InputDecoration(
+                          counterText: "",
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(
+                              top: h(5), left: w(5), bottom: 0, right: 10)),
+                    ),
+                  ),
+                  Positioned.fill(
+                      child: Container(
+                          padding: EdgeInsets.only(right: w(10), bottom: h(10)),
+                          alignment: Alignment.bottomRight,
+                          child: Obx(
+                            () => Text(
+                              "500",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color:
+                                      themeController.themeValue.toString() ==
+                                              "dark"
+                                          ? Color(0xff555557)
+                                          : Color(0xffa5a5a5)),
+                            ),
+                          )))
+                ],
               ),
               SizedBox(
                 height: h(20),
@@ -744,9 +765,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: h(10),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      // mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(
+                          width: w(115),
+                        ),
                         GestureDetector(
                           onTap: () {
                             setState(() {
@@ -778,7 +802,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                         ),
                         SizedBox(
-                          width: w(120),
+                          width: w(124),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -799,7 +823,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               : Container(
                                   height: h(25),
                                   width: w(25),
-                                  margin: EdgeInsets.only(left: 10),
+                                  // margin: EdgeInsets.only(left: 10),
                                   decoration: BoxDecoration(
                                     color: Color(0xfffa5473),
                                     shape: BoxShape.circle,
