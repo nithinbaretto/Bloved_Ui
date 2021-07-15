@@ -727,7 +727,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: w(10),
+                                      width: w(0),
                                     ),
                                     Card(
                                       elevation: 2,
@@ -783,7 +783,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: w(10),
+                                      width: w(0),
                                     ),
                                     Card(
                                       elevation: 2,
@@ -840,7 +840,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: w(10),
+                                      width: w(0),
                                     ),
                                     Card(
                                       elevation: 2,
@@ -896,7 +896,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: w(10),
+                                      width: w(0),
                                     ),
                                     Card(
                                       elevation: 2,
@@ -1864,7 +1864,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           ),
                         ),
                         SizedBox(
-                          height: h(5),
+                          height: h(10),
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -1992,7 +1992,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           )),
                         ),
                         SizedBox(
-                          height: h(20),
+                          height: h(30),
                         ),
                         Container(
                           padding: EdgeInsets.only(
@@ -2009,7 +2009,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           ),
                         ),
                         SizedBox(
-                          height: h(30),
+                          height: h(20),
                         ),
                       ],
                     ),

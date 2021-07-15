@@ -23,13 +23,13 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(h(90.0)),
+          preferredSize: Size.fromHeight(90.0),
           child: AppBar(
             leading: Row(children: [
               Container(
-                  margin: EdgeInsets.only(left: w(30), top: h(30)),
-                  height: h(25),
-                  width: w(25),
+                  margin: EdgeInsets.only(left: 30, top: 30),
+                  height: 25,
+                  width: 25,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Color(0xffff61a1),
@@ -48,7 +48,7 @@ class _ProfileState extends State<Profile> {
             ]),
             centerTitle: true,
             title: Container(
-              padding: EdgeInsets.only(top: h(25)),
+              padding: EdgeInsets.only(top: 25),
               child: Image.asset("assets/images/logo.png"),
             ),
             shape: RoundedRectangleBorder(
@@ -67,7 +67,7 @@ class _ProfileState extends State<Profile> {
                   }));
                 },
                 child: Container(
-                  padding: EdgeInsets.only(right: w(30), top: h(30)),
+                  padding: EdgeInsets.only(right: 30, top: 30),
                   child: Icon(
                     Icons.forum,
                     color: Colors.grey[400],
@@ -80,7 +80,7 @@ class _ProfileState extends State<Profile> {
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.only(
-                right: w(20), left: w(20), top: h(20), bottom: h(20)),
+                right: w(10), left: w(10), top: h(20), bottom: h(20)),
             child: Column(
               children: [
                 Card(
@@ -93,11 +93,14 @@ class _ProfileState extends State<Profile> {
                         height: h(10),
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: w(45),
+                            width: w(53),
                           ),
                           Obx(() => Container(
+                                margin: EdgeInsets.only(top: h(30)),
                                 child: Column(
                                   children: [
                                     GestureDetector(
@@ -109,30 +112,35 @@ class _ProfileState extends State<Profile> {
                                         }));
                                       },
                                       child: Container(
-                                        height: h(47),
-                                        width: w(47),
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: themeController.themeValue
-                                                        .toString() ==
-                                                    "dark"
-                                                ? Color(0xff373638)
-                                                : Colors.white,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                  blurRadius: 2,
-                                                  offset: Offset(0, 1),
-                                                  color: Colors.black
-                                                      .withOpacity(0.2))
-                                            ]),
-                                        child: Icon(
-                                          Icons.settings,
-                                          color: Colors.grey[500],
-                                        ),
-                                      ),
+                                          height: h(47),
+                                          width: w(47),
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: themeController.themeValue
+                                                          .toString() ==
+                                                      "dark"
+                                                  ? Color(0xff373638)
+                                                  : Colors.white,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    blurRadius: 2,
+                                                    offset: Offset(0, 1),
+                                                    color: Colors.black
+                                                        .withOpacity(0.2))
+                                              ]),
+                                          child: Obx(
+                                            () => Icon(
+                                              Icons.settings,
+                                              color: themeController.themeValue
+                                                          .toString() ==
+                                                      "dark"
+                                                  ? Colors.black
+                                                  : Colors.grey[500],
+                                            ),
+                                          )),
                                     ),
                                     SizedBox(
-                                      height: h(5),
+                                      height: h(7),
                                     ),
                                     Container(
                                       child: Text(
@@ -182,11 +190,11 @@ class _ProfileState extends State<Profile> {
                                 ),
                               ),
                               Positioned(
-                                top: h(75),
-                                left: w(100),
+                                top: h(80),
+                                left: w(90),
                                 child: Container(
-                                    height: h(30),
-                                    width: w(30),
+                                    height: h(39),
+                                    width: w(39),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         shape: BoxShape.circle),
@@ -210,7 +218,7 @@ class _ProfileState extends State<Profile> {
                             width: w(15),
                           ),
                           Obx(() => Container(
-                                // padding: EdgeInsets.only(right: w(0)),
+                                margin: EdgeInsets.only(top: h(25)),
                                 child: Column(
                                   children: [
                                     Container(
@@ -239,20 +247,26 @@ class _ProfileState extends State<Profile> {
                                           }));
                                         },
                                         child: Container(
-                                          padding: EdgeInsets.only(
-                                              left: w(10),
-                                              right: w(10),
-                                              top: h(10),
-                                              bottom: h(10)),
-                                          child: Icon(
-                                            Icons.edit,
-                                            color: Colors.grey[500],
-                                          ),
-                                        ),
+                                            padding: EdgeInsets.only(
+                                                left: w(10),
+                                                right: w(10),
+                                                top: h(10),
+                                                bottom: h(10)),
+                                            child: Obx(
+                                              () => Icon(
+                                                Icons.edit,
+                                                color: themeController
+                                                            .themeValue
+                                                            .toString() ==
+                                                        "dark"
+                                                    ? Colors.black
+                                                    : Colors.grey[500],
+                                              ),
+                                            )),
                                       ),
                                     ),
                                     SizedBox(
-                                      height: h(5),
+                                      height: h(7),
                                     ),
                                     Container(
                                       child: Text(
@@ -279,8 +293,8 @@ class _ProfileState extends State<Profile> {
                               margin: EdgeInsets.only(
                                 left: w(20),
                               ),
-                              height: h(100),
-                              width: w(90),
+                              height: h(102),
+                              width: w(91),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(r(10)),
                                   color:
@@ -298,14 +312,16 @@ class _ProfileState extends State<Profile> {
                                     color: Color(0xfffa5473),
                                   )),
                                   SizedBox(
-                                    height: h(5),
+                                    height: h(7),
                                   ),
-                                  Text(
-                                    "Visibility",
-                                    style: TextStyle(
-                                        fontSize: sp(12),
-                                        color: Theme.of(context).accentColor),
-                                  ),
+                                  Obx(() => (Text("Visibility",
+                                      style: TextStyle(
+                                          fontSize: sp(12),
+                                          color: themeController.themeValue
+                                                      .toString() ==
+                                                  "dark"
+                                              ? Color(0xff707070)
+                                              : Colors.white)))),
                                   SizedBox(
                                     height: h(10),
                                   ),
@@ -341,14 +357,18 @@ class _ProfileState extends State<Profile> {
                                   )),
                                   SizedBox(
                                     height: h(
-                                      5,
+                                      7,
                                     ),
                                   ),
-                                  Text(
-                                    "Activity",
-                                    style: TextStyle(
-                                        fontSize: sp(12),
-                                        color: Theme.of(context).accentColor),
+                                  Obx(
+                                    () => (Text("Activity",
+                                        style: TextStyle(
+                                            fontSize: sp(12),
+                                            color: themeController.themeValue
+                                                        .toString() ==
+                                                    "dark"
+                                                ? Color(0xff707070)
+                                                : Colors.white))),
                                   ),
                                   SizedBox(
                                     height: h(10),
@@ -385,13 +405,19 @@ class _ProfileState extends State<Profile> {
                                     )),
                                     SizedBox(
                                         height: h(
-                                      5,
+                                      7,
                                     )),
-                                    Text(
-                                      "Popularity",
-                                      style: TextStyle(
-                                          fontSize: sp(12),
-                                          color: Theme.of(context).accentColor),
+                                    Obx(
+                                      () => Text(
+                                        "Popularity",
+                                        style: TextStyle(
+                                            fontSize: sp(12),
+                                            color: themeController.themeValue
+                                                        .toString() ==
+                                                    "dark"
+                                                ? Color(0xff707070)
+                                                : Colors.white),
+                                      ),
                                     ),
                                     SizedBox(
                                       height: h(10),
@@ -409,7 +435,7 @@ class _ProfileState extends State<Profile> {
                         ],
                       ),
                       SizedBox(
-                        height: h(20),
+                        height: h(25),
                       ),
                       Container(
                         margin: EdgeInsets.only(left: w(20), right: w(20)),
@@ -442,7 +468,7 @@ class _ProfileState extends State<Profile> {
                   height: h(20),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 0, right: 0),
+                  margin: EdgeInsets.only(left: 5, right: 5),
                   height: h(58),
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
@@ -478,7 +504,7 @@ class _ProfileState extends State<Profile> {
                   )),
                 ),
                 SizedBox(
-                  height: h(20),
+                  height: h(13),
                 ),
                 Card(
                   elevation: 0,
@@ -511,7 +537,7 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 SizedBox(
-                  height: h(20),
+                  height: h(10),
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
@@ -545,7 +571,7 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 SizedBox(
-                  height: h(20),
+                  height: h(10),
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
@@ -579,7 +605,7 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 SizedBox(
-                  height: h(20),
+                  height: h(10),
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
@@ -663,7 +689,7 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 SizedBox(
-                  height: h(20),
+                  height: h(10),
                 ),
                 Card(
                   color: Theme.of(context).backgroundColor,
@@ -696,6 +722,9 @@ class _ProfileState extends State<Profile> {
                     )),
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                )
               ],
             ),
           ),

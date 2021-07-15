@@ -120,11 +120,11 @@ class _ChatScreenState extends State<ChatScreen> {
                       style: TextStyle(
                           fontSize: sp(10),
                           color: themeController.themeValue.toString() == "dark"
-                              ? Color(0xff7a869a)
+                              ? Color(0xff555557)
                               : Color(0xff7a869a))),
                 )),
           ),
-          SizedBox(height: h(0)),
+          SizedBox(height: h(10)),
           Stack(
             children: <Widget>[
               Card(
@@ -580,14 +580,20 @@ class _ChatScreenState extends State<ChatScreen> {
                       SizedBox(
                         height: h(15),
                       ),
-                      Center(
-                        child: Container(
-                          child: Text(
-                            "You Have matched say Hi",
-                            style:
-                                TextStyle(color: Theme.of(context).splashColor),
+                      Obx(
+                        () => (Center(
+                          child: Container(
+                            child: Text(
+                              "You Have matched say Hi",
+                              style: TextStyle(
+                                  color:
+                                      themeController.themeValue.toString() ==
+                                              "dark"
+                                          ? Color(0xff555557)
+                                          : Colors.black),
+                            ),
                           ),
-                        ),
+                        )),
                       )
                     ],
                   ),

@@ -23,6 +23,7 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
     "assets/images/image3.png",
     "assets/images/image4.png"
   ];
+  var status = ["Online", "offline", "offline", "offline"];
   String selected = "Messages";
   var themeController = Get.put(ThemeValue());
   @override
@@ -343,7 +344,7 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
             ],
           ),
           SizedBox(
-            height: h(20),
+            height: h(30),
           ),
           selected == "Activities"
               ? Flexible(
@@ -366,16 +367,72 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    height: h(40),
-                                    width: w(40),
-                                    decoration: BoxDecoration(
-                                        color: Colors.blue,
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                            image: AssetImage(images[index]),
-                                            fit: BoxFit.cover)),
-                                  ),
+                                  Obx(() => (Stack(
+                                        children: [
+                                          Container(
+                                            height: h(42),
+                                            width: w(42),
+                                            decoration: BoxDecoration(
+                                                color: themeController
+                                                            .themeValue
+                                                            .toString() ==
+                                                        "dark"
+                                                    ? Colors.blue
+                                                    : Colors.blue,
+                                                shape: BoxShape.circle,
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        images[index]),
+                                                    fit: BoxFit.cover)),
+                                          ),
+                                          status[index] == "Online" &&
+                                                  themeController.themeValue
+                                                          .toString() ==
+                                                      "dark"
+                                              ? Positioned(
+                                                  top: h(32),
+                                                  left: w(30),
+                                                  child: Container(
+                                                    alignment:
+                                                        Alignment.bottomRight,
+                                                    height: 10,
+                                                    width: 10,
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color:
+                                                                Colors.white),
+                                                        shape: BoxShape.circle,
+                                                        color:
+                                                            Color(0xff61d465)),
+                                                  ),
+                                                )
+                                              : Container(),
+                                          status[index] == "Online" &&
+                                                  themeController.themeValue
+                                                          .toString() ==
+                                                      "dark"
+                                              ? Positioned(
+                                                  top: 18,
+                                                  child: Container(
+                                                    height: h(14),
+                                                    width: w(14),
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color:
+                                                                Colors.white),
+                                                        color:
+                                                            Color(0xfffa5473),
+                                                        shape: BoxShape.circle),
+                                                    child: Icon(
+                                                      Icons.visibility,
+                                                      size: 10,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                )
+                                              : Container()
+                                        ],
+                                      ))),
                                   SizedBox(
                                     width: w(5),
                                   ),
@@ -480,501 +537,568 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
                       }))
               : Column(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).backgroundColor,
+                    Card(
+                      shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
+                      color: Theme.of(context).backgroundColor,
                       margin: EdgeInsets.only(left: w(20), right: w(20)),
-                      padding: EdgeInsets.only(
-                          top: h(20), left: w(10), bottom: h(20)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: h(40),
-                            width: w(40),
-                            decoration: BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        messageController.messageList[0].photo),
-                                    fit: BoxFit.cover)),
-                          ),
-                          SizedBox(
-                            width: w(5),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(5)),
-                            height: h(15),
-                            width: w(15),
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: selected == "Messages"
-                                        ? AssetImage(
-                                            "assets/images/verified2.png",
-                                          )
-                                        : AssetImage(
-                                            "assets/images/verifiedMark.png"))),
-                          ),
-                          SizedBox(
-                            width: w(5),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).backgroundColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        // margin: EdgeInsets.only(left: w(20), right: w(20)),
+                        padding: EdgeInsets.only(
+                            top: h(20), left: w(10), bottom: h(20)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: h(40),
+                              width: w(40),
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage(messageController
+                                          .messageList[0].photo),
+                                      fit: BoxFit.cover)),
+                            ),
+                            SizedBox(
+                              width: w(5),
+                            ),
+                            Obx(
+                              () => Container(
                                 margin: EdgeInsets.only(top: h(5)),
-                                child: Text(
-                                    messageController.messageList[0].name,
-                                    style: TextStyle(
-                                        color: Theme.of(context).accentColor)),
+                                height: h(15),
+                                width: w(15),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: selected == "Messages" &&
+                                                themeController.themeValue
+                                                        .toString() ==
+                                                    "dark"
+                                            ? AssetImage(
+                                                "assets/images/verified2.png",
+                                              )
+                                            : AssetImage(
+                                                "assets/images/verifiedMark.png"))),
                               ),
-                              SizedBox(
-                                height: h(5),
-                              ),
-                              Obx(() => Container(
-                                    child: Text(
-                                      "How are you?",
+                            ),
+                            SizedBox(
+                              width: w(5),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: h(5)),
+                                  child: Text(
+                                      messageController.messageList[0].name,
                                       style: TextStyle(
-                                          fontSize: sp(12),
-                                          color: themeController.themeValue
-                                                      .toString() ==
-                                                  "dark"
-                                              ? Color(0xff555557)
-                                              : Color(0xff141e30)),
-                                    ),
-                                  ))
-                            ],
-                          ),
-                          SizedBox(
-                            width: w(10),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(10)),
-                            height: h(4),
-                            width: w(4),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).accentColor,
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                          SizedBox(
-                            width: w(10),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(top: h(5)),
-                              child: Text("28",
-                                  style: TextStyle(
+                                          color:
+                                              Theme.of(context).accentColor)),
+                                ),
+                                SizedBox(
+                                  height: h(5),
+                                ),
+                                Obx(() => Container(
+                                      child: Text(
+                                        "How are you?",
+                                        style: TextStyle(
+                                            fontSize: sp(12),
+                                            color: themeController.themeValue
+                                                        .toString() ==
+                                                    "dark"
+                                                ? Color(0xff555557)
+                                                : Color(0xff141e30)),
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            SizedBox(
+                              width: w(10),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(10)),
+                              height: h(4),
+                              width: w(4),
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context).accentColor,
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                            SizedBox(
+                              width: w(10),
+                            ),
+                            Container(
+                                margin: EdgeInsets.only(top: h(5)),
+                                child: Text("28",
+                                    style: TextStyle(
+                                      color: themeController.themeValue
+                                                  .toString() ==
+                                              "dark"
+                                          ? Color(0xff88888a)
+                                          : Color(0xff141e30),
+                                    ))),
+                            SizedBox(
+                              width: w(30),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(10)),
+                              child: Text(
+                                messageController.messageList[0].time + " AM",
+                                style: TextStyle(
+                                    fontSize: sp(14),
                                     color:
                                         themeController.themeValue.toString() ==
                                                 "dark"
-                                            ? Color(0xff88888a)
-                                            : Color(0xff141e30),
-                                  ))),
-                          SizedBox(
-                            width: w(30),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(10)),
-                            child: Text(
-                              messageController.messageList[0].time + " AM",
-                              style: TextStyle(
-                                  fontSize: sp(14),
+                                            ? Color(0xff555557)
+                                            : Color(0xff757b83)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: w(20),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(15)),
+                              child: Image.asset("assets/images/done.png",
                                   color:
                                       themeController.themeValue.toString() ==
                                               "dark"
                                           ? Color(0xff555557)
-                                          : Color(0xff757b83)),
+                                          : Color(0xff3c3e41)),
                             ),
-                          ),
-                          SizedBox(
-                            width: w(20),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(15)),
-                            child: Image.asset("assets/images/done.png",
-                                color: themeController.themeValue.toString() ==
-                                        "dark"
-                                    ? Color(0xff555557)
-                                    : Color(0xff3c3e41)),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).backgroundColor,
+                    Card(
+                      shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
+                      color: Theme.of(context).backgroundColor,
                       margin: EdgeInsets.only(left: w(20), right: w(20)),
-                      padding: EdgeInsets.only(
-                          top: h(20), left: w(10), bottom: h(20)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: h(40),
-                            width: w(40),
-                            decoration: BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        messageController.messageList[0].photo),
-                                    fit: BoxFit.cover)),
-                          ),
-                          SizedBox(
-                            width: w(5),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(5)),
-                            height: h(15),
-                            width: w(15),
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: selected == "Messages"
-                                        ? AssetImage(
-                                            "assets/images/verified2.png",
-                                          )
-                                        : AssetImage(
-                                            "assets/images/verifiedMark.png"))),
-                          ),
-                          SizedBox(
-                            width: w(5),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(top: h(5)),
-                                child: Text(
-                                    messageController.messageList[0].name,
-                                    style: TextStyle(
-                                        color: Theme.of(context).accentColor)),
-                              ),
-                              SizedBox(
-                                height: h(5),
-                              ),
-                              Obx(() => Container(
-                                    child: Text(
-                                      "How are you?",
-                                      style: TextStyle(
-                                          fontSize: sp(12),
-                                          color: themeController.themeValue
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).backgroundColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        // margin: EdgeInsets.only(left: w(20), right: w(20)),
+                        padding: EdgeInsets.only(
+                            top: h(20), left: w(10), bottom: h(20)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: h(40),
+                              width: w(40),
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage(messageController
+                                          .messageList[0].photo),
+                                      fit: BoxFit.cover)),
+                            ),
+                            SizedBox(
+                              width: w(5),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(5)),
+                              height: h(15),
+                              width: w(15),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: selected == "Messages" &&
+                                              themeController.themeValue
                                                       .toString() ==
                                                   "dark"
-                                              ? Color(0xff555557)
-                                              : Color(0xff141e30)),
-                                    ),
-                                  ))
-                            ],
-                          ),
-                          SizedBox(
-                            width: w(10),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(10)),
-                            height: h(4),
-                            width: w(4),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).accentColor,
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                          SizedBox(
-                            width: w(10),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(top: h(5)),
-                              child: Text("28",
-                                  style: TextStyle(
+                                          ? AssetImage(
+                                              "assets/images/verified2.png",
+                                            )
+                                          : AssetImage(
+                                              "assets/images/verifiedMark.png"))),
+                            ),
+                            SizedBox(
+                              width: w(5),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: h(5)),
+                                  child: Text(
+                                      messageController.messageList[0].name,
+                                      style: TextStyle(
+                                          color:
+                                              Theme.of(context).accentColor)),
+                                ),
+                                SizedBox(
+                                  height: h(5),
+                                ),
+                                Obx(() => Container(
+                                      child: Text(
+                                        "How are you?",
+                                        style: TextStyle(
+                                            fontSize: sp(12),
+                                            color: themeController.themeValue
+                                                        .toString() ==
+                                                    "dark"
+                                                ? Color(0xff555557)
+                                                : Color(0xff141e30)),
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            SizedBox(
+                              width: w(10),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(10)),
+                              height: h(4),
+                              width: w(4),
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context).accentColor,
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                            SizedBox(
+                              width: w(10),
+                            ),
+                            Container(
+                                margin: EdgeInsets.only(top: h(5)),
+                                child: Text("28",
+                                    style: TextStyle(
+                                      color: themeController.themeValue
+                                                  .toString() ==
+                                              "dark"
+                                          ? Color(0xff88888a)
+                                          : Color(0xff141e30),
+                                    ))),
+                            SizedBox(
+                              width: w(30),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(10)),
+                              child: Text(
+                                messageController.messageList[0].time + " AM",
+                                style: TextStyle(
+                                    fontSize: sp(14),
                                     color:
                                         themeController.themeValue.toString() ==
                                                 "dark"
-                                            ? Color(0xff88888a)
-                                            : Color(0xff141e30),
-                                  ))),
-                          SizedBox(
-                            width: w(30),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(10)),
-                            child: Text(
-                              messageController.messageList[0].time + " AM",
-                              style: TextStyle(
-                                  fontSize: sp(14),
+                                            ? Color(0xff555557)
+                                            : Color(0xff757b83)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: w(20),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(15)),
+                              child: Image.asset("assets/images/done.png",
                                   color:
                                       themeController.themeValue.toString() ==
                                               "dark"
                                           ? Color(0xff555557)
-                                          : Color(0xff757b83)),
+                                          : Color(0xff3c3e41)),
                             ),
-                          ),
-                          SizedBox(
-                            width: w(20),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(15)),
-                            child: Image.asset("assets/images/done.png",
-                                color: themeController.themeValue.toString() ==
-                                        "dark"
-                                    ? Color(0xff555557)
-                                    : Color(0xff3c3e41)),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).backgroundColor,
+                    Card(
+                      shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
+                      color: Theme.of(context).backgroundColor,
                       margin: EdgeInsets.only(left: w(20), right: w(20)),
-                      padding: EdgeInsets.only(
-                          top: h(20), left: w(10), bottom: h(20)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: h(40),
-                            width: w(40),
-                            decoration: BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        messageController.messageList[0].photo),
-                                    fit: BoxFit.cover)),
-                          ),
-                          SizedBox(
-                            width: w(5),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(5)),
-                            height: h(15),
-                            width: w(15),
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: selected == "Messages"
-                                        ? AssetImage(
-                                            "assets/images/verified2.png",
-                                          )
-                                        : AssetImage(
-                                            "assets/images/verifiedMark.png"))),
-                          ),
-                          SizedBox(
-                            width: w(5),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(top: h(5)),
-                                child: Text(
-                                    messageController.messageList[0].name,
-                                    style: TextStyle(
-                                        color: Theme.of(context).accentColor)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                spreadRadius: 1,
+                                blurRadius: 1,
                               ),
-                              SizedBox(
-                                height: h(5),
-                              ),
-                              Obx(() => Container(
-                                    child: Text(
-                                      "How are you?",
-                                      style: TextStyle(
-                                          fontSize: sp(12),
-                                          color: themeController.themeValue
+                            ],
+                            color: Theme.of(context).backgroundColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        // margin: EdgeInsets.only(left: w(20), right: w(20)),
+                        padding: EdgeInsets.only(
+                            top: h(20), left: w(10), bottom: h(20)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: h(40),
+                              width: w(40),
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage(messageController
+                                          .messageList[0].photo),
+                                      fit: BoxFit.cover)),
+                            ),
+                            SizedBox(
+                              width: w(5),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(5)),
+                              height: h(15),
+                              width: w(15),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: selected == "Messages" &&
+                                              themeController.themeValue
                                                       .toString() ==
                                                   "dark"
-                                              ? Color(0xff555557)
-                                              : Color(0xff141e30)),
-                                    ),
-                                  ))
-                            ],
-                          ),
-                          SizedBox(
-                            width: w(10),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(10)),
-                            height: h(4),
-                            width: w(4),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).accentColor,
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                          SizedBox(
-                            width: w(10),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(top: h(5)),
-                              child: Text("28",
-                                  style: TextStyle(
+                                          ? AssetImage(
+                                              "assets/images/verified2.png",
+                                            )
+                                          : AssetImage(
+                                              "assets/images/verifiedMark.png"))),
+                            ),
+                            SizedBox(
+                              width: w(5),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: h(5)),
+                                  child: Text(
+                                      messageController.messageList[0].name,
+                                      style: TextStyle(
+                                          color:
+                                              Theme.of(context).accentColor)),
+                                ),
+                                SizedBox(
+                                  height: h(5),
+                                ),
+                                Obx(() => Container(
+                                      child: Text(
+                                        "How are you?",
+                                        style: TextStyle(
+                                            fontSize: sp(12),
+                                            color: themeController.themeValue
+                                                        .toString() ==
+                                                    "dark"
+                                                ? Color(0xff555557)
+                                                : Color(0xff141e30)),
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            SizedBox(
+                              width: w(10),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(10)),
+                              height: h(4),
+                              width: w(4),
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context).accentColor,
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                            SizedBox(
+                              width: w(10),
+                            ),
+                            Container(
+                                margin: EdgeInsets.only(top: h(5)),
+                                child: Text("28",
+                                    style: TextStyle(
+                                      color: themeController.themeValue
+                                                  .toString() ==
+                                              "dark"
+                                          ? Color(0xff88888a)
+                                          : Color(0xff141e30),
+                                    ))),
+                            SizedBox(
+                              width: w(30),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(10)),
+                              child: Text(
+                                messageController.messageList[0].time + " AM",
+                                style: TextStyle(
+                                    fontSize: sp(14),
                                     color:
                                         themeController.themeValue.toString() ==
                                                 "dark"
-                                            ? Color(0xff88888a)
-                                            : Color(0xff141e30),
-                                  ))),
-                          SizedBox(
-                            width: w(30),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(10)),
-                            child: Text(
-                              messageController.messageList[0].time + " AM",
-                              style: TextStyle(
-                                  fontSize: sp(14),
+                                            ? Color(0xff555557)
+                                            : Color(0xff757b83)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: w(20),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(15)),
+                              child: Image.asset("assets/images/done.png",
                                   color:
                                       themeController.themeValue.toString() ==
                                               "dark"
                                           ? Color(0xff555557)
-                                          : Color(0xff757b83)),
+                                          : Color(0xff3c3e41)),
                             ),
-                          ),
-                          SizedBox(
-                            width: w(20),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(15)),
-                            child: Image.asset("assets/images/done.png",
-                                color: themeController.themeValue.toString() ==
-                                        "dark"
-                                    ? Color(0xff555557)
-                                    : Color(0xff3c3e41)),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).backgroundColor,
+                    Card(
+                      shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
+                      color: Theme.of(context).backgroundColor,
                       margin: EdgeInsets.only(left: w(20), right: w(20)),
-                      padding: EdgeInsets.only(
-                          top: h(20), left: w(10), bottom: h(20)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: h(40),
-                            width: w(40),
-                            decoration: BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        messageController.messageList[0].photo),
-                                    fit: BoxFit.cover)),
-                          ),
-                          SizedBox(
-                            width: w(5),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(5)),
-                            height: h(15),
-                            width: w(15),
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: selected == "Messages"
-                                        ? AssetImage(
-                                            "assets/images/verified2.png",
-                                          )
-                                        : AssetImage(
-                                            "assets/images/verifiedMark.png"))),
-                          ),
-                          SizedBox(
-                            width: w(5),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(top: h(5)),
-                                child: Text(
-                                    messageController.messageList[0].name,
-                                    style: TextStyle(
-                                        color: Theme.of(context).accentColor)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                spreadRadius: 1,
+                                blurRadius: 1,
                               ),
-                              SizedBox(
-                                height: h(5),
-                              ),
-                              Obx(() => Container(
-                                    child: Text(
-                                      "How are you?",
-                                      style: TextStyle(
-                                          fontSize: sp(12),
-                                          color: themeController.themeValue
+                            ],
+                            color: Theme.of(context).backgroundColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        // margin: EdgeInsets.only(left: w(20), right: w(20)),
+                        padding: EdgeInsets.only(
+                            top: h(20), left: w(10), bottom: h(20)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: h(40),
+                              width: w(40),
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage(messageController
+                                          .messageList[0].photo),
+                                      fit: BoxFit.cover)),
+                            ),
+                            SizedBox(
+                              width: w(5),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(5)),
+                              height: h(15),
+                              width: w(15),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: selected == "Messages" &&
+                                              themeController.themeValue
                                                       .toString() ==
                                                   "dark"
-                                              ? Color(0xff555557)
-                                              : Color(0xff141e30)),
+                                          ? AssetImage(
+                                              "assets/images/verified2.png",
+                                            )
+                                          : AssetImage(
+                                              "assets/images/verifiedMark.png"))),
+                            ),
+                            SizedBox(
+                              width: w(5),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: h(5)),
+                                  child: Text(
+                                      messageController.messageList[0].name,
+                                      style: TextStyle(
+                                          color:
+                                              Theme.of(context).accentColor)),
+                                ),
+                                SizedBox(
+                                  height: h(5),
+                                ),
+                                Obx(() => Container(
+                                      child: Text(
+                                        "How are you?",
+                                        style: TextStyle(
+                                            fontSize: sp(12),
+                                            color: themeController.themeValue
+                                                        .toString() ==
+                                                    "dark"
+                                                ? Color(0xff555557)
+                                                : Color(0xff141e30)),
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            SizedBox(
+                              width: w(10),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(10)),
+                              height: h(4),
+                              width: w(4),
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      spreadRadius: 1,
+                                      blurRadius: 1,
                                     ),
-                                  ))
-                            ],
-                          ),
-                          SizedBox(
-                            width: w(10),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(10)),
-                            height: h(4),
-                            width: w(4),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).accentColor,
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                          SizedBox(
-                            width: w(10),
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(top: h(5)),
-                              child: Text("28",
-                                  style: TextStyle(
+                                  ],
+                                  color: Theme.of(context).accentColor,
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                            SizedBox(
+                              width: w(10),
+                            ),
+                            Container(
+                                margin: EdgeInsets.only(top: h(5)),
+                                child: Text("28",
+                                    style: TextStyle(
+                                      color: themeController.themeValue
+                                                  .toString() ==
+                                              "dark"
+                                          ? Color(0xff88888a)
+                                          : Color(0xff141e30),
+                                    ))),
+                            SizedBox(
+                              width: w(30),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(10)),
+                              child: Text(
+                                messageController.messageList[0].time + " AM",
+                                style: TextStyle(
+                                    fontSize: sp(14),
                                     color:
                                         themeController.themeValue.toString() ==
                                                 "dark"
-                                            ? Color(0xff88888a)
-                                            : Color(0xff141e30),
-                                  ))),
-                          SizedBox(
-                            width: w(30),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(10)),
-                            child: Text(
-                              messageController.messageList[0].time + " AM",
-                              style: TextStyle(
-                                  fontSize: sp(14),
+                                            ? Color(0xff555557)
+                                            : Color(0xff757b83)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: w(20),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: h(15)),
+                              child: Image.asset("assets/images/done.png",
                                   color:
                                       themeController.themeValue.toString() ==
                                               "dark"
                                           ? Color(0xff555557)
-                                          : Color(0xff757b83)),
+                                          : Color(0xff3c3e41)),
                             ),
-                          ),
-                          SizedBox(
-                            width: w(20),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: h(15)),
-                            child: Image.asset("assets/images/done.png",
-                                color: themeController.themeValue.toString() ==
-                                        "dark"
-                                    ? Color(0xff555557)
-                                    : Color(0xff3c3e41)),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],

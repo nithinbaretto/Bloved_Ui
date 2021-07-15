@@ -1,7 +1,6 @@
 import 'package:bloved/Controllers/darklightTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -83,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -148,17 +147,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               SizedBox(
-                height: h(20),
+                height: h(5),
               ),
               Container(
-                padding: EdgeInsets.all(w(10)),
+                padding: EdgeInsets.only(
+                    top: h(20), left: 0, right: 0, bottom: h(20)),
                 color: Theme.of(context).backgroundColor,
                 child: Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: w(15)),
-                      height: h(100),
-                      width: w(110),
+                      margin: EdgeInsets.only(left: w(5)),
+                      height: h(120),
+                      width: w(118),
                       decoration: BoxDecoration(
                           color: Colors.blue,
                           image: DecorationImage(
@@ -169,9 +169,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           )),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: w(10)),
-                      height: h(100),
-                      width: w(110),
+                      margin: EdgeInsets.only(left: w(5)),
+                      height: h(120),
+                      width: w(120),
                       decoration: BoxDecoration(
                           color: Colors.blue,
                           image: DecorationImage(
@@ -181,15 +181,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               fit: BoxFit.cover)),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: w(10)),
+                      margin: EdgeInsets.only(left: w(5)),
                       child: DottedBorder(
                         radius: Radius.circular(15),
                         dashPattern: [8, 3],
                         color: Colors.pink,
                         child: ClipRRect(
                           child: Container(
-                            height: h(100),
-                            width: w(110),
+                            height: h(118),
+                            width: w(125),
                             decoration: BoxDecoration(
                                 color: Theme.of(context).toggleableActiveColor,
                                 borderRadius: BorderRadius.circular(5)),
@@ -208,7 +208,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Container(
                 color: Theme.of(context).backgroundColor,
@@ -217,7 +217,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Container(
                       padding: EdgeInsets.only(
-                          top: h(20), left: w(20), bottom: h(20)),
+                          top: h(20), left: w(20), bottom: h(10)),
                       child: Text(
                         "Smart Photos",
                         style: TextStyle(
@@ -229,7 +229,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Container(
                       padding: EdgeInsets.only(right: w(20)),
                       child: FlutterSwitch(
-                        activeColor: Colors.pink,
+                        activeColor: Color(0xfffa5473),
                         width: 51.0,
                         height: 30.0,
                         valueFontSize: 25.0,
@@ -259,7 +259,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -293,7 +293,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         decoration: BoxDecoration(
                             color:
                                 themeController.themeValue.toString() == "dark"
-                                    ? Color(0xff555557)
+                                    ? Colors.white12
                                     : Colors.black12,
                             shape: BoxShape.circle),
                       ),
@@ -307,7 +307,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         decoration: BoxDecoration(
                             color:
                                 themeController.themeValue.toString() == "dark"
-                                    ? Color(0xff555557)
+                                    ? Colors.white12
                                     : Colors.black12,
                             shape: BoxShape.circle),
                       )
@@ -321,7 +321,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Obx(
                 () => Container(
                   color: Theme.of(context).backgroundColor,
-                  padding: EdgeInsets.only(top: h(20), bottom: h(20)),
+                  padding: EdgeInsets.only(top: h(30), bottom: h(30)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -438,7 +438,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Container(
                 padding: EdgeInsets.only(left: w(20)),
@@ -468,7 +468,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           counterText: "",
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.only(
-                              top: h(5), left: w(5), bottom: 0, right: 10)),
+                              top: h(10), left: w(20), bottom: 10, right: 10)),
                     ),
                   ),
                   Positioned.fill(
@@ -490,7 +490,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Container(
                 padding: EdgeInsets.only(left: w(20)),
@@ -501,7 +501,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(10),
+                height: h(15),
               ),
               Container(
                 padding: EdgeInsets.only(left: w(20)),
@@ -511,7 +511,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(20),
+                height: h(15),
               ),
               GestureDetector(
                 onTap: () {
@@ -545,7 +545,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Container(
                 padding: EdgeInsets.only(
@@ -595,7 +595,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Container(
                 padding: EdgeInsets.only(left: w(20)),
@@ -718,7 +718,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 "Education",
               ),
               SizedBox(
-                height: h(10),
+                height: h(30),
               ),
               Container(
                 padding: EdgeInsets.only(left: w(20)),
@@ -733,7 +733,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Container(
                 color: Theme.of(context).backgroundColor,
-                height: h(100),
+                height: h(120),
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -762,7 +762,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: h(10),
+                      height: h(20),
                     ),
                     Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
@@ -785,11 +785,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     color: Color(0xfffa5473),
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Icon(
-                                    Icons.done,
-                                    color: Colors.white,
-                                    size: w(20),
-                                  ),
+                                  child: Obx(() => (Icon(
+                                        Icons.done,
+                                        color: themeController.themeValue
+                                                    .toString() ==
+                                                "dark"
+                                            ? Colors.black
+                                            : Colors.white,
+                                        size: w(20),
+                                      ))),
                                 )
                               : Container(
                                   height: h(25),
@@ -828,11 +832,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     color: Color(0xfffa5473),
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Icon(
-                                    Icons.done,
-                                    color: Colors.white,
-                                    size: w(20),
-                                  ),
+                                  child: Obx(() => (Icon(
+                                        Icons.done,
+                                        color: themeController.themeValue
+                                                    .toString() ==
+                                                "dark"
+                                            ? Colors.black
+                                            : Colors.white,
+                                        size: w(20),
+                                      ))),
                                 ),
                         ),
                       ],
@@ -841,7 +849,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -906,8 +914,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: w(20),
                   ),
                   Container(
-                    height: h(30),
-                    width: w(100),
+                    height: h(33),
+                    width: w(101),
                     decoration: BoxDecoration(
                         color: Color(0xfffa5473),
                         borderRadius: BorderRadius.circular(w(30))),
@@ -931,8 +939,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: w(5),
                   ),
                   Container(
-                    height: h(30),
-                    width: w(100),
+                    height: h(33),
+                    width: w(101),
                     decoration: BoxDecoration(
                         color: Color(0xfffa5473),
                         borderRadius: BorderRadius.circular(w(30))),
@@ -960,8 +968,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: w(5),
                   ),
                   Container(
-                    height: h(30),
-                    width: w(100),
+                    height: h(33),
+                    width: w(101),
                     decoration: BoxDecoration(
                         color: Color(0xfffa5473),
                         borderRadius: BorderRadius.circular(w(30))),
@@ -984,7 +992,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     )),
                   ),
                   SizedBox(
-                    width: w(20),
+                    width: w(15),
                   ),
                   Container(
                     height: h(30),
@@ -1003,7 +1011,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Container(
                 padding: EdgeInsets.only(left: w(20)),
@@ -1054,7 +1062,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(20),
+                height: h(30),
               ),
               Container(
                 padding: EdgeInsets.only(left: w(20)),
@@ -1104,7 +1112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(30),
+                height: h(50),
               ),
               Container(
                 height: h(60),
@@ -1188,7 +1196,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(
-                height: h(30),
+                height: h(60),
               ),
             ],
           ),

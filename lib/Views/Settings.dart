@@ -293,7 +293,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(10),
+                      height: h(15),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: w(20)),
@@ -307,7 +307,7 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     SizedBox(
-                      height: h(10),
+                      height: h(15),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -351,25 +351,34 @@ class _SettingsState extends State<Settings> {
                                 SizedBox(
                                   width: w(5),
                                 ),
-                                Container(
-                                    width: w(230),
-                                    child: TextField(
-                                      keyboardType:
-                                          TextInputType.numberWithOptions(
-                                        decimal: false,
-                                      ),
-                                      maxLength: 10,
-                                      decoration: InputDecoration(
-                                        counterText: "",
-                                        labelText: "Enter Phone Number",
-                                        labelStyle: GoogleFonts.ubuntu(
-                                            color: statusForTheme.toString() ==
+                                Obx(
+                                  () => Container(
+                                      width: w(230),
+                                      child: TextField(
+                                        style: TextStyle(
+                                            color: themeController.themeValue
+                                                        .toString() ==
                                                     "dark"
-                                                ? Color(0xff555557)
-                                                : Color(0xffcecece)),
-                                        border: InputBorder.none,
-                                      ),
-                                    )),
+                                                ? Colors.white
+                                                : Colors.black),
+                                        keyboardType:
+                                            TextInputType.numberWithOptions(
+                                          decimal: false,
+                                        ),
+                                        maxLength: 10,
+                                        decoration: InputDecoration(
+                                          counterText: "",
+                                          labelText: "Enter Phone Number",
+                                          labelStyle: GoogleFonts.ubuntu(
+                                              color:
+                                                  statusForTheme.toString() ==
+                                                          "dark"
+                                                      ? Color(0xff555557)
+                                                      : Color(0xffcecece)),
+                                          border: InputBorder.none,
+                                        ),
+                                      )),
+                                )
                               ],
                             )),
                       ],
@@ -434,11 +443,12 @@ class _SettingsState extends State<Settings> {
                                 Container(
                                     width: w(230),
                                     child: TextField(
-                                      keyboardType:
-                                          TextInputType.numberWithOptions(
-                                        decimal: false,
-                                      ),
-                                      maxLength: 10,
+                                      style: TextStyle(
+                                          color: themeController.themeValue
+                                                      .toString() ==
+                                                  "dark"
+                                              ? Colors.white
+                                              : Colors.black),
                                       decoration: InputDecoration(
                                         counterText: "",
                                         labelText: "Location",
@@ -471,7 +481,7 @@ class _SettingsState extends State<Settings> {
                     ),
                     Container(
                       color: Theme.of(context).backgroundColor,
-                      height: h(110),
+                      height: h(130),
                       width: MediaQuery.of(context).size.width,
                       child: Column(
                         children: [
@@ -483,7 +493,7 @@ class _SettingsState extends State<Settings> {
                               ),
                               Container(
                                   padding: EdgeInsets.only(
-                                    top: h(20),
+                                    top: h(30),
                                   ),
                                   child: Text(
                                     "Males",
@@ -530,11 +540,15 @@ class _SettingsState extends State<Settings> {
                                           color: Color(0xfffa5473),
                                           shape: BoxShape.circle,
                                         ),
-                                        child: Icon(
-                                          Icons.done,
-                                          color: Colors.white,
-                                          size: w(20),
-                                        ),
+                                        child: Obx(() => (Icon(
+                                              Icons.done,
+                                              color: themeController.themeValue
+                                                          .toString() ==
+                                                      "dark"
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                              size: w(20),
+                                            ))),
                                       )
                                     : Container(
                                         height: h(25),
@@ -576,11 +590,15 @@ class _SettingsState extends State<Settings> {
                                           color: Color(0xfffa5473),
                                           shape: BoxShape.circle,
                                         ),
-                                        child: Icon(
-                                          Icons.done,
-                                          color: Colors.white,
-                                          size: w(20),
-                                        ),
+                                        child: Obx(() => (Icon(
+                                              Icons.done,
+                                              color: themeController.themeValue
+                                                          .toString() ==
+                                                      "dark"
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                              size: w(20),
+                                            ))),
                                       ),
                               ),
                             ],
