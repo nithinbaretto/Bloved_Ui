@@ -267,12 +267,12 @@ class _MainHomePageState extends State<MainHomePage> {
                   appBar: AppBar(
                     leading: Row(children: [
                       SizedBox(
-                        width: w(20),
+                        width: 20,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: w(10), top: h(10)),
-                        height: h(25),
-                        width: w(25),
+                        margin: EdgeInsets.only(left: 10, top: 10),
+                        height: 25,
+                        width: 25,
                         decoration: BoxDecoration(
                             color: Color(0xfffa5473), shape: BoxShape.circle),
                         child: GestureDetector(
@@ -285,7 +285,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           child: Icon(
                             Icons.person,
                             color: Colors.black,
-                            size: w(20),
+                            size: 20,
                           ),
                         ),
                       ),
@@ -296,7 +296,7 @@ class _MainHomePageState extends State<MainHomePage> {
                     backgroundColor: Colors.transparent,
                     actions: [
                       Container(
-                        padding: EdgeInsets.only(right: w(30), top: h(10)),
+                        padding: EdgeInsets.only(right: 30, top: 10),
                         child: GestureDetector(
                           onTap: () {
                             showDialog(

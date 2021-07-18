@@ -275,7 +275,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       // backgroundColor: Color(0xfffbf6f7),
       appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.of(context).size.width, h(70)),
+        preferredSize: Size(MediaQuery.of(context).size.width, 70),
         child: AppBar(
           elevation: 0,
           shadowColor: Colors.black54,
@@ -286,14 +286,14 @@ class _ChatScreenState extends State<ChatScreen> {
           // backgroundColor: Colors.white,
           iconTheme: IconThemeData(color: Theme.of(context).accentColor),
           leading: Container(
-            padding: EdgeInsets.only(left: w(20), top: h(17)),
+            padding: EdgeInsets.only(left: 20, top: 17),
             child: GestureDetector(
               onTap: () {
                 Get.off(MainHomePage());
               },
               child: Icon(
                 Icons.chevron_left,
-                size: w(30),
+                size: 30,
               ),
             ),
           ),
@@ -301,9 +301,9 @@ class _ChatScreenState extends State<ChatScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
-                margin: EdgeInsets.only(top: h(17), left: 0, right: 0),
-                height: h(37),
-                width: w(37),
+                margin: EdgeInsets.only(top: 17, left: 0, right: 0),
+                height: 37,
+                width: 37,
                 decoration: BoxDecoration(
                     color: Colors.blue,
                     shape: BoxShape.circle,
@@ -331,14 +331,14 @@ class _ChatScreenState extends State<ChatScreen> {
                   Row(
                     children: [
                       Container(
-                        height: h(10),
-                        width: w(10),
+                        height: 10,
+                        width: 10,
                         decoration: BoxDecoration(
                             color: Color(0xfffa5473),
                             borderRadius: BorderRadius.circular(r(15))),
                       ),
                       SizedBox(
-                        width: w(3),
+                        width: 3,
                       ),
                       Container(
                         child: Text(
@@ -355,27 +355,27 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           actions: [
             Container(
-                margin: EdgeInsets.only(top: h(17)),
+                margin: EdgeInsets.only(top: 17),
                 child: Image.asset("assets/images/call.png")),
             SizedBox(
               width: w(0),
             ),
             Container(
-                margin: EdgeInsets.only(top: h(17)),
+                margin: EdgeInsets.only(top: 17),
                 child: Image.asset("assets/images/video.png")),
             SizedBox(
               width: w(0),
             ),
             Container(
-              margin: EdgeInsets.only(top: h(17)),
+              margin: EdgeInsets.only(top: 17),
               child: Icon(
                 Icons.more_vert,
                 color: Color(0xfffa5473),
-                size: w(25),
+                size: 25,
               ),
             ),
             SizedBox(
-              width: w(20),
+              width: 20,
             ),
           ],
         ),

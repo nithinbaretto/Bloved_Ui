@@ -32,38 +32,37 @@ class _MessageActivityScreenState extends State<MessageActivityScreen> {
       //backgroundColor: Colors.grey[100],
       appBar: AppBar(
         leading: Row(children: [
-          SizedBox(width: w(31)),
+          SizedBox(width: 30),
           Obx(() => themeController.themeValue.toString() == "dark"
               ? Container(
-                  margin: EdgeInsets.only(top: h(30)),
-                  height: h(25),
-                  width: w(25),
+                  margin: EdgeInsets.only(top: 30),
+                  height: 25,
+                  width: 25,
                   decoration: BoxDecoration(
                       color: selected == "Messages"
                           ? Colors.white30
                           : Colors.pink[400],
-                      borderRadius: BorderRadius.circular(w(20))),
+                      shape: BoxShape.circle),
                   child: GestureDetector(
                       onTap: () {},
                       child: Icon(
                         Icons.person,
                         color: Colors.black,
-                        size: w(20),
+                        size: 20,
                       )),
                 )
               : Container(
-                  margin: EdgeInsets.only(top: h(30)),
-                  height: h(25),
-                  width: w(25),
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(w(20))),
+                  margin: EdgeInsets.only(top: 30),
+                  height: 25,
+                  width: 25,
+                  decoration:
+                      BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
                   child: GestureDetector(
                       onTap: () {},
                       child: Icon(
                         Icons.person,
                         color: Colors.white,
-                        size: w(20),
+                        size: 20,
                       )),
                 ))
         ]),
